@@ -9,7 +9,7 @@ const TestimonialCard = ({ testimonial }) => (
     <CardContent className="pt-6">
       <div className="flex items-center mb-4">
         {[...Array(testimonial.rating)].map((_, i) => (
-          <Star key={`star-${i}`} size={18} className="text-yellow-400 fill-yellow-400" />
+          <Star key={`star-${testimonial.id}-${i}`} size={18} className="text-yellow-400 fill-yellow-400" />
         ))}
       </div>
       <p className="text-slate-600 mb-6 italic">"{testimonial.content}"</p>
@@ -53,13 +53,13 @@ const Testimonials = () => {
       const data = await getTestimonials();
       setTestimonials(data.length > 0 ? data : testimonialsData);
     } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        console.error('Error loading testimonials:', error);
-      }
+      // Fallback to mock data on error
       setTestimonials(testimonialsData);
     } finally {
       setLoading(false);
     }
+    // testimonialsData is a stable import, no need to include in deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

@@ -1,5 +1,4 @@
 "use client";
-// Inspired by react-hot-toast library
 import * as React from "react"
 
 const TOAST_LIMIT = 1
@@ -55,8 +54,6 @@ export const reducer = (state, action) => {
     case "DISMISS_TOAST": {
       const { toastId } = action
 
-      // ! Side effects ! - This could be extracted into a dismissToast() action,
-      // but I'll keep it here for simplicity
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
@@ -146,7 +143,9 @@ function useToast() {
         listeners.splice(index, 1)
       }
     };
-  }, []) // Fixed: Empty dependency array is correct here
+    // Dependencies intentionally empty - this effect only runs once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return {
     ...state,

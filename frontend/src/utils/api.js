@@ -4,12 +4,13 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const logError = (context, error) => {
+  // Only log in development, use proper error tracking in production
   if (process.env.NODE_ENV === 'development') {
     console.error(`${context}:`, error);
   }
+  // In production, send to error tracking service (e.g., Sentry)
 };
 
-// Contact API
 export const submitContactForm = async (formData) => {
   try {
     const response = await axios.post(`${API}/contact`, {
@@ -26,7 +27,6 @@ export const submitContactForm = async (formData) => {
   }
 };
 
-// Testimonials API
 export const getTestimonials = async () => {
   try {
     const response = await axios.get(`${API}/testimonials`);
@@ -37,7 +37,6 @@ export const getTestimonials = async () => {
   }
 };
 
-// Newsletter API
 export const subscribeNewsletter = async (email) => {
   try {
     const response = await axios.post(`${API}/newsletter`, { email });
@@ -48,7 +47,6 @@ export const subscribeNewsletter = async (email) => {
   }
 };
 
-// Payment API
 export const createCheckoutSession = async (checkoutData) => {
   try {
     const response = await axios.post(`${API}/payment/checkout`, checkoutData);
@@ -69,7 +67,6 @@ export const getPaymentStatus = async (sessionId) => {
   }
 };
 
-// AI Chat API
 export const sendAIMessage = async (text, sessionId = 'default') => {
   try {
     const response = await axios.post(`${API}/ai/chat`, {
