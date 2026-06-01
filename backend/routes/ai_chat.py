@@ -25,18 +25,10 @@ class ChatResponse(BaseModel):
 @router.post("/chat", response_model=ChatResponse)
 async def chat_with_ai(message: ChatMessage):
     try:
-        # Get API key
         api_key = os.environ.get("EMERGENT_LLM_KEY")
         if not api_key:
             raise HTTPException(status_code=500, detail="AI API key not configured")
         
-        # Get chat history from database
-        chat_history = await db.chat_history.find(
-            {"session_id": message.session_id},
-            {"_id": 0}
-        ).sort("timestamp", 1).to_list(50)
-        
-        # Initialize AI chat
         system_message = """You are a helpful AI assistant for Vortexa - BitVera IT Solutions, 
         an ERP implementation company in Saudi Arabia. You help customers with:
         - ERP implementation questions
@@ -51,13 +43,11 @@ async def chat_with_ai(message: ChatMessage):
             api_key=api_key,
             session_id=message.session_id,
             system_message=system_message
-        ).with_model("openai", "gpt-5.4")
+        ).with_model("openai", "gpt-4o")
         
-        # Send message and get response
         user_message = UserMessage(text=message.text)
         response = await chat.send_message(user_message)
         
-        # Save to database
         await db.chat_history.insert_many([
             {
                 "session_id": message.session_id,
