@@ -3,17 +3,33 @@ import { Button } from './ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+const menuItems = [
+  { id: 'solutions', label: 'Solutions', hasDropdown: true },
+  { id: 'services', label: 'Services', hasDropdown: true },
+  { id: 'pricing', label: 'Pricing', hasDropdown: false },
+  { id: 'industries', label: 'Industries', hasDropdown: false },
+  { id: 'knowledge', label: 'Knowledge Base', hasDropdown: true },
+  { id: 'about', label: 'About Us', hasDropdown: true }
+];
+
+const NavMenuItem = ({ item }) => (
+  <div className="relative group">
+    <button className="flex items-center space-x-1 text-slate-700 hover:text-cyan-600 transition-colors text-sm font-medium py-2">
+      <span>{item.label}</span>
+      {item.hasDropdown && <ChevronDown size={16} />}
+    </button>
+  </div>
+);
+
+const MobileMenuItem = ({ item }) => (
+  <button className="flex items-center justify-between w-full px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors">
+    <span>{item.label}</span>
+    {item.hasDropdown && <ChevronDown size={16} />}
+  </button>
+);
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const menuItems = [
-    { label: 'Solutions', hasDropdown: true },
-    { label: 'Services', hasDropdown: true },
-    { label: 'Pricing', hasDropdown: false },
-    { label: 'Industries', hasDropdown: false },
-    { label: 'Knowledge Base', hasDropdown: true },
-    { label: 'About Us', hasDropdown: true }
-  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200">
@@ -34,13 +50,8 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-6">
-            {menuItems.map((item, index) => (
-              <div key={index} className="relative group">
-                <button className="flex items-center space-x-1 text-slate-700 hover:text-cyan-600 transition-colors text-sm font-medium py-2">
-                  <span>{item.label}</span>
-                  {item.hasDropdown && <ChevronDown size={16} />}
-                </button>
-              </div>
+            {menuItems.map((item) => (
+              <NavMenuItem key={item.id} item={item} />
             ))}
           </div>
 
@@ -69,14 +80,8 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="lg:hidden py-4 border-t border-slate-200">
-            {menuItems.map((item, index) => (
-              <button
-                key={index}
-                className="flex items-center justify-between w-full px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors"
-              >
-                <span>{item.label}</span>
-                {item.hasDropdown && <ChevronDown size={16} />}
-              </button>
+            {menuItems.map((item) => (
+              <MobileMenuItem key={item.id} item={item} />
             ))}
             <div className="px-4 py-4 space-y-2">
               <Button variant="outline" className="w-full">

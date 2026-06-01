@@ -50,75 +50,120 @@ class CheckoutRequest(BaseModel):
     metadata: Optional[Dict[str, str]] = None
 
 
+def validate_package(package_id: str) -> dict:
+    """Validate package ID and return package data."""
+    if package_id not in PRICING_PACKAGES:
+        raise HTTPException(status_code=400, detail="Invalid package ID")
+    return PRICING_PACKAGES[package_id]
+
+
+def calculate_amount(package: dict, payment_type: str, billing_period: str) -> float:
+    """Calculate payment amount based on package and payment type."""
+    if payment_type == "subscription":
+        return package["monthly_price"] if billing_period == "monthly" else package["annual_price"]
+    elif payment_type == "implementation_fee":
+        return package["implementation_fee"]
+    else:
+        raise HTTPException(status_code=400, detail="Invalid payment type")
+
+
+def build_payment_urls(origin_url: str) -> tuple:
+    """Build success and cancel URLs from frontend origin."""
+    success_url = f"{origin_url}/payment/success?session_id={{CHECKOUT_SESSION_ID}}"
+    cancel_url = f"{origin_url}/payment/cancel"
+    return success_url, cancel_url
+
+
+def prepare_metadata(package_id: str, package: dict, payment_type: str, 
+                     billing_period: str, email: Optional[str], 
+                     extra_metadata: Optional[Dict[str, str]]) -> dict:
+    """Prepare metadata for checkout session."""
+    metadata = {
+        "package_id": package_id,
+        "package_name": package["name"],
+        "payment_type": payment_type,
+        "billing_period": billing_period
+    }
+    if email:
+        metadata["email"] = email
+    if extra_metadata:
+        metadata.update(extra_metadata)
+    return metadata
+
+
+async def create_stripe_session(api_key: str, webhook_url: str, amount: float, 
+                                currency: str, success_url: str, cancel_url: str, 
+                                metadata: dict) -> CheckoutSessionResponse:
+    """Create Stripe checkout session."""
+    stripe_checkout = StripeCheckout(api_key=api_key, webhook_url=webhook_url)
+    checkout_request = CheckoutSessionRequest(
+        amount=amount,
+        currency=currency,
+        success_url=success_url,
+        cancel_url=cancel_url,
+        metadata=metadata
+    )
+    return await stripe_checkout.create_checkout_session(checkout_request)
+
+
+async def save_transaction(session_id: str, package_id: str, package_name: str,
+                           payment_type: str, billing_period: str, amount: float,
+                           currency: str, metadata: dict, email: Optional[str]):
+    """Save payment transaction to database."""
+    transaction = {
+        "session_id": session_id,
+        "package_id": package_id,
+        "package_name": package_name,
+        "payment_type": payment_type,
+        "billing_period": billing_period,
+        "amount": amount,
+        "currency": currency,
+        "payment_status": "pending",
+        "status": "initiated",
+        "metadata": metadata,
+        "email": email
+    }
+    await db.payment_transactions.insert_one(transaction)
+
+
 @router.post("/checkout")
 async def create_checkout_session(request: CheckoutRequest):
+    """Create a Stripe checkout session for payment."""
     try:
-        # Validate package
-        if request.package_id not in PRICING_PACKAGES:
-            raise HTTPException(status_code=400, detail="Invalid package ID")
+        # Validate and get package
+        package = validate_package(request.package_id)
         
-        package = PRICING_PACKAGES[request.package_id]
-        
-        # Get amount from SERVER-SIDE package definition
-        if request.payment_type == "subscription":
-            amount = package["monthly_price"] if request.billing_period == "monthly" else package["annual_price"]
-        elif request.payment_type == "implementation_fee":
-            amount = package["implementation_fee"]
-        else:
-            raise HTTPException(status_code=400, detail="Invalid payment type")
-        
+        # Calculate amount from SERVER-SIDE package definition
+        amount = calculate_amount(package, request.payment_type, request.billing_period)
         currency = package["currency"]
         
         # Build URLs from frontend origin
-        success_url = f"{request.origin_url}/payment/success?session_id={{CHECKOUT_SESSION_ID}}"
-        cancel_url = f"{request.origin_url}/payment/cancel"
+        success_url, cancel_url = build_payment_urls(request.origin_url)
         
         # Prepare metadata
-        metadata = {
-            "package_id": request.package_id,
-            "package_name": package["name"],
-            "payment_type": request.payment_type,
-            "billing_period": request.billing_period
-        }
-        if request.email:
-            metadata["email"] = request.email
-        if request.metadata:
-            metadata.update(request.metadata)
+        metadata = prepare_metadata(
+            request.package_id, package, request.payment_type,
+            request.billing_period, request.email, request.metadata
+        )
         
-        # Initialize Stripe checkout
+        # Get Stripe API key
         api_key = os.environ.get("STRIPE_API_KEY")
         if not api_key:
             raise HTTPException(status_code=500, detail="Stripe API key not configured")
         
-        webhook_url = f"{request.origin_url}/api/webhook/stripe"
-        stripe_checkout = StripeCheckout(api_key=api_key, webhook_url=webhook_url)
-        
         # Create checkout session
-        checkout_request = CheckoutSessionRequest(
-            amount=amount,
-            currency=currency,
-            success_url=success_url,
-            cancel_url=cancel_url,
-            metadata=metadata
+        webhook_url = f"{request.origin_url}/api/webhook/stripe"
+        session = await create_stripe_session(
+            api_key, webhook_url, amount, currency,
+            success_url, cancel_url, metadata
         )
         
-        session: CheckoutSessionResponse = await stripe_checkout.create_checkout_session(checkout_request)
-        
-        # Create payment transaction record
-        transaction = {
-            "session_id": session.session_id,
-            "package_id": request.package_id,
-            "package_name": package["name"],
-            "payment_type": request.payment_type,
-            "billing_period": request.billing_period,
-            "amount": amount,
-            "currency": currency,
-            "payment_status": "pending",
-            "status": "initiated",
-            "metadata": metadata,
-            "email": request.email
-        }
-        await db.payment_transactions.insert_one(transaction)
+        # Save transaction
+        await save_transaction(
+            session.session_id, request.package_id, package["name"],
+            request.payment_type, request.billing_period, amount,
+            currency, metadata, request.email
+        )
         
         return {
             "success": True,
@@ -126,6 +171,8 @@ async def create_checkout_session(request: CheckoutRequest):
             "session_id": session.session_id
         }
     
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Error creating checkout session: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -133,6 +180,7 @@ async def create_checkout_session(request: CheckoutRequest):
 
 @router.get("/status/{session_id}")
 async def get_payment_status(session_id: str):
+    """Get payment status for a checkout session."""
     try:
         # Check if already processed
         existing_transaction = await db.payment_transactions.find_one(
@@ -181,6 +229,7 @@ async def get_payment_status(session_id: str):
 
 @router.post("/webhook/stripe")
 async def stripe_webhook(request: Request):
+    """Handle Stripe webhook events."""
     try:
         body = await request.body()
         signature = request.headers.get("Stripe-Signature")
@@ -212,6 +261,7 @@ async def stripe_webhook(request: Request):
 
 @router.get("/transactions")
 async def get_transactions():
+    """Get all payment transactions."""
     try:
         transactions = await db.payment_transactions.find({}, {"_id": 0}).sort("_id", -1).to_list(100)
         return {"transactions": transactions}

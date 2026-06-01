@@ -1,28 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Star } from 'lucide-react';
 import { getTestimonials } from '../utils/api';
 import { testimonialsData } from '../mock/data';
 
+const TestimonialCard = ({ testimonial }) => (
+  <Card className="border-slate-200 hover:border-cyan-500 hover:shadow-xl transition-all duration-300">
+    <CardContent className="pt-6">
+      <div className="flex items-center mb-4">
+        {[...Array(testimonial.rating)].map((_, i) => (
+          <Star key={`star-${i}`} size={18} className="text-yellow-400 fill-yellow-400" />
+        ))}
+      </div>
+      <p className="text-slate-600 mb-6 italic">"{testimonial.content}"</p>
+      <div className="flex items-center space-x-3">
+        <img
+          src={testimonial.avatar}
+          alt={testimonial.name}
+          className="w-12 h-12 rounded-full"
+        />
+        <div>
+          <div className="font-semibold text-slate-900">{testimonial.name}</div>
+          <div className="text-sm text-slate-500">{testimonial.position}</div>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+);
+
+const LoadingSkeleton = () => (
+  <Card className="border-slate-200 animate-pulse">
+    <CardContent className="pt-6">
+      <div className="h-4 bg-slate-200 rounded w-3/4 mb-4"></div>
+      <div className="h-20 bg-slate-200 rounded mb-6"></div>
+      <div className="flex items-center space-x-3">
+        <div className="w-12 h-12 bg-slate-200 rounded-full"></div>
+        <div className="flex-1">
+          <div className="h-4 bg-slate-200 rounded w-2/3 mb-2"></div>
+          <div className="h-3 bg-slate-200 rounded w-1/2"></div>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+);
+
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const data = await getTestimonials();
-        setTestimonials(data.length > 0 ? data : testimonialsData);
-      } catch (error) {
-        console.error('Error loading testimonials, using mock data:', error);
-        setTestimonials(testimonialsData);
-      } finally {
-        setLoading(false);
+  const fetchTestimonials = useCallback(async () => {
+    try {
+      const data = await getTestimonials();
+      setTestimonials(data.length > 0 ? data : testimonialsData);
+    } catch (error) {
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error loading testimonials:', error);
       }
-    };
-
-    fetchTestimonials();
+      setTestimonials(testimonialsData);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchTestimonials();
+  }, [fetchTestimonials]);
 
   if (loading) {
     return (
@@ -38,19 +80,7 @@ const Testimonials = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
-              <Card key={i} className="border-slate-200 animate-pulse">
-                <CardContent className="pt-6">
-                  <div className="h-4 bg-slate-200 rounded w-3/4 mb-4"></div>
-                  <div className="h-20 bg-slate-200 rounded mb-6"></div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-slate-200 rounded-full"></div>
-                    <div className="flex-1">
-                      <div className="h-4 bg-slate-200 rounded w-2/3 mb-2"></div>
-                      <div className="h-3 bg-slate-200 rounded w-1/2"></div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <LoadingSkeleton key={`skeleton-${i}`} />
             ))}
           </div>
         </div>
@@ -71,28 +101,8 @@ const Testimonials = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-slate-200 hover:border-cyan-500 hover:shadow-xl transition-all duration-300">
-              <CardContent className="pt-6">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={18} className="text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-slate-600 mb-6 italic">"{testimonial.content}"</p>
-                <div className="flex items-center space-x-3">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <div className="font-semibold text-slate-900">{testimonial.name}</div>
-                    <div className="text-sm text-slate-500">{testimonial.position}</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          {testimonials.map((testimonial) => (
+            <TestimonialCard key={testimonial.id || testimonial.name} testimonial={testimonial} />
           ))}
         </div>
       </div>

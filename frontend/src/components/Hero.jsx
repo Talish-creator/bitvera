@@ -10,6 +10,18 @@ const iconMap = {
   Trophy
 };
 
+const FeatureBadge = ({ feature, index }) => {
+  const Icon = iconMap[feature.icon];
+  return (
+    <div className="flex items-center space-x-3 p-3 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+      <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
+        <Icon size={20} className="text-white" />
+      </div>
+      <span className="text-sm font-medium text-slate-700">{feature.text}</span>
+    </div>
+  );
+};
+
 const Hero = () => {
   return (
     <section className="relative pt-24 pb-20 overflow-hidden">
@@ -51,20 +63,9 @@ const Hero = () => {
 
             {/* Feature Badges */}
             <div className="grid grid-cols-2 gap-4 pt-8">
-              {heroData.features.map((feature, index) => {
-                const Icon = iconMap[feature.icon];
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-3 p-3 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-shadow"
-                  >
-                    <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon size={20} className="text-white" />
-                    </div>
-                    <span className="text-sm font-medium text-slate-700">{feature.text}</span>
-                  </div>
-                );
-              })}
+              {heroData.features.map((feature, index) => (
+                <FeatureBadge key={`feature-${index}`} feature={feature} index={index} />
+              ))}
             </div>
           </div>
 
