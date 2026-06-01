@@ -1,10 +1,12 @@
 export const partnersData = [
-  { name: "Frappe", logo: "https://frappe.io/files/frappe-logo.svg" },
-  { name: "ZATCA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Saudi_Arabia_COA_%28alt%29.svg/200px-Saudi_Arabia_COA_%28alt%29.svg.png" },
-  { name: "ERPNext", logo: "https://erpnext.com/files/erpnext-logo.svg" },
+  { name: "Frappe", logo: "https://avatars.githubusercontent.com/u/4308503?s=200&v=4" },
+  { name: "ERPNext", logo: "https://avatars.githubusercontent.com/u/8648348?s=200&v=4" },
+  { name: "ZATCA", logo: "https://flagcdn.com/w320/sa.png" },
   { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
-  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
+  { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" },
+  { name: "Google Cloud", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg" },
   { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" },
   { name: "Oracle", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" },
+  { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
   { name: "Salesforce", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg" }
 ];
