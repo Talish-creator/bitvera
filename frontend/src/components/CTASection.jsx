@@ -4,6 +4,8 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { CheckCircle, DollarSign, TrendingUp, Zap } from 'lucide-react';
+import { submitContactForm } from '../utils/api';
+import { toast } from '../hooks/use-toast';
 
 const CTASection = () => {
   const [formData, setFormData] = useState({
@@ -13,18 +15,39 @@ const CTASection = () => {
     demoDate: '',
     additionalInfo: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you! We will contact you soon.');
-    setFormData({
-      name: '',
-      company: '',
-      email: '',
-      demoDate: '',
-      additionalInfo: ''
-    });
+    setIsSubmitting(true);
+    
+    try {
+      const result = await submitContactForm(formData);
+      
+      if (result.success) {
+        toast({
+          title: "Success!",
+          description: result.message,
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          demoDate: '',
+          additionalInfo: ''
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit form. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const benefits = [
@@ -78,6 +101,7 @@ const CTASection = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -86,6 +110,7 @@ const CTASection = () => {
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -95,6 +120,7 @@ const CTASection = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -104,6 +130,7 @@ const CTASection = () => {
                     value={formData.demoDate}
                     onChange={(e) => setFormData({ ...formData, demoDate: e.target.value })}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -112,14 +139,16 @@ const CTASection = () => {
                     value={formData.additionalInfo}
                     onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
                     rows={4}
+                    disabled={isSubmitting}
                   />
                 </div>
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white"
                   size="lg"
+                  disabled={isSubmitting}
                 >
-                  Get started for free
+                  {isSubmitting ? 'Submitting...' : 'Get started for free'}
                 </Button>
               </form>
             </CardContent>

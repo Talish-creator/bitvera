@@ -25,6 +25,8 @@ app = FastAPI()
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
+# Import route modules
+from routes import contact, testimonials, newsletter
 
 # Define Models
 class StatusCheck(BaseModel):
@@ -68,6 +70,11 @@ async def get_status_checks():
 
 # Include the router in the main app
 app.include_router(api_router)
+
+# Include additional routers
+app.include_router(contact.router)
+app.include_router(testimonials.router)
+app.include_router(newsletter.router)
 
 app.add_middleware(
     CORSMiddleware,

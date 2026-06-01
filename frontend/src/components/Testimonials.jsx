@@ -1,9 +1,63 @@
-import React from 'react';
-import { testimonialsData } from '../mock/data';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Star } from 'lucide-react';
+import { getTestimonials } from '../utils/api';
+import { testimonialsData } from '../mock/data';
 
 const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const data = await getTestimonials();
+        setTestimonials(data.length > 0 ? data : testimonialsData);
+      } catch (error) {
+        console.error('Error loading testimonials, using mock data:', error);
+        setTestimonials(testimonialsData);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-lg text-slate-600">
+              Don't just take our word for it. Here's what our satisfied customers have to say.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <Card key={i} className="border-slate-200 animate-pulse">
+                <CardContent className="pt-6">
+                  <div className="h-4 bg-slate-200 rounded w-3/4 mb-4"></div>
+                  <div className="h-20 bg-slate-200 rounded mb-6"></div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-slate-200 rounded-full"></div>
+                    <div className="flex-1">
+                      <div className="h-4 bg-slate-200 rounded w-2/3 mb-2"></div>
+                      <div className="h-3 bg-slate-200 rounded w-1/2"></div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,7 +71,7 @@ const Testimonials = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonialsData.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => (
             <Card key={index} className="border-slate-200 hover:border-cyan-500 hover:shadow-xl transition-all duration-300">
               <CardContent className="pt-6">
                 <div className="flex items-center mb-4">

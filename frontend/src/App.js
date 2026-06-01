@@ -12,6 +12,7 @@ import Stats from "./components/Stats";
 import Testimonials from "./components/Testimonials";
 import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
+import { Toaster } from "./components/ui/toaster";
 
 const Home = () => {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </div>
   );
 }
