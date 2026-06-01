@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Partners from "./components/Partners";
+import Solutions from "./components/Solutions";
 import Services from "./components/Services";
 import Pricing from "./components/Pricing";
 import Modules from "./components/Modules";
@@ -21,6 +22,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Partners />
+      <Solutions />
       <Services />
       <Pricing />
       <Modules />
