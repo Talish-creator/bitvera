@@ -69,7 +69,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content - Dashboard Preview */}
+          {/* Right Content - Dashboard Preview with Real Image */}
           <div className="relative">
             <div className="relative bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform hover:scale-105 transition-transform duration-500">
               <div className="bg-gradient-to-r from-cyan-500 to-teal-600 h-10 flex items-center px-4 space-x-2">
@@ -79,9 +79,10 @@ const Hero = () => {
               </div>
               <div className="p-6">
                 <img
-                  src="https://frappe.io/files/erpnext-hero.png"
-                  alt="ERP Dashboard"
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                  alt="ERP Dashboard Analytics"
                   className="w-full h-auto rounded-lg"
+                  loading="lazy"
                 />
               </div>
             </div>

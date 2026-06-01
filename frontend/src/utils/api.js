@@ -68,3 +68,37 @@ export const getPaymentStatus = async (sessionId) => {
     throw error;
   }
 };
+
+// AI Chat API
+export const sendAIMessage = async (text, sessionId = 'default') => {
+  try {
+    const response = await axios.post(`${API}/ai/chat`, {
+      text,
+      session_id: sessionId
+    });
+    return response.data;
+  } catch (error) {
+    logError('Error sending AI message', error);
+    throw error;
+  }
+};
+
+export const getChatHistory = async (sessionId) => {
+  try {
+    const response = await axios.get(`${API}/ai/chat/history/${sessionId}`);
+    return response.data.history;
+  } catch (error) {
+    logError('Error fetching chat history', error);
+    throw error;
+  }
+};
+
+export const clearChatHistory = async (sessionId) => {
+  try {
+    const response = await axios.delete(`${API}/ai/chat/history/${sessionId}`);
+    return response.data;
+  } catch (error) {
+    logError('Error clearing chat history', error);
+    throw error;
+  }
+};
