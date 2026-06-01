@@ -3,7 +3,7 @@
 export const heroData = {
   title: "Right Solution From The First Time",
   subtitle: "Quality starts here – with smart planning, expert execution, and results that drive success.",
-  tagline: "Systems Experts, your trusted ERPNext implementation partner.",
+  tagline: "Vortexa, your trusted ERPNext implementation partner.",
   features: [
     { icon: "CheckCircle", text: "ZATCA Compliance" },
     { icon: "Zap", text: "30 days Set Up" },
@@ -235,14 +235,14 @@ export const testimonialsData = [
   {
     name: "Ahmed Al-Rashid",
     position: "CEO, TechCorp Solutions",
-    content: "Systems Experts transformed our business operations completely. The ERP implementation was seamless and the support team is outstanding.",
+    content: "Vortexa transformed our business operations completely. The ERP implementation was seamless and the support team is outstanding.",
     rating: 5,
     avatar: "https://ui-avatars.com/api/?name=Ahmed+Al-Rashid&background=0ea5e9&color=fff"
   },
   {
     name: "Sarah Mohammed",
     position: "Operations Manager, RetailPro",
-    content: "The best decision we made was choosing Systems Experts. Their expertise in ERPNext and understanding of local regulations is unmatched.",
+    content: "The best decision we made was choosing Vortexa. Their expertise in ERPNext and understanding of local regulations is unmatched.",
     rating: 5,
     avatar: "https://ui-avatars.com/api/?name=Sarah+Mohammed&background=06b6d4&color=fff"
   },

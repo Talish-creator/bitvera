@@ -22,11 +22,11 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">SE</span>
+              <span className="text-white font-bold text-xl">V</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold text-slate-800">Systems Experts</span>
-              <span className="text-xs text-slate-500">خبراء الأنظمة</span>
+              <span className="text-sm font-bold text-slate-800">Vortexa</span>
+              <span className="text-xs text-slate-500">Innovation Driven</span>
             </div>
           </Link>
 

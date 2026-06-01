@@ -18,11 +18,11 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">SE</span>
+                <span className="text-white font-bold text-xl">V</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-sm font-bold">Systems Experts</span>
-                <span className="text-xs text-slate-400">خبراء الأنظمة</span>
+                <span className="text-sm font-bold">Vortexa</span>
+                <span className="text-xs text-slate-400">Innovation Driven</span>
               </div>
             </div>
             <p className="text-slate-400 text-sm mb-4">
@@ -70,7 +70,7 @@ const Footer = () => {
               </div>
               <div>
                 <div className="text-xs text-slate-400">Email</div>
-                <div className="text-sm">info@systemsexperts.com</div>
+                <div className="text-sm">info@vortexa.com</div>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -97,7 +97,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-slate-400 text-sm">
-            © 2025 Systems Experts. All rights reserved.
+            © 2025 Vortexa. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-slate-400 hover:text-cyan-500 transition-colors">

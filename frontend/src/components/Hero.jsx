@@ -36,7 +36,7 @@ const Hero = () => {
                 {heroData.subtitle}
               </p>
               <p className="text-base text-slate-500">
-                {heroData.tagline}
+                Vortexa, your trusted ERPNext implementation partner.
               </p>
             </div>
 
