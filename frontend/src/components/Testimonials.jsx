@@ -1,0 +1,49 @@
+import React from 'react';
+import { testimonialsData } from '../mock/data';
+import { Card, CardContent } from './ui/card';
+import { Star } from 'lucide-react';
+
+const Testimonials = () => {
+  return (
+    <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            What Our Clients Say
+          </h2>
+          <p className="text-lg text-slate-600">
+            Don't just take our word for it. Here's what our satisfied customers have to say.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonialsData.map((testimonial, index) => (
+            <Card key={index} className="border-slate-200 hover:border-cyan-500 hover:shadow-xl transition-all duration-300">
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} size={18} className="text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-slate-600 mb-6 italic">"{testimonial.content}"</p>
+                <div className="flex items-center space-x-3">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full"
+                  />
+                  <div>
+                    <div className="font-semibold text-slate-900">{testimonial.name}</div>
+                    <div className="text-sm text-slate-500">{testimonial.position}</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;
