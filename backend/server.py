@@ -26,7 +26,7 @@ app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
 # Import route modules
-from routes import contact, testimonials, newsletter
+from routes import contact, testimonials, newsletter, payment
 
 # Define Models
 class StatusCheck(BaseModel):
@@ -75,6 +75,7 @@ app.include_router(api_router)
 app.include_router(contact.router)
 app.include_router(testimonials.router)
 app.include_router(newsletter.router)
+app.include_router(payment.router)
 
 app.add_middleware(
     CORSMiddleware,

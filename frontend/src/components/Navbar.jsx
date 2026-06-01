@@ -20,13 +20,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">V</span>
-            </div>
+          <Link to="/" className="flex items-center space-x-3">
+            <img
+              src="https://customer-assets.emergentagent.com/job_style-forge-111/artifacts/o13twt3g_WhatsApp%20Image%202026-06-01%20at%2017.04.10.jpeg"
+              alt="BitVera Solutions Logo"
+              className="h-12 w-auto"
+            />
             <div className="flex flex-col">
               <span className="text-sm font-bold text-slate-800">Vortexa</span>
-              <span className="text-xs text-slate-500">Innovation Driven</span>
+              <span className="text-xs text-slate-600">BitVera IT Solutions</span>
             </div>
           </Link>
 
@@ -44,13 +46,13 @@ const Navbar = () => {
 
           {/* Right Side Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="text-slate-700 hover:text-cyan-600 transition-colors text-sm font-medium">
-              English
-            </button>
+            <Link to="/admin" className="text-slate-700 hover:text-cyan-600 transition-colors text-sm font-medium">
+              Admin
+            </Link>
             <Button variant="outline" size="sm">
               Login
             </Button>
-            <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white">
+            <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white">
               Book a demo
             </Button>
           </div>
@@ -80,7 +82,7 @@ const Navbar = () => {
               <Button variant="outline" className="w-full">
                 Login
               </Button>
-              <Button className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white">
+              <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white">
                 Book a demo
               </Button>
             </div>
