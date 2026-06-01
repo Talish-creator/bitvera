@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { 
+  Menu, X, ChevronDown, Calculator, FileCog, Network, 
+  PackageCheck, UserSearch, Factory, FileSpreadsheet, 
+  Settings, Users, Warehouse, TrendingUp, Package, 
+  Lightbulb, Info, Briefcase, Phone 
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import BookingModal from './BookingModal';
@@ -8,41 +13,65 @@ import BookingModal from './BookingModal';
 const menuData = {
   solutions: {
     title: 'Solutions',
+    layout: 'grid',
+    width: 'w-[650px]',
     items: [
-      { name: 'ERP Implementation', desc: 'Complete ERP solutions', link: '#' },
-      { name: 'CRM Integration', desc: 'Customer management', link: '#' },
-      { name: 'Process Automation', desc: 'Automate workflows', link: '#' },
-      { name: 'Custom Development', desc: 'Tailored solutions', link: '#' }
+      { name: 'Accounting & Finance', icon: Calculator, link: '#' },
+      { name: 'Project Management', icon: FileCog, link: '#' },
+      { name: 'Asset Management', icon: Network, link: '#' },
+      { name: 'Procurement Management', icon: PackageCheck, link: '#' },
+      { name: 'HR Management', icon: UserSearch, link: '#' },
+      { name: 'Production or Manufacturing', icon: Factory, link: '#' },
+      { name: 'Payroll', icon: FileSpreadsheet, link: '#' },
+      { name: 'Quality Management', icon: Settings, link: '#' },
+      { name: 'CRM', icon: Users, link: '#' },
+      { name: 'Warehouse Management', icon: Warehouse, link: '#' },
+      { name: 'Sales Management', icon: TrendingUp, link: '#' },
+      { name: 'Inventory Management', icon: Package, link: '#' }
     ]
   },
   services: {
     title: 'Services',
+    layout: 'split',
+    width: 'w-[550px]',
     items: [
-      { name: 'Business Consulting', desc: 'Expert guidance', link: '#' },
-      { name: 'Technical Support', desc: '24/7 assistance', link: '#' },
-      { name: 'Training & Onboarding', desc: 'Team enablement', link: '#' },
-      { name: 'Maintenance', desc: 'Ongoing support', link: '#' }
+      { name: 'ERPNext System implementation', icon: FileSpreadsheet, link: '#' },
+      { name: 'Business Consulting', icon: Lightbulb, link: '#' }
+    ]
+  },
+  pricing: {
+    title: 'Pricing',
+    layout: 'list',
+    width: 'w-72',
+    items: [
+      { name: 'Subscription plans', icon: FileSpreadsheet, link: '#' },
+      { name: 'Customize your own plan', icon: FileSpreadsheet, link: '#' }
     ]
   },
   knowledge: {
     title: 'Knowledge Base',
+    layout: 'list',
+    width: 'w-72',
     items: [
-      { name: 'Documentation', desc: 'User guides', link: '#' },
-      { name: 'API Reference', desc: 'Developer docs', link: '#' },
-      { name: 'Video Tutorials', desc: 'Learn visually', link: '#' },
-      { name: 'Blog', desc: 'Latest insights', link: '#' }
+      { name: 'ERPNext System', icon: FileSpreadsheet, link: '#' },
+      { name: 'FAQ\'s & Download', icon: FileSpreadsheet, link: '#' },
+      { name: 'Blog', icon: FileSpreadsheet, link: '#' }
     ]
   },
   about: {
     title: 'About Us',
+    layout: 'list',
+    width: 'w-64',
     items: [
-      { name: 'Our Story', desc: 'Who we are', link: '#' },
-      { name: 'Team', desc: 'Meet our experts', link: '#' },
-      { name: 'Careers', desc: 'Join us', link: '#' },
-      { name: 'Contact', desc: 'Get in touch', link: '#' }
+      { name: 'Our Story', icon: Info, link: '#' },
+      { name: 'Team', icon: Users, link: '#' },
+      { name: 'Careers', icon: Briefcase, link: '#' },
+      { name: 'Contact', icon: Phone, link: '#' }
     ]
   }
 };
+
+const menuOrder = ['solutions', 'services', 'pricing', 'industries', 'knowledge', 'about'];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +88,8 @@ const Navbar = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+            
+            {/* Logo Section (Untouched) */}
             <Link to="/" className="flex items-center space-x-3">
               <img
                 src="https://customer-assets.emergentagent.com/job_style-forge-111/artifacts/o13twt3g_WhatsApp%20Image%202026-06-01%20at%2017.04.10.jpeg"
@@ -73,128 +103,89 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-2">
-              {/* Solutions Dropdown */}
-              <div className="relative group">
-                <button 
-                  className="flex items-center space-x-1 px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium"
-                  onMouseEnter={() => setActiveDropdown('solutions')}
-                >
-                  <span>Solutions</span>
-                  <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
-                </button>
-                {activeDropdown === 'solutions' && (
-                  <div 
-                    className="absolute left-0 top-full mt-1 w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-2"
-                    onMouseLeave={() => setActiveDropdown(null)}
-                  >
-                    {menuData.solutions.items.map((item, idx) => (
-                      <a
-                        key={idx}
-                        href={item.link}
-                        className="flex flex-col px-4 py-3 hover:bg-slate-50 transition-colors"
+            <div className="hidden lg:flex items-center space-x-1">
+              {menuOrder.map((key) => {
+                if (key === 'industries') {
+                  return (
+                    <a key="industries" href="#industries" className="px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium">
+                      Industries
+                    </a>
+                  );
+                }
+
+                const menu = menuData[key];
+                return (
+                  <div key={key} className="relative group">
+                    <button 
+                      className="flex items-center space-x-1 px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium"
+                      onMouseEnter={() => setActiveDropdown(key)}
+                    >
+                      <span>{menu.title}</span>
+                      <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === key ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    {activeDropdown === key && (
+                      <div 
+                        className={`absolute left-0 top-full mt-1 ${menu.width} bg-white rounded-2xl shadow-xl border border-slate-200 py-4`}
+                        onMouseLeave={() => setActiveDropdown(null)}
                       >
-                        <span className="text-sm font-semibold text-slate-900">{item.name}</span>
-                        <span className="text-xs text-slate-500">{item.desc}</span>
-                      </a>
-                    ))}
+                        {/* Dropdown Header */}
+                        <div className="px-6 pb-4 mb-2 border-b border-slate-100">
+                          <h3 className="text-lg font-bold text-indigo-950">{menu.title}</h3>
+                        </div>
+
+                        {/* Grid Layout (Solutions) */}
+                        {menu.layout === 'grid' && (
+                          <div className="grid grid-cols-2 gap-2 px-3">
+                            {menu.items.map((item, idx) => {
+                              const Icon = item.icon;
+                              return (
+                                <a key={idx} href={item.link} className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group">
+                                  <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
+                                  <span className="text-sm font-medium text-slate-700">{item.name}</span>
+                                </a>
+                              );
+                            })}
+                          </div>
+                        )}
+
+                        {/* Split Layout (Services) */}
+                        {menu.layout === 'split' && (
+                          <div className="grid grid-cols-2 gap-4 px-4">
+                            <div className="flex flex-col space-y-2">
+                              {menu.items.map((item, idx) => {
+                                const Icon = item.icon;
+                                return (
+                                  <a key={idx} href={item.link} className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group">
+                                    <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
+                                    <span className="text-sm font-medium text-slate-700">{item.name}</span>
+                                  </a>
+                                );
+                              })}
+                            </div>
+                            <div className="bg-slate-50 rounded-xl w-full h-full min-h-[140px] border border-slate-100"></div>
+                          </div>
+                        )}
+
+                        {/* Standard List Layout (Pricing, Knowledge, About) */}
+                        {menu.layout === 'list' && (
+                          <div className="flex flex-col px-3 space-y-1">
+                            {menu.items.map((item, idx) => {
+                              const Icon = item.icon;
+                              return (
+                                <a key={idx} href={item.link} className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group">
+                                  <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
+                                  <span className="text-sm font-medium text-slate-700">{item.name}</span>
+                                </a>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-
-              {/* Services Dropdown */}
-              <div className="relative group">
-                <button 
-                  className="flex items-center space-x-1 px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium"
-                  onMouseEnter={() => setActiveDropdown('services')}
-                >
-                  <span>Services</span>
-                  <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
-                </button>
-                {activeDropdown === 'services' && (
-                  <div 
-                    className="absolute left-0 top-full mt-1 w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-2"
-                    onMouseLeave={() => setActiveDropdown(null)}
-                  >
-                    {menuData.services.items.map((item, idx) => (
-                      <a
-                        key={idx}
-                        href={item.link}
-                        className="flex flex-col px-4 py-3 hover:bg-slate-50 transition-colors"
-                      >
-                        <span className="text-sm font-semibold text-slate-900">{item.name}</span>
-                        <span className="text-xs text-slate-500">{item.desc}</span>
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Pricing */}
-              <a href="#pricing" className="px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium">
-                Pricing
-              </a>
-
-              {/* Industries */}
-              <a href="#industries" className="px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium">
-                Industries
-              </a>
-
-              {/* Knowledge Base Dropdown */}
-              <div className="relative group">
-                <button 
-                  className="flex items-center space-x-1 px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium"
-                  onMouseEnter={() => setActiveDropdown('knowledge')}
-                >
-                  <span>Knowledge Base</span>
-                  <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
-                </button>
-                {activeDropdown === 'knowledge' && (
-                  <div 
-                    className="absolute left-0 top-full mt-1 w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-2"
-                    onMouseLeave={() => setActiveDropdown(null)}
-                  >
-                    {menuData.knowledge.items.map((item, idx) => (
-                      <a
-                        key={idx}
-                        href={item.link}
-                        className="flex flex-col px-4 py-3 hover:bg-slate-50 transition-colors"
-                      >
-                        <span className="text-sm font-semibold text-slate-900">{item.name}</span>
-                        <span className="text-xs text-slate-500">{item.desc}</span>
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* About Dropdown */}
-              <div className="relative group">
-                <button 
-                  className="flex items-center space-x-1 px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium"
-                  onMouseEnter={() => setActiveDropdown('about')}
-                >
-                  <span>About Us</span>
-                  <ChevronDown size={16} className="transition-transform group-hover:rotate-180" />
-                </button>
-                {activeDropdown === 'about' && (
-                  <div 
-                    className="absolute left-0 top-full mt-1 w-64 bg-white rounded-xl shadow-xl border border-slate-200 py-2"
-                    onMouseLeave={() => setActiveDropdown(null)}
-                  >
-                    {menuData.about.items.map((item, idx) => (
-                      <a
-                        key={idx}
-                        href={item.link}
-                        className="flex flex-col px-4 py-3 hover:bg-slate-50 transition-colors"
-                      >
-                        <span className="text-sm font-semibold text-slate-900">{item.name}</span>
-                        <span className="text-xs text-slate-500">{item.desc}</span>
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
+                );
+              })}
             </div>
 
             {/* Right Side Buttons */}
@@ -228,37 +219,45 @@ const Navbar = () => {
           {/* Mobile Menu */}
           {isOpen && (
             <div className="lg:hidden py-4 border-t border-slate-200 max-h-[80vh] overflow-y-auto">
-              {Object.entries(menuData).map(([key, menu]) => (
-                <div key={key} className="mb-2">
-                  <button
-                    onClick={() => handleDropdownToggle(key)}
-                    className="flex items-center justify-between w-full px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors font-medium"
-                  >
-                    <span>{menu.title}</span>
-                    <ChevronDown size={16} className={`transition-transform ${activeDropdown === key ? 'rotate-180' : ''}`} />
-                  </button>
-                  {activeDropdown === key && (
-                    <div className="bg-slate-50 py-2">
-                      {menu.items.map((item, idx) => (
-                        <a
-                          key={idx}
-                          href={item.link}
-                          className="block px-6 py-2 text-sm text-slate-600 hover:text-cyan-600"
-                        >
-                          {item.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              
-              <a href="#pricing" className="block px-4 py-3 text-slate-700 hover:bg-slate-50 font-medium">
-                Pricing
-              </a>
-              <a href="#industries" className="block px-4 py-3 text-slate-700 hover:bg-slate-50 font-medium">
-                Industries
-              </a>
+              {menuOrder.map((key) => {
+                if (key === 'industries') {
+                  return (
+                    <a key="industries" href="#industries" className="block px-4 py-3 text-slate-700 hover:bg-slate-50 font-medium">
+                      Industries
+                    </a>
+                  );
+                }
+
+                const menu = menuData[key];
+                return (
+                  <div key={key} className="mb-2">
+                    <button
+                      onClick={() => handleDropdownToggle(key)}
+                      className="flex items-center justify-between w-full px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors font-medium"
+                    >
+                      <span>{menu.title}</span>
+                      <ChevronDown size={16} className={`transition-transform ${activeDropdown === key ? 'rotate-180' : ''}`} />
+                    </button>
+                    {activeDropdown === key && (
+                      <div className="bg-slate-50 py-2 px-2">
+                        {menu.items.map((item, idx) => {
+                          const Icon = item.icon;
+                          return (
+                            <a
+                              key={idx}
+                              href={item.link}
+                              className="flex items-center space-x-3 px-4 py-3 text-slate-600 hover:text-cyan-600 hover:bg-slate-100 rounded-lg"
+                            >
+                              <Icon className="w-5 h-5 text-indigo-900" strokeWidth={1.5} />
+                              <span className="text-sm font-medium">{item.name}</span>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
               
               <div className="px-4 py-4 space-y-2 border-t border-slate-200 mt-2">
                 <Button 
