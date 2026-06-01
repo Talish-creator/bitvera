@@ -10,24 +10,26 @@ import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import BookingModal from './BookingModal';
 
+// I updated the links here so you can see them work! 
+// When you create real pages later, change '#accounting' to '/accounting'
 const menuData = {
   solutions: {
     title: 'Solutions',
     layout: 'grid',
     width: 'w-[650px]',
     items: [
-      { name: 'Accounting & Finance', icon: Calculator, link: '#' },
-      { name: 'Project Management', icon: FileCog, link: '#' },
-      { name: 'Asset Management', icon: Network, link: '#' },
-      { name: 'Procurement Management', icon: PackageCheck, link: '#' },
-      { name: 'HR Management', icon: UserSearch, link: '#' },
-      { name: 'Production or Manufacturing', icon: Factory, link: '#' },
-      { name: 'Payroll', icon: FileSpreadsheet, link: '#' },
-      { name: 'Quality Management', icon: Settings, link: '#' },
-      { name: 'CRM', icon: Users, link: '#' },
-      { name: 'Warehouse Management', icon: Warehouse, link: '#' },
-      { name: 'Sales Management', icon: TrendingUp, link: '#' },
-      { name: 'Inventory Management', icon: Package, link: '#' }
+      { name: 'Accounting & Finance', icon: Calculator, link: '#accounting' },
+      { name: 'Project Management', icon: FileCog, link: '#project-management' },
+      { name: 'Asset Management', icon: Network, link: '#asset-management' },
+      { name: 'Procurement Management', icon: PackageCheck, link: '#procurement' },
+      { name: 'HR Management', icon: UserSearch, link: '#hr-management' },
+      { name: 'Production or Manufacturing', icon: Factory, link: '#production' },
+      { name: 'Payroll', icon: FileSpreadsheet, link: '#payroll' },
+      { name: 'Quality Management', icon: Settings, link: '#quality' },
+      { name: 'CRM', icon: Users, link: '#crm' },
+      { name: 'Warehouse Management', icon: Warehouse, link: '#warehouse' },
+      { name: 'Sales Management', icon: TrendingUp, link: '#sales' },
+      { name: 'Inventory Management', icon: Package, link: '#inventory' }
     ]
   },
   services: {
@@ -35,8 +37,8 @@ const menuData = {
     layout: 'split',
     width: 'w-[550px]',
     items: [
-      { name: 'ERPNext System implementation', icon: FileSpreadsheet, link: '#' },
-      { name: 'Business Consulting', icon: Lightbulb, link: '#' }
+      { name: 'ERPNext System implementation', icon: FileSpreadsheet, link: '#erpnext' },
+      { name: 'Business Consulting', icon: Lightbulb, link: '#consulting' }
     ]
   },
   pricing: {
@@ -44,8 +46,8 @@ const menuData = {
     layout: 'list',
     width: 'w-72',
     items: [
-      { name: 'Subscription plans', icon: FileSpreadsheet, link: '#' },
-      { name: 'Customize your own plan', icon: FileSpreadsheet, link: '#' }
+      { name: 'Subscription plans', icon: FileSpreadsheet, link: '#subscriptions' },
+      { name: 'Customize your own plan', icon: FileSpreadsheet, link: '#custom-plan' }
     ]
   },
   knowledge: {
@@ -53,9 +55,9 @@ const menuData = {
     layout: 'list',
     width: 'w-72',
     items: [
-      { name: 'ERPNext System', icon: FileSpreadsheet, link: '#' },
-      { name: 'FAQ\'s & Download', icon: FileSpreadsheet, link: '#' },
-      { name: 'Blog', icon: FileSpreadsheet, link: '#' }
+      { name: 'ERPNext System', icon: FileSpreadsheet, link: '#erp-knowledge' },
+      { name: 'FAQ\'s & Download', icon: FileSpreadsheet, link: '#faq' },
+      { name: 'Blog', icon: FileSpreadsheet, link: '#blog' }
     ]
   },
   about: {
@@ -63,10 +65,10 @@ const menuData = {
     layout: 'list',
     width: 'w-64',
     items: [
-      { name: 'Our Story', icon: Info, link: '#' },
-      { name: 'Team', icon: Users, link: '#' },
-      { name: 'Careers', icon: Briefcase, link: '#' },
-      { name: 'Contact', icon: Phone, link: '#' }
+      { name: 'Our Story', icon: Info, link: '#story' },
+      { name: 'Team', icon: Users, link: '#team' },
+      { name: 'Careers', icon: Briefcase, link: '#careers' },
+      { name: 'Contact', icon: Phone, link: '#contact' }
     ]
   }
 };
@@ -89,7 +91,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             
-            {/* Logo Section (Untouched) */}
+            {/* Logo Section */}
             <Link to="/" className="flex items-center space-x-3">
               <img
                 src="https://customer-assets.emergentagent.com/job_style-forge-111/artifacts/o13twt3g_WhatsApp%20Image%202026-06-01%20at%2017.04.10.jpeg"
@@ -140,7 +142,12 @@ const Navbar = () => {
                             {menu.items.map((item, idx) => {
                               const Icon = item.icon;
                               return (
-                                <a key={idx} href={item.link} className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group">
+                                <a 
+                                  key={idx} 
+                                  href={item.link} 
+                                  onClick={() => setActiveDropdown(null)}
+                                  className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
+                                >
                                   <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
                                   <span className="text-sm font-medium text-slate-700">{item.name}</span>
                                 </a>
@@ -156,7 +163,12 @@ const Navbar = () => {
                               {menu.items.map((item, idx) => {
                                 const Icon = item.icon;
                                 return (
-                                  <a key={idx} href={item.link} className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group">
+                                  <a 
+                                    key={idx} 
+                                    href={item.link}
+                                    onClick={() => setActiveDropdown(null)}
+                                    className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
+                                  >
                                     <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
                                     <span className="text-sm font-medium text-slate-700">{item.name}</span>
                                   </a>
@@ -173,7 +185,12 @@ const Navbar = () => {
                             {menu.items.map((item, idx) => {
                               const Icon = item.icon;
                               return (
-                                <a key={idx} href={item.link} className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group">
+                                <a 
+                                  key={idx} 
+                                  href={item.link} 
+                                  onClick={() => setActiveDropdown(null)}
+                                  className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
+                                >
                                   <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
                                   <span className="text-sm font-medium text-slate-700">{item.name}</span>
                                 </a>
@@ -222,7 +239,12 @@ const Navbar = () => {
               {menuOrder.map((key) => {
                 if (key === 'industries') {
                   return (
-                    <a key="industries" href="#industries" className="block px-4 py-3 text-slate-700 hover:bg-slate-50 font-medium">
+                    <a 
+                      key="industries" 
+                      href="#industries" 
+                      onClick={() => setIsOpen(false)}
+                      className="block px-4 py-3 text-slate-700 hover:bg-slate-50 font-medium"
+                    >
                       Industries
                     </a>
                   );
@@ -246,6 +268,10 @@ const Navbar = () => {
                             <a
                               key={idx}
                               href={item.link}
+                              onClick={() => {
+                                setActiveDropdown(null);
+                                setIsOpen(false);
+                              }}
                               className="flex items-center space-x-3 px-4 py-3 text-slate-600 hover:text-cyan-600 hover:bg-slate-100 rounded-lg"
                             >
                               <Icon className="w-5 h-5 text-indigo-900" strokeWidth={1.5} />
