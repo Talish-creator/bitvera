@@ -12,6 +12,7 @@ import Stats from "./components/Stats";
 import Testimonials from "./components/Testimonials";
 import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
+import Chatbot from "./components/Chatbot";
 import { Toaster } from "./components/ui/toaster";
 
 const Home = () => {
@@ -28,6 +29,7 @@ const Home = () => {
       <Testimonials />
       <CTASection />
       <Footer />
+      <Chatbot />
     </div>
   );
 };

@@ -51,8 +51,8 @@ const Footer = () => {
             <div key={category}>
               <h3 className="font-semibold text-white mb-4">{category}</h3>
               <ul className="space-y-2">
-                {links.map((link, index) => (
-                  <li key={index}>
+                {links.map((link) => (
+                  <li key={link}>
                     <a href="#" className="text-slate-400 hover:text-cyan-500 transition-colors text-sm">
                       {link}
                     </a>
@@ -81,7 +81,9 @@ const Footer = () => {
               </div>
               <div>
                 <div className="text-xs text-slate-400">Phone</div>
-                <div className="text-sm">+1 (XXX) XXX-XXXX</div>
+                <a href="tel:+966580608336" className="text-sm hover:text-cyan-500 transition-colors">
+                  +966 58 060 8336
+                </a>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -90,7 +92,7 @@ const Footer = () => {
               </div>
               <div>
                 <div className="text-xs text-slate-400">Location</div>
-                <div className="text-sm">Your City, Country</div>
+                <div className="text-sm">Saudi Arabia</div>
               </div>
             </div>
           </div>
