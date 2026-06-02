@@ -23,8 +23,7 @@ const Footer = () => {
                 className="h-10 w-auto bg-white p-1 rounded"
               />
               <div className="flex flex-col">
-                <span className="text-sm font-bold">Vortexa</span>
-                <span className="text-xs text-slate-400">BitVera IT Solutions</span>
+                <span className="text-base font-bold">BitVera IT Solutions</span>
               </div>
             </div>
             <p className="text-slate-400 text-sm mb-4">
@@ -92,7 +91,7 @@ const Footer = () => {
               </div>
               <div>
                 <div className="text-xs text-slate-400">Location</div>
-                <div className="text-sm">Saudi Arabia</div>
+                <div className="text-sm">Riyadh, KSA</div>
               </div>
             </div>
           </div>
@@ -101,7 +100,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-slate-400 text-sm">
-            © 2025 Vortexa - BitVera IT Solutions. All rights reserved.
+            © 2026 BitVera IT Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-slate-400 hover:text-cyan-500 transition-colors">
