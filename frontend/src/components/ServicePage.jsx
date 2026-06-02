@@ -7,7 +7,7 @@ import {
   FileCog, Network, PackageCheck, Factory, FileSpreadsheet, 
   Settings, Warehouse, TrendingUp, Package, Clock, Building, 
   ShieldCheck, ShoppingCart, Target, Activity, FileText, 
-  BarChart, Inbox, ClipboardList, Zap, MapPin, Search
+  BarChart, Inbox, ClipboardList, Zap, MapPin, Search, Tag
 } from 'lucide-react';
 
 const pageData = {
@@ -92,7 +92,7 @@ const pageData = {
       { icon: FileText, title: "Create and Send Quotations", description: "Quickly generate professional quotations using customizable templates, and link them directly to leads." },
       { icon: ShoppingCart, title: "Sales Order Processing", description: "Convert approved quotations into sales orders with one click to accelerate workflows and reduce manual effort." },
       { icon: Search, title: "Quotation Comparison", description: "Compare multiple quotations side by side for more accurate and informed sales decisions." },
-      { icon: Tag, title: "Price Lists and Discounts Management", description: "Create tailored pricing for each customer or product, and activate automatic discounts." } // Note: Assuming 'Tag' icon fits here, imported below if needed. Let's use 'CreditCard' or 'Receipt' if 'Tag' isn't imported. I'll use Receipt.
+      { icon: Tag, title: "Price Lists and Discounts Management", description: "Create tailored pricing for each customer or product, and activate automatic discounts." }
     ],
     faqs: [
       { question: "Can quotations be converted into sales orders easily?", answer: "Yes, you can convert a quotation to a sales order with a single click, carrying over all details automatically." },
