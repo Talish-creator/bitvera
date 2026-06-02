@@ -7,10 +7,15 @@ import {
   FileCog, Network, PackageCheck, Factory, FileSpreadsheet, 
   Settings, Warehouse, TrendingUp, Package, Clock, Building, 
   ShieldCheck, ShoppingCart, Target, Activity, FileText, 
-  BarChart, Inbox, ClipboardList, Zap, MapPin, Search, Tag, Phone
+  BarChart, Inbox, ClipboardList, Zap, MapPin, Search, Tag, 
+  Phone, BookOpen, HelpCircle, Download, Globe, Lightbulb, 
+  Award, Briefcase
 } from 'lucide-react';
 
 const pageData = {
+  // ==========================================
+  // SOLUTIONS (Left exactly as you requested)
+  // ==========================================
   accounting: {
     title: "Effortless Financial Control Built for Saudi Compliance",
     description: "Full financial control starts here — a smart accounting solution built for the Saudi market, fully integrated with AZTAC and compliant with ZATCA's e-invoicing regulations.",
@@ -187,13 +192,125 @@ const pageData = {
       { question: "Are stock shortage alerts supported?", answer: "Yes. You can set minimum stock levels and receive automated alerts or trigger automatic purchase requests when stock runs low." }
     ]
   },
+
+  // ==========================================
+  // NEW SECTIONS: Services, Pricing, Knowledge, About
+  // ==========================================
+  erpnext: {
+    title: "Our Agile Methodology",
+    description: "At BitVera, we adopt an Agile methodology tailored for ERPNext implementations and digital transformation projects. Our approach balances flexibility with structure.",
+    features: [
+      { icon: Activity, title: "Iterative & Incremental Delivery", description: "We divide each project into manageable cycles called Sprints to deliver business value early and often." },
+      { icon: TrendingUp, title: "Embracing Change", description: "Flexibility to reprioritize based on evolving business needs with transparent communication of changes and impact." },
+      { icon: Target, title: "Continuous Improvement", description: "At the end of each sprint, we conduct Retrospectives to constantly refine our approach and deliver faster." }
+    ],
+    faqs: []
+  },
+  consulting: {
+    title: "Our Consulting Methodology",
+    description: "A strategic, results-driven approach tailored for business growth and operational excellence.",
+    features: [
+      { icon: Search, title: "Strategic Discovery", description: "We engage with your leadership to understand your business model, market positioning, and growth challenges." },
+      { icon: MapPin, title: "Opportunity Mapping", description: "We identify untapped opportunities and inefficiencies across operations, finance, HR, and customer engagement." },
+      { icon: Lightbulb, title: "Tailored Business Solutions", description: "We co-develop actionable strategies whether restructuring processes or improving decision-making frameworks." }
+    ],
+    faqs: []
+  },
+  subscriptions: {
+    title: "Unlock Your Team's Potential",
+    description: "Find the perfect plan that matches your needs. Scale with your growth and unleash your team's true potential today!",
+    features: [
+      { icon: Building, title: "Starter Plan", description: "Perfect for small businesses. Includes basic accounting, HR management, and CRM essentials." },
+      { icon: Target, title: "Professional Plan", description: "Best for growing companies. Advanced modules, payment reconciliation, and comprehensive sales tracking." },
+      { icon: Globe, title: "Enterprise Plan", description: "Best for large companies. Multi-currency, cost centers, offline POS, and full multi-branch support." }
+    ],
+    faqs: []
+  },
+  'custom-plan': {
+    title: "Customize Your Own Plan",
+    description: "Full control, from scheduling to payroll. Easily create & send schedules, accurately track work hours, and get pay right, time and again.",
+    features: [
+      { icon: Tag, title: "Transparent Pricing", description: "No hidden fees. You only pay for the exact modules and user capacity your business requires." },
+      { icon: TrendingUp, title: "Scalability", description: "Easily add new features, modules, or user accounts as your business expands over time." },
+      { icon: Target, title: "Tailored Solutions", description: "Customized module configurations designed specifically for your industry's unique operational needs." }
+    ],
+    faqs: []
+  },
+  'erp-knowledge': {
+    title: "The ERP system is supposed to serve you, not the other way around.",
+    description: "Most ERP systems slow you down with rigid processes, expensive licenses, and endless dependencies. ERPNext is different.",
+    features: [
+      { icon: Search, title: "Discovery & Process Mapping", description: "Understand your workflows, challenges, and key objectives before writing a single line of code." },
+      { icon: Settings, title: "Custom Solution Design", description: "Create a roadmap tailored to your real needs, adaptable as the project evolves." },
+      { icon: Activity, title: "Iterative Implementation", description: "Roll out in phases, minimizing disruptions and keeping operations running smoothly." }
+    ],
+    faqs: []
+  },
+  faq: {
+    title: "Frequently Asked Questions & Downloads",
+    description: "Find answers to your most pressing questions about our services, or access our whitepapers and case studies.",
+    features: [
+      { icon: Download, title: "ERPNext Brochure", description: "Detailed overview of ERPNext features and benefits for your business. (PDF Download)" },
+      { icon: FileText, title: "Case Study: Manufacturing", description: "How ERPNext transformed a manufacturing business operations. (PDF Download)" },
+      { icon: BookOpen, title: "Implementation Guide", description: "Step-by-step guide to implementing ERPNext in your organization. (PDF Download)" }
+    ],
+    faqs: [
+      { question: "Can ERPNext help me track and manage leads effectively?", answer: "Yes, track the entire lifecycle of a lead from initial contact to final sale in one centralized dashboard." },
+      { question: "How easy is it to convert a lead into a sales opportunity?", answer: "It takes just one click to convert a qualified lead into an Opportunity, Customer, or Quotation." },
+      { question: "Are sales team performance and conversion reports available?", answer: "Absolutely. Generate detailed reports on win rates, pipeline health, and individual rep performance." }
+    ]
+  },
+  blog: {
+    title: "ERPNext Insights & Real Stories",
+    description: "From guesswork to clarity — real stories, real solutions. Stay updated with the latest in business technology.",
+    features: [
+      { icon: Zap, title: "How Much Does a Slow Decision Cost You?", description: "In today's market, speed determines success. Learn how data gathering impacts sales opportunities." },
+      { icon: FileText, title: "From E-Invoice to Financial Insights", description: "An e-invoice is not the end — it's just the beginning. Discover the financial insights hidden in your invoicing." },
+      { icon: Users, title: "The Rise of AI in Recruitment", description: "Artificial intelligence is transforming how companies hire and streamline the candidate matching process." }
+    ],
+    faqs: []
+  },
+  story: {
+    title: "Smart, Scalable ERPNext for Saudi Businesses",
+    description: "At BitVera IT Solutions, we build ERPNext systems tailored to your business—flexible, scalable, and ready to grow with you.",
+    features: [
+      { icon: Briefcase, title: "Real Business Know-How", description: "We're not just tech people—we speak your language: finance, operations, and sales. Smarter systems, better results." },
+      { icon: Factory, title: "Industry-Driven Solutions", description: "From manufacturing to services, we build tools that speak directly to your sector. No generic templates." },
+      { icon: Target, title: "Built for What's Next", description: "We align your systems with your actual business goals—not just tech buzzwords. That's how we unlock efficiency." }
+    ],
+    faqs: []
+  },
+  team: {
+    title: "Meet Our Team of Experts",
+    description: "We are a dedicated group of ERPNext specialists, business consultants, and developers committed to your success.",
+    features: [
+      { icon: Users, title: "Senior Consultants", description: "Decades of combined experience in business process reengineering and digital transformation." },
+      { icon: Settings, title: "Technical Experts", description: "Certified ERPNext developers who ensure your system is secure, scalable, and optimized." },
+      { icon: Target, title: "Customer Success", description: "Dedicated account managers who stay engaged post-launch to ensure sustained impact." }
+    ],
+    faqs: []
+  },
+  careers: {
+    title: "Join a Team That Values Growth",
+    description: "We're more than just ERP specialists — we're problem solvers, creative thinkers, and collaborators looking for talented builders.",
+    features: [
+      { icon: Globe, title: "Hybrid/Remote Flexibility", description: "We believe in building with heart, creating something that not only works but feels thoughtfully crafted." },
+      { icon: Award, title: "Training & Certification", description: "We support your continuous learning with access to ERPNext certifications and skill development resources." },
+      { icon: Activity, title: "Real Ownership", description: "Take the lead on projects with impact across industries. We favor progress over perfection." }
+    ],
+    faqs: []
+  },
+
+  // ==========================================
+  // UPDATED CONTACT SECTION (Your Custom Details)
+  // ==========================================
   contact: {
     title: "Contact BitVera IT Solutions",
     description: "Have a question? Looking for a free consultation or a demo of ERPNext? The BitVera team is here to support you — every step of the way.",
     features: [
-      { icon: Phone, title: "Phone Number", description: "+966 530 206 916" },
-      { icon: Inbox, title: "Email Address", description: "info@s-experts.com" },
-      { icon: MapPin, title: "Location", description: "King Fahd Road, Riyadh, KSA" },
+      { icon: Phone, title: "Phone Number", description: "+966 580 608 336" },
+      { icon: Inbox, title: "Email Address", description: "info@bitvera.com" },
+      { icon: MapPin, title: "Location", description: "Riyadh, KSA" },
       { icon: Clock, title: "Working Hours", description: "Saturday - Thursday: 9 AM - 6 PM" }
     ],
     faqs: []
