@@ -10,26 +10,25 @@ import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import BookingModal from './BookingModal';
 
-// I updated the links here so you can see them work! 
-// When you create real pages later, change '#accounting' to '/accounting'
+// All links have been updated to connect to the new ServicePage!
 const menuData = {
   solutions: {
     title: 'Solutions',
     layout: 'grid',
     width: 'w-[650px]',
     items: [
-      { name: 'Accounting & Finance', icon: Calculator, link: '#accounting' },
-      { name: 'Project Management', icon: FileCog, link: '#project-management' },
-      { name: 'Asset Management', icon: Network, link: '#asset-management' },
-      { name: 'Procurement Management', icon: PackageCheck, link: '#procurement' },
-      { name: 'HR Management', icon: UserSearch, link: '#hr-management' },
-      { name: 'Production or Manufacturing', icon: Factory, link: '#production' },
-      { name: 'Payroll', icon: FileSpreadsheet, link: '#payroll' },
-      { name: 'Quality Management', icon: Settings, link: '#quality' },
-      { name: 'CRM', icon: Users, link: '#crm' },
-      { name: 'Warehouse Management', icon: Warehouse, link: '#warehouse' },
-      { name: 'Sales Management', icon: TrendingUp, link: '#sales' },
-      { name: 'Inventory Management', icon: Package, link: '#inventory' }
+      { name: 'Accounting & Finance', icon: Calculator, link: '/service/accounting' },
+      { name: 'Project Management', icon: FileCog, link: '/service/project-management' },
+      { name: 'Asset Management', icon: Network, link: '/service/asset-management' },
+      { name: 'Procurement Management', icon: PackageCheck, link: '/service/procurement' },
+      { name: 'HR Management', icon: UserSearch, link: '/service/hr-management' },
+      { name: 'Production or Manufacturing', icon: Factory, link: '/service/production' },
+      { name: 'Payroll', icon: FileSpreadsheet, link: '/service/payroll' },
+      { name: 'Quality Management', icon: Settings, link: '/service/quality' },
+      { name: 'CRM', icon: Users, link: '/service/crm' },
+      { name: 'Warehouse Management', icon: Warehouse, link: '/service/warehouse' },
+      { name: 'Sales Management', icon: TrendingUp, link: '/service/sales' },
+      { name: 'Inventory Management', icon: Package, link: '/service/inventory' }
     ]
   },
   services: {
@@ -37,8 +36,8 @@ const menuData = {
     layout: 'split',
     width: 'w-[550px]',
     items: [
-      { name: 'ERPNext System implementation', icon: FileSpreadsheet, link: '#erpnext' },
-      { name: 'Business Consulting', icon: Lightbulb, link: '#consulting' }
+      { name: 'ERPNext System implementation', icon: FileSpreadsheet, link: '/service/erpnext' },
+      { name: 'Business Consulting', icon: Lightbulb, link: '/service/consulting' }
     ]
   },
   pricing: {
@@ -46,8 +45,8 @@ const menuData = {
     layout: 'list',
     width: 'w-72',
     items: [
-      { name: 'Subscription plans', icon: FileSpreadsheet, link: '#subscriptions' },
-      { name: 'Customize your own plan', icon: FileSpreadsheet, link: '#custom-plan' }
+      { name: 'Subscription plans', icon: FileSpreadsheet, link: '/service/subscriptions' },
+      { name: 'Customize your own plan', icon: FileSpreadsheet, link: '/service/custom-plan' }
     ]
   },
   knowledge: {
@@ -55,9 +54,9 @@ const menuData = {
     layout: 'list',
     width: 'w-72',
     items: [
-      { name: 'ERPNext System', icon: FileSpreadsheet, link: '#erp-knowledge' },
-      { name: 'FAQ\'s & Download', icon: FileSpreadsheet, link: '#faq' },
-      { name: 'Blog', icon: FileSpreadsheet, link: '#blog' }
+      { name: 'ERPNext System', icon: FileSpreadsheet, link: '/service/erp-knowledge' },
+      { name: 'FAQ\'s & Download', icon: FileSpreadsheet, link: '/service/faq' },
+      { name: 'Blog', icon: FileSpreadsheet, link: '/service/blog' }
     ]
   },
   about: {
@@ -65,10 +64,10 @@ const menuData = {
     layout: 'list',
     width: 'w-64',
     items: [
-      { name: 'Our Story', icon: Info, link: '#story' },
-      { name: 'Team', icon: Users, link: '#team' },
-      { name: 'Careers', icon: Briefcase, link: '#careers' },
-      { name: 'Contact', icon: Phone, link: '#contact' }
+      { name: 'Our Story', icon: Info, link: '/service/story' },
+      { name: 'Team', icon: Users, link: '/service/team' },
+      { name: 'Careers', icon: Briefcase, link: '/service/careers' },
+      { name: 'Contact', icon: Phone, link: '/service/contact' }
     ]
   }
 };
@@ -142,15 +141,15 @@ const Navbar = () => {
                             {menu.items.map((item, idx) => {
                               const Icon = item.icon;
                               return (
-                                <a 
+                                <Link 
                                   key={idx} 
-                                  href={item.link} 
+                                  to={item.link} 
                                   onClick={() => setActiveDropdown(null)}
                                   className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
                                 >
                                   <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
                                   <span className="text-sm font-medium text-slate-700">{item.name}</span>
-                                </a>
+                                </Link>
                               );
                             })}
                           </div>
@@ -163,15 +162,15 @@ const Navbar = () => {
                               {menu.items.map((item, idx) => {
                                 const Icon = item.icon;
                                 return (
-                                  <a 
+                                  <Link 
                                     key={idx} 
-                                    href={item.link}
+                                    to={item.link}
                                     onClick={() => setActiveDropdown(null)}
                                     className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
                                   >
                                     <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
                                     <span className="text-sm font-medium text-slate-700">{item.name}</span>
-                                  </a>
+                                  </Link>
                                 );
                               })}
                             </div>
@@ -185,15 +184,15 @@ const Navbar = () => {
                             {menu.items.map((item, idx) => {
                               const Icon = item.icon;
                               return (
-                                <a 
+                                <Link 
                                   key={idx} 
-                                  href={item.link} 
+                                  to={item.link} 
                                   onClick={() => setActiveDropdown(null)}
                                   className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
                                 >
                                   <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
                                   <span className="text-sm font-medium text-slate-700">{item.name}</span>
-                                </a>
+                                </Link>
                               );
                             })}
                           </div>
@@ -265,9 +264,9 @@ const Navbar = () => {
                         {menu.items.map((item, idx) => {
                           const Icon = item.icon;
                           return (
-                            <a
+                            <Link
                               key={idx}
-                              href={item.link}
+                              to={item.link}
                               onClick={() => {
                                 setActiveDropdown(null);
                                 setIsOpen(false);
@@ -276,7 +275,7 @@ const Navbar = () => {
                             >
                               <Icon className="w-5 h-5 text-indigo-900" strokeWidth={1.5} />
                               <span className="text-sm font-medium">{item.name}</span>
-                            </a>
+                            </Link>
                           );
                         })}
                       </div>

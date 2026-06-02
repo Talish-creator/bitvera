@@ -16,6 +16,10 @@ import Footer from "./components/Footer";
 import Chatbot from "./components/Chatbot";
 import { Toaster } from "./components/ui/toaster";
 
+// --- HERE IS YOUR NEW IMPORT ---
+import ServicePage from "./components/ServicePage";
+// -------------------------------
+
 const Home = () => {
   return (
     <div className="min-h-screen bg-white">
@@ -42,6 +46,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          
+          {/* --- HERE IS YOUR NEW ROUTE --- */}
+          <Route path="/service/:id" element={<ServicePage />} />
+          {/* ------------------------------ */}
+          
         </Routes>
       </BrowserRouter>
       <Toaster />
