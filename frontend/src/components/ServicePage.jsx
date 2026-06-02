@@ -7,7 +7,7 @@ import {
   FileCog, Network, PackageCheck, Factory, FileSpreadsheet, 
   Settings, Warehouse, TrendingUp, Package, Clock, Building, 
   ShieldCheck, ShoppingCart, Target, Activity, FileText, 
-  BarChart, Inbox, ClipboardList, Zap, MapPin, Search, Tag
+  BarChart, Inbox, ClipboardList, Zap, MapPin, Search, Tag, Phone
 } from 'lucide-react';
 
 const pageData = {
@@ -186,6 +186,17 @@ const pageData = {
       { question: "Can I monitor available, reserved, and short quantities?", answer: "Yes, the system provides real-time projected quantity reports showing exactly what is in stock vs. what is promised to customers." },
       { question: "Are stock shortage alerts supported?", answer: "Yes. You can set minimum stock levels and receive automated alerts or trigger automatic purchase requests when stock runs low." }
     ]
+  },
+  contact: {
+    title: "Contact BitVera IT Solutions",
+    description: "Have a question? Looking for a free consultation or a demo of ERPNext? The BitVera team is here to support you — every step of the way.",
+    features: [
+      { icon: Phone, title: "Phone Number", description: "+966 530 206 916" },
+      { icon: Inbox, title: "Email Address", description: "info@s-experts.com" },
+      { icon: MapPin, title: "Location", description: "King Fahd Road, Riyadh, KSA" },
+      { icon: Clock, title: "Working Hours", description: "Saturday - Thursday: 9 AM - 6 PM" }
+    ],
+    faqs: []
   }
 };
 
@@ -213,7 +224,7 @@ const ServicePage = () => {
     <div className="min-h-screen bg-slate-50 font-sans">
       <Navbar />
       
-      {/* HERO SECTION */}
+      {/* 1. WHITE/TEAL HERO SECTION */}
       <div className="pt-32 pb-20 px-4 bg-white border-b border-slate-100">
         <div className="max-w-5xl mx-auto text-center space-y-8 mt-8">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight">
@@ -233,10 +244,10 @@ const ServicePage = () => {
         </div>
       </div>
 
-      {/* FEATURES GRID */}
+      {/* 2. WHITE/TEAL FEATURES GRID */}
       {content.features.length > 0 && (
         <div className="py-20 px-4 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {content.features.map((feature, idx) => {
               const Icon = feature.icon;
               return (
@@ -253,7 +264,7 @@ const ServicePage = () => {
         </div>
       )}
 
-      {/* FAQ ACCORDION */}
+      {/* 3. WHITE/TEAL FAQ ACCORDION */}
       {content.faqs.length > 0 && (
         <div className="py-20 px-4 bg-white border-t border-slate-100">
           <div className="max-w-4xl mx-auto">
