@@ -4,6 +4,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
+import { toast } from '../hooks/use-toast';
 
 const BookingModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -20,8 +21,6 @@ const BookingModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
     
     try {
-      console.log("Attempting to send to Web3Forms...");
-      
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -29,7 +28,7 @@ const BookingModal = ({ isOpen, onClose }) => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "74e23385-7311-4cc2-bb8f-9ca6b732b10a",
+          access_key: "bf10d9e5-ae8b-4410-a2b8-efe8f4a82130",
           subject: "New Consultation Booking from BitVera IT Solutions",
           "Full Name": formData.name,
           "Company Name": formData.company,
@@ -40,11 +39,12 @@ const BookingModal = ({ isOpen, onClose }) => {
       });
 
       const result = await response.json();
-      console.log("Web3Forms API Response:", result);
       
       if (result.success) {
-        // Using standard alert to bypass potentially broken template toasts
-        alert("Success! 🎉 Your consultation request has been sent successfully.");
+        toast({
+          title: "Success! 🎉",
+          description: "Your consultation request has been sent successfully.",
+        });
         
         setFormData({
           name: '',
@@ -55,12 +55,20 @@ const BookingModal = ({ isOpen, onClose }) => {
         });
         onClose();
       } else {
-        // If Web3Forms rejects it, it will tell us why!
-        alert("Web3Forms rejected the submission: " + result.message);
+        console.error("Web3Forms API Error:", result);
+        toast({
+          title: "Submission Rejected",
+          description: result.message || "Please verify your form details and try again.",
+          variant: "destructive"
+        });
       }
     } catch (error) {
-      console.error("System Error during submission:", error);
-      alert("A system error occurred. Please Right-Click -> Inspect -> Console to see the exact error.");
+      console.error("Network/System Error:", error);
+      toast({
+        title: "Connection Error",
+        description: "Failed to connect to the server. Please try again or call us at +966 58 060 8336.",
+        variant: "destructive"
+      });
     } finally {
       setIsSubmitting(false);
     }
