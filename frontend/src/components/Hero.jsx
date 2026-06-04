@@ -3,7 +3,6 @@ import { Button } from './ui/button';
 import { heroData } from '../mock/data';
 import { CheckCircle, Zap, Headphones, Trophy } from 'lucide-react';
 import BookingModal from './BookingModal';
-import { useTranslation } from 'react-i18next';
 
 const iconMap = {
   CheckCircle,
@@ -26,7 +25,6 @@ const FeatureBadge = ({ feature, index }) => {
 
 const Hero = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const { t } = useTranslation();
 
   return (
     <>
@@ -42,16 +40,16 @@ const Hero = () => {
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
                   <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">
-                    {t('hero.title_1', 'Right Solution')}
+                    Right Solution
                   </span>
                   <br />
-                  <span>{t('hero.title_2', 'From The First Time')}</span>
+                  <span>From The First Time</span>
                 </h1>
                 <p className="text-lg text-slate-600 max-w-2xl">
                   {heroData.subtitle}
                 </p>
                 <p className="text-base text-slate-500">
-                  {t('hero.trusted_partner', 'BitVera, your trusted ERPNext implementation partner.')}
+                  BitVera, your trusted ERPNext implementation partner.
                 </p>
               </div>
 
@@ -61,7 +59,7 @@ const Hero = () => {
                   className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300"
                   onClick={() => setIsBookingOpen(true)}
                 >
-                  {t('hero.book_consultation', 'Book a Free Consultation')}
+                  Book a Free Consultation
                 </Button>
                 <Button 
                   size="lg" 
@@ -69,7 +67,7 @@ const Hero = () => {
                   className="border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50"
                   onClick={() => setIsBookingOpen(true)}
                 >
-                  {t('hero.book_demo', 'Book a demo')}
+                  Book a demo
                 </Button>
               </div>
 
@@ -102,8 +100,8 @@ const Hero = () => {
                     <CheckCircle size={24} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-slate-800">{t('hero.implementation', 'Implementation')}</div>
-                    <div className="text-xs text-slate-500">{t('hero.success_rate', '95% Success Rate')}</div>
+                    <div className="text-sm font-semibold text-slate-800">Implementation</div>
+                    <div className="text-xs text-slate-500">95% Success Rate</div>
                   </div>
                 </div>
               </div>
