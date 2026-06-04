@@ -1,6 +1,4 @@
 export const partnersData = [
-  { name: "Frappe", logo: "https://avatars.githubusercontent.com/u/4308503?s=200&v=4" },
-  { name: "ERPNext", logo: "https://avatars.githubusercontent.com/u/8648348?s=200&v=4" },
   { name: "ZATCA", logo: "https://flagcdn.com/w320/sa.png" },
   { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
   { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" },
