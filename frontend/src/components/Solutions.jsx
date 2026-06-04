@@ -20,100 +20,96 @@ const iconMap = {
   Package
 };
 
-const SolutionModal = ({ solution, isOpen, onClose }) => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
   const Icon = solution ? iconMap[solution.icon] : null;
 
   if (!isOpen || !solution) return null;
 
   return (
-    <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-        <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-          <div className="sticky top-0 bg-gradient-to-r from-indigo-600 to-blue-600 p-6 text-white">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                {Icon && (
-                  <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center">
-                    <Icon size={32} />
-                  </div>
-                )}
-                <div>
-                  <h2 className="text-3xl font-bold">{solution.name}</h2>
-                  <p className="text-sm text-indigo-100 mt-1">ERP Solution by BitVera</p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="sticky top-0 bg-gradient-to-r from-indigo-600 to-blue-600 p-6 text-white">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              {Icon && (
+                <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Icon size={32} />
                 </div>
+              )}
+              <div>
+                <h2 className="text-3xl font-bold">{solution.name}</h2>
+                <p className="text-sm text-indigo-100 mt-1">ERP Solution by BitVera</p>
               </div>
-              <button
-                onClick={onClose}
-                className="hover:bg-white/20 rounded-full p-2 transition-colors"
-              >
-                <X size={24} />
-              </button>
             </div>
-          </div>
-
-          <div className="p-8">
-            <p className="text-lg text-slate-600 mb-8">{solution.description}</p>
-
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Key Features</h3>
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-              {solution.features.map((feature, idx) => (
-                <div key={idx} className="flex items-start space-x-3 p-3 bg-slate-50 rounded-lg">
-                  <Check size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">{feature}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-200 mb-8">
-              <h4 className="font-semibold text-slate-900 mb-2">Benefits</h4>
-              <ul className="space-y-2 text-slate-600">
-                <li>• Streamlined operations and reduced manual work</li>
-                <li>• Real-time visibility and reporting</li>
-                <li>• Improved accuracy and compliance</li>
-                <li>• Scalable solution that grows with your business</li>
-              </ul>
-            </div>
-
-            <div className="flex gap-4">
-              <Button
-                onClick={() => {
-                  onClose();
-                  setIsBookingOpen(true);
-                }}
-                className="flex-1 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white"
-                size="lg"
-              >
-                Schedule Demo
-              </Button>
-              <Button
-                variant="outline"
-                onClick={onClose}
-                className="flex-1"
-                size="lg"
-              >
-                Close
-              </Button>
-            </div>
-
-            <p className="text-center text-sm text-slate-500 mt-4">
-              Need help? Call us at{' '}
-              <a href="tel:+966580608336" className="text-indigo-600 hover:underline font-semibold">
-                +966 58 060 8336
-              </a>
-            </p>
+            <button
+              onClick={onClose}
+              className="hover:bg-white/20 rounded-full p-2 transition-colors"
+            >
+              <X size={24} />
+            </button>
           </div>
         </div>
-      </div>
 
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
-    </>
+        <div className="p-8">
+          <p className="text-lg text-slate-600 mb-8">{solution.description}</p>
+
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">Key Features</h3>
+          <div className="grid md:grid-cols-2 gap-4 mb-8">
+            {solution.features.map((feature, idx) => (
+              <div key={idx} className="flex items-start space-x-3 p-3 bg-slate-50 rounded-lg">
+                <Check size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-700">{feature}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-200 mb-8">
+            <h4 className="font-semibold text-slate-900 mb-2">Benefits</h4>
+            <ul className="space-y-2 text-slate-600">
+              <li>• Streamlined operations and reduced manual work</li>
+              <li>• Real-time visibility and reporting</li>
+              <li>• Improved accuracy and compliance</li>
+              <li>• Scalable solution that grows with your business</li>
+            </ul>
+          </div>
+
+          <div className="flex gap-4">
+            <Button
+              onClick={() => {
+                onClose(); // Close the solution details modal
+                onBookDemo(); // Open the booking modal
+              }}
+              className="flex-1 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white"
+              size="lg"
+            >
+              Schedule Demo
+            </Button>
+            <Button
+              variant="outline"
+              onClick={onClose}
+              className="flex-1"
+              size="lg"
+            >
+              Close
+            </Button>
+          </div>
+
+          <p className="text-center text-sm text-slate-500 mt-4">
+            Need help? Call us at{' '}
+            <a href="tel:+966580608336" className="text-indigo-600 hover:underline font-semibold">
+              +966 58 060 8336
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 
 const Solutions = () => {
   const [selectedSolution, setSelectedSolution] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false); // Controls the Booking Modal!
 
   const handleSolutionClick = (solution) => {
     setSelectedSolution(solution);
@@ -174,6 +170,7 @@ const Solutions = () => {
             </p>
             <Button
               size="lg"
+              onClick={() => setIsBookingOpen(true)} // Wired up this button too!
               className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white"
             >
               Contact Us for Custom Solutions
@@ -186,7 +183,11 @@ const Solutions = () => {
         solution={selectedSolution}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onBookDemo={() => setIsBookingOpen(true)} // Passes the command up to the parent!
       />
+
+      {/* The Booking Modal now lives safely outside the other modal */}
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </>
   );
 };
