@@ -20,7 +20,8 @@ const imageMap = {
 };
 
 const Services = () => {
-  const [activeService, useState] = useState('erp');
+  // FIXED: Changed useState to setActiveService here!
+  const [activeService, setActiveService] = useState('erp');
 
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
