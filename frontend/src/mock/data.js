@@ -233,24 +233,24 @@ export const statsData = [
 
 export const testimonialsData = [
   {
-    name: "Ahmed Al-Rashid",
+    name: "Khalid Al-Rashid",
     position: "CEO, TechCorp Solutions",
     content: "BitVera IT Solutions transformed our business operations completely. The ERP implementation was seamless and the support team is outstanding.",
     rating: 5,
-    avatar: "https://ui-avatars.com/api/?name=Ahmed+Al-Rashid&background=0ea5e9&color=fff"
+    avatar: "https://ui-avatars.com/api/?name=Khalid+Al-Rashid&background=0ea5e9&color=fff"
   },
   {
-    name: "Sarah Mohammed",
+    name: "Layla Al-Otaibi",
     position: "Operations Manager, RetailPro",
     content: "The best decision we made was choosing BitVera IT Solutions. Their expertise in ERPNext and understanding of local regulations is unmatched.",
     rating: 5,
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Mohammed&background=06b6d4&color=fff"
+    avatar: "https://ui-avatars.com/api/?name=Layla+Al-Otaibi&background=06b6d4&color=fff"
   },
   {
-    name: "Khalid Ibrahim",
+    name: "Omar Al-Dosari",
     position: "CTO, Manufacturing Plus",
     content: "Exceptional service and support. The customization capabilities allowed us to tailor the system perfectly to our manufacturing needs.",
     rating: 5,
-    avatar: "https://ui-avatars.com/api/?name=Khalid+Ibrahim&background=0891b2&color=fff"
+    avatar: "https://ui-avatars.com/api/?name=Omar+Al-Dosari&background=0891b2&color=fff"
   }
 ];
