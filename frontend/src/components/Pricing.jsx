@@ -12,10 +12,22 @@ const Pricing = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
 
+  // We dynamically override the imported data to apply your custom name and pricing!
+  const modifiedPricingPlans = pricingPlans.map((plan) => {
+    if (plan.name === 'Starter') {
+      return { ...plan, name: 'Standard' };
+    }
+    if (plan.name === 'Professional') {
+      // Updates both monthly and annual price to 2000
+      return { ...plan, monthlyPrice: 2000, annualPrice: 2000 }; 
+    }
+    return plan;
+  });
+
   const handleChoosePlan = (plan, index) => {
     const planWithId = {
       ...plan,
-      id: ['starter', 'professional', 'enterprise'][index]
+      id: ['standard', 'professional', 'enterprise'][index]
     };
     setSelectedPlan(planWithId);
     setIsPurchaseModalOpen(true);
@@ -47,7 +59,7 @@ const Pricing = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, index) => (
+            {modifiedPricingPlans.map((plan, index) => (
               <Card
                 key={plan.name}
                 className={`relative ${plan.popular ? 'border-2 border-cyan-500 shadow-2xl shadow-cyan-500/20' : 'border-slate-200'} hover:shadow-xl transition-all duration-300`}
@@ -72,7 +84,7 @@ const Pricing = () => {
                       <span className="text-xl text-slate-500 ml-2">SAR/month</span>
                     </div>
                     <p className="text-sm text-slate-500 mt-2">
-                      Implementation Fee: SAR {plan.implementationFee.toLocaleString()}
+                      Implementation Fee: SAR {plan.implementationFee?.toLocaleString()}
                     </p>
                   </div>
 
