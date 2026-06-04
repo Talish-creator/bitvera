@@ -88,10 +88,10 @@ export const servicesData = [
 
 export const pricingPlans = [
   {
-    name: "Starter",
+    name: "Standard",
     description: "Perfect for small businesses",
-    monthlyPrice: 594,
-    annualPrice: 504,
+    monthlyPrice: 550,
+    annualPrice: 468,
     implementationFee: 15000,
     modules: 11,
     features: [
@@ -114,8 +114,8 @@ export const pricingPlans = [
   {
     name: "Professional",
     description: "Perfect for growing businesses",
-    monthlyPrice: 2050,
-    annualPrice: 1743,
+    monthlyPrice: 2000,
+    annualPrice: 1700,
     implementationFee: 58500,
     modules: 12,
     popular: true,
@@ -146,8 +146,8 @@ export const pricingPlans = [
   {
     name: "Enterprise",
     description: "Perfect for large enterprises",
-    monthlyPrice: 4028,
-    annualPrice: 3424,
+    monthlyPrice: 4000,
+    annualPrice: 3400,
     implementationFee: 94500,
     modules: 12,
     features: [
