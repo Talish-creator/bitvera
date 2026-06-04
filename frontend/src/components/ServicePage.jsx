@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import BookingModal from './BookingModal'; // <-- We imported your modal here!
 import { 
   Plus, X, Calculator, Receipt, CreditCard, Users, CheckCircle2, 
   FileCog, Network, PackageCheck, Factory, FileSpreadsheet, 
@@ -321,6 +322,9 @@ const ServicePage = () => {
   const { id } = useParams();
   const [openFaq, setOpenFaq] = useState(null); 
   
+  // <-- 1. Added State to control your Booking Modal
+  const [isBookingOpen, setIsBookingOpen] = useState(false); 
+  
   const content = pageData[id] || {
     title: "Powerful Enterprise Solutions",
     description: "Discover how our integrated tools can streamline your operations and drive unprecedented business growth.",
@@ -351,12 +355,23 @@ const ServicePage = () => {
             {content.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            <button className="px-8 py-3.5 rounded-lg border-2 border-cyan-600 text-cyan-700 font-bold hover:bg-cyan-50 transition-all duration-300">
+            
+            {/* <-- 2. Wired up this Button! */}
+            <button 
+              onClick={() => setIsBookingOpen(true)}
+              className="px-8 py-3.5 rounded-lg border-2 border-cyan-600 text-cyan-700 font-bold hover:bg-cyan-50 transition-all duration-300"
+            >
               Book a Free Consultation
             </button>
-            <button className="px-8 py-3.5 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 transition-all duration-300">
+            
+            {/* <-- 3. Wired up this Button! */}
+            <button 
+              onClick={() => setIsBookingOpen(true)}
+              className="px-8 py-3.5 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 transition-all duration-300"
+            >
               Book a demo
             </button>
+            
           </div>
         </div>
       </div>
@@ -428,6 +443,9 @@ const ServicePage = () => {
       )}
       
       <Footer />
+
+      {/* <-- 4. Added your Booking Modal component here at the very bottom! */}
+      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   );
 };
