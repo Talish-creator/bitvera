@@ -11,16 +11,16 @@ const iconMap = {
   Palette
 };
 
-// We map each tab to a specific, high-quality image!
+// We map each tab to a specific, high-quality live image to guarantee they load instantly!
 const imageMap = {
-  erp: "/erp-hub.jpg", // This pulls your 3D image from the public folder
-  crm: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800", // Team working/CRM
-  automation: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800", // Tech/Automation
-  customization: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" // Data/Custom Solutions
+  erp: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1024",
+  crm: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+  automation: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
+  customization: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
 };
 
 const Services = () => {
-  const [activeService, setActiveService] = useState('erp');
+  const [activeService, useState] = useState('erp');
 
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
