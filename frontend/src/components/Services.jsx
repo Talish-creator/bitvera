@@ -11,6 +11,14 @@ const iconMap = {
   Palette
 };
 
+// We map each tab to a specific, high-quality image!
+const imageMap = {
+  erp: "/erp-hub.jpg", // This pulls your 3D image from the public folder
+  crm: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800", // Team working/CRM
+  automation: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800", // Tech/Automation
+  customization: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" // Data/Custom Solutions
+};
+
 const Services = () => {
   const [activeService, setActiveService] = useState('erp');
 
@@ -48,12 +56,12 @@ const Services = () => {
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left - Image/Illustration */}
                 <div className="relative">
-                  <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-8 overflow-hidden">
-                    <div className="aspect-square bg-gradient-to-br from-cyan-100 to-teal-100 rounded-xl flex items-center justify-center">
+                  <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 overflow-hidden">
+                    <div className="aspect-square rounded-xl overflow-hidden flex items-center justify-center bg-slate-50">
                       <img
-                        src="https://frappe.io/files/erpnext-manufacturing.png"
+                        src={imageMap[service.id]}
                         alt={service.heading}
-                        className="w-full h-auto"
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   </div>
