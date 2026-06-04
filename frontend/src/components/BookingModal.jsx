@@ -4,7 +4,6 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
-import { toast } from '../hooks/use-toast';
 
 const BookingModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -21,7 +20,8 @@ const BookingModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
     
     try {
-      // We send the data directly to Web3Forms to forward to your email
+      console.log("Attempting to send to Web3Forms...");
+      
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -40,12 +40,11 @@ const BookingModal = ({ isOpen, onClose }) => {
       });
 
       const result = await response.json();
+      console.log("Web3Forms API Response:", result);
       
       if (result.success) {
-        toast({
-          title: "Success! 🎉",
-          description: "Your consultation request has been sent successfully.",
-        });
+        // Using standard alert to bypass potentially broken template toasts
+        alert("Success! 🎉 Your consultation request has been sent successfully.");
         
         setFormData({
           name: '',
@@ -56,14 +55,12 @@ const BookingModal = ({ isOpen, onClose }) => {
         });
         onClose();
       } else {
-        throw new Error("Form submission failed");
+        // If Web3Forms rejects it, it will tell us why!
+        alert("Web3Forms rejected the submission: " + result.message);
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to submit form. Please try again or call us at +966 58 060 8336.",
-        variant: "destructive"
-      });
+      console.error("System Error during submission:", error);
+      alert("A system error occurred. Please Right-Click -> Inspect -> Console to see the exact error.");
     } finally {
       setIsSubmitting(false);
     }
