@@ -4,7 +4,6 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
-import { submitContactForm } from '../utils/api';
 import { toast } from '../hooks/use-toast';
 
 const BookingModal = ({ isOpen, onClose }) => {
@@ -22,12 +21,30 @@ const BookingModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
     
     try {
-      const result = await submitContactForm(formData);
+      // We send the data directly to Web3Forms to forward to your email
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "74e23385-7311-4cc2-bb8f-9ca6b732b10a",
+          subject: "New Consultation Booking from BitVera IT Solutions",
+          "Full Name": formData.name,
+          "Company Name": formData.company,
+          "Business Email": formData.email,
+          "Preferred Date": formData.demoDate,
+          "Additional Info": formData.additionalInfo,
+        }),
+      });
+
+      const result = await response.json();
       
       if (result.success) {
         toast({
           title: "Success! 🎉",
-          description: result.message,
+          description: "Your consultation request has been sent successfully.",
         });
         
         setFormData({
@@ -38,6 +55,8 @@ const BookingModal = ({ isOpen, onClose }) => {
           additionalInfo: ''
         });
         onClose();
+      } else {
+        throw new Error("Form submission failed");
       }
     } catch (error) {
       toast({
