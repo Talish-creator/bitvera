@@ -4,6 +4,7 @@ import { Building2, FileCheck, Network, ShoppingBag, UserSearch, Factory, Receip
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import BookingModal from './BookingModal';
+import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
 
 const iconMap = {
   Building2,
@@ -21,6 +22,7 @@ const iconMap = {
 };
 
 const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
+  const { t } = useTranslation(); // <-- 2. Activate tool in Modal
   const Icon = solution ? iconMap[solution.icon] : null;
 
   if (!isOpen || !solution) return null;
@@ -37,8 +39,8 @@ const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
                 </div>
               )}
               <div>
-                <h2 className="text-3xl font-bold">{solution.name}</h2>
-                <p className="text-sm text-indigo-100 mt-1">ERP Solution by BitVera</p>
+                <h2 className="text-3xl font-bold">{t(`solution_names.${solution.name}`)}</h2>
+                <p className="text-sm text-indigo-100 mt-1">{t('solutions_page.modal_erp_subtitle')}</p>
               </div>
             </div>
             <button
@@ -51,38 +53,38 @@ const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
         </div>
 
         <div className="p-8">
-          <p className="text-lg text-slate-600 mb-8">{solution.description}</p>
+          <p className="text-lg text-slate-600 mb-8">{t(solution.description)}</p>
 
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">Key Features</h3>
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('solutions_page.key_features')}</h3>
           <div className="grid md:grid-cols-2 gap-4 mb-8">
             {solution.features.map((feature, idx) => (
               <div key={idx} className="flex items-start space-x-3 p-3 bg-slate-50 rounded-lg">
                 <Check size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-slate-700">{feature}</span>
+                <span className="text-slate-700">{t(feature)}</span>
               </div>
             ))}
           </div>
 
           <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-200 mb-8">
-            <h4 className="font-semibold text-slate-900 mb-2">Benefits</h4>
+            <h4 className="font-semibold text-slate-900 mb-2">{t('solutions_page.benefits')}</h4>
             <ul className="space-y-2 text-slate-600">
-              <li>• Streamlined operations and reduced manual work</li>
-              <li>• Real-time visibility and reporting</li>
-              <li>• Improved accuracy and compliance</li>
-              <li>• Scalable solution that grows with your business</li>
+              <li>• {t('solutions_page.benefit_1')}</li>
+              <li>• {t('solutions_page.benefit_2')}</li>
+              <li>• {t('solutions_page.benefit_3')}</li>
+              <li>• {t('solutions_page.benefit_4')}</li>
             </ul>
           </div>
 
           <div className="flex gap-4">
             <Button
               onClick={() => {
-                onClose(); // Close the solution details modal
-                onBookDemo(); // Open the booking modal
+                onClose();
+                onBookDemo();
               }}
               className="flex-1 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white"
               size="lg"
             >
-              Schedule Demo
+              {t('solutions_page.schedule_demo')}
             </Button>
             <Button
               variant="outline"
@@ -90,13 +92,13 @@ const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
               className="flex-1"
               size="lg"
             >
-              Close
+              {t('solutions_page.close')}
             </Button>
           </div>
 
           <p className="text-center text-sm text-slate-500 mt-4">
-            Need help? Call us at{' '}
-            <a href="tel:+966580608336" className="text-indigo-600 hover:underline font-semibold">
+            {t('solutions_page.need_help')}
+            <a href="tel:+966580608336" className="text-indigo-600 hover:underline font-semibold mx-1" dir="ltr">
               +966 58 060 8336
             </a>
           </p>
@@ -109,7 +111,9 @@ const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
 const Solutions = () => {
   const [selectedSolution, setSelectedSolution] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isBookingOpen, setIsBookingOpen] = useState(false); // Controls the Booking Modal!
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  
+  const { t } = useTranslation(); // <-- 3. Activate tool in Main Component
 
   const handleSolutionClick = (solution) => {
     setSelectedSolution(solution);
@@ -121,9 +125,9 @@ const Solutions = () => {
       <section id="solutions" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-indigo-900 mb-4">Solutions</h2>
+            <h2 className="text-5xl font-bold text-indigo-900 mb-4">{t('solutions_page.title')}</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Comprehensive ERP modules designed to transform every aspect of your business operations
+              {t('solutions_page.subtitle')}
             </p>
           </div>
 
@@ -143,18 +147,18 @@ const Solutions = () => {
                       </div>
                       <div className="flex-1">
                         <CardTitle className="text-xl group-hover:text-indigo-600 transition-colors">
-                          {solution.name}
+                          {t(`solution_names.${solution.name}`)}
                         </CardTitle>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="text-slate-600 line-clamp-2">
-                      {solution.description}
+                      {t(solution.description)}
                     </CardDescription>
                     <div className="mt-4 flex items-center text-sm text-indigo-600 font-semibold group-hover:translate-x-2 transition-transform">
-                      <span>Learn More</span>
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <span>{t('solutions_page.learn_more')}</span>
+                      <svg className="w-4 h-4 mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
@@ -166,14 +170,14 @@ const Solutions = () => {
 
           <div className="mt-12 text-center">
             <p className="text-slate-600 mb-4">
-              Can't find what you're looking for? We offer custom solutions tailored to your needs.
+              {t('solutions_page.cant_find')}
             </p>
             <Button
               size="lg"
-              onClick={() => setIsBookingOpen(true)} // Wired up this button too!
+              onClick={() => setIsBookingOpen(true)}
               className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white"
             >
-              Contact Us for Custom Solutions
+              {t('solutions_page.contact_btn')}
             </Button>
           </div>
         </div>
@@ -183,10 +187,9 @@ const Solutions = () => {
         solution={selectedSolution}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onBookDemo={() => setIsBookingOpen(true)} // Passes the command up to the parent!
+        onBookDemo={() => setIsBookingOpen(true)}
       />
 
-      {/* The Booking Modal now lives safely outside the other modal */}
       <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </>
   );

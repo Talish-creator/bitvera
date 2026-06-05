@@ -2,6 +2,7 @@
   "hero": {
     "title_1": "Right Solution",
     "title_2": "From The First Time",
+    "subtitle": "Quality starts here – with smart planning, expert execution, and results that drive success.",
     "trusted_partner": "BitVera, your trusted ERPNext implementation partner.",
     "book_consultation": "Book a Free Consultation",
     "book_demo": "Book a demo"
@@ -14,5 +15,44 @@
     "knowledge": "Knowledge Base",
     "about": "About Us",
     "login": "Login"
+  },
+  "features": {
+    "30 Days Set Up": "30 Days Set Up",
+    "ZATCA Compliance": "ZATCA Compliance",
+    "Competitive Pricing": "Competitive Pricing",
+    "24/7 Support": "24/7 Support",
+    "Implementation": "Implementation",
+    "95% Success Rate": "95% Success Rate"
+  },
+  "solutions_page": {
+    "title": "Solutions",
+    "subtitle": "Comprehensive ERP modules designed to transform every aspect of your business operations",
+    "learn_more": "Learn More",
+    "cant_find": "Can't find what you're looking for? We offer custom solutions tailored to your needs.",
+    "contact_btn": "Contact Us for Custom Solutions",
+    "modal_erp_subtitle": "ERP Solution by BitVera",
+    "key_features": "Key Features",
+    "benefits": "Benefits",
+    "benefit_1": "Streamlined operations and reduced manual work",
+    "benefit_2": "Real-time visibility and reporting",
+    "benefit_3": "Improved accuracy and compliance",
+    "benefit_4": "Scalable solution that grows with your business",
+    "schedule_demo": "Schedule Demo",
+    "close": "Close",
+    "need_help": "Need help? Call us at "
+  },
+  "solution_names": {
+    "Accounting & Finance": "Accounting & Finance",
+    "Project Management": "Project Management",
+    "Asset Management": "Asset Management",
+    "Procurement Management": "Procurement Management",
+    "HR Management": "HR Management",
+    "Production or Manufacturing": "Production or Manufacturing",
+    "Payroll": "Payroll",
+    "Quality Management": "Quality Management",
+    "CRM": "CRM",
+    "Warehouse Management": "Warehouse Management",
+    "Sales Management": "Sales Management",
+    "Inventory Management": "Inventory Management"
   }
 }

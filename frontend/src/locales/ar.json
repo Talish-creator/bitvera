@@ -2,6 +2,7 @@
   "hero": {
     "title_1": "الحل الصحيح",
     "title_2": "من المرة الأولى",
+    "subtitle": "تبدأ الجودة هنا - بالتخطيط الذكي والتنفيذ الخبير والنتائج التي تدفع نحو النجاح.",
     "trusted_partner": "بيتفيرا، شريكك الموثوق لتنفيذ نظام ERPNext.",
     "book_consultation": "احجز استشارة مجانية",
     "book_demo": "احجز عرضًا تجريبيًا"
@@ -14,5 +15,44 @@
     "knowledge": "قاعدة المعرفة",
     "about": "معلومات عنا",
     "login": "تسجيل الدخول"
+  },
+  "features": {
+    "30 Days Set Up": "إعداد في 30 يومًا",
+    "ZATCA Compliance": "التوافق مع هيئة الزكاة",
+    "Competitive Pricing": "أسعار تنافسية",
+    "24/7 Support": "دعم على مدار الساعة",
+    "Implementation": "التنفيذ",
+    "95% Success Rate": "نسبة نجاح 95%"
+  },
+  "solutions_page": {
+    "title": "الحلول",
+    "subtitle": "وحدات تخطيط موارد المؤسسات (ERP) الشاملة المصممة لتحويل كل جانب من جوانب عمليات عملك",
+    "learn_more": "اعرف المزيد",
+    "cant_find": "لا تستطيع العثور على ما تبحث عنه؟ نحن نقدم حلولاً مخصصة مصممة خصيصًا لتلبية احتياجاتك.",
+    "contact_btn": "اتصل بنا للحصول على حلول مخصصة",
+    "modal_erp_subtitle": "حلول ERP من بيتفيرا",
+    "key_features": "الميزات الرئيسية",
+    "benefits": "الفوائد",
+    "benefit_1": "تبسيط العمليات وتقليل العمل اليدوي",
+    "benefit_2": "رؤية وتقارير في الوقت الفعلي",
+    "benefit_3": "تحسين الدقة والامتثال",
+    "benefit_4": "حل قابل للتطوير ينمو مع عملك",
+    "schedule_demo": "جدولة عرض تجريبي",
+    "close": "إغلاق",
+    "need_help": "هل تحتاج إلى مساعدة؟ اتصل بنا على "
+  },
+  "solution_names": {
+    "Accounting & Finance": "المحاسبة والمالية",
+    "Project Management": "إدارة المشاريع",
+    "Asset Management": "إدارة الأصول",
+    "Procurement Management": "إدارة المشتريات",
+    "HR Management": "إدارة الموارد البشرية",
+    "Production or Manufacturing": "الإنتاج أو التصنيع",
+    "Payroll": "كشوف المرتبات",
+    "Quality Management": "إدارة الجودة",
+    "CRM": "إدارة علاقات العملاء",
+    "Warehouse Management": "إدارة المستودعات",
+    "Sales Management": "إدارة المبيعات",
+    "Inventory Management": "إدارة المخزون"
   }
 }
