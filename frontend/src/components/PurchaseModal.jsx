@@ -5,8 +5,11 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { createCheckoutSession } from '../utils/api';
 import { toast } from '../hooks/use-toast';
+import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
 
 const PurchaseModal = ({ isOpen, onClose, plan }) => {
+  const { t } = useTranslation(); // <-- 2. Activate tool
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -42,8 +45,8 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to start checkout. Please try again or call +966 58 060 8336.",
+        title: t('purchase_modal.toast_error_title'),
+        description: t('purchase_modal.toast_error_desc'),
         variant: "destructive"
       });
     } finally {
@@ -60,7 +63,7 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-gradient-to-r from-cyan-500 to-teal-600 p-6 text-white">
           <div className="flex items-center justify-between mb-2">
-            <h2 className="text-2xl font-bold">Get Started with {plan.name}</h2>
+            <h2 className="text-2xl font-bold">{t('purchase_modal.get_started')} {t(plan.name)}</h2>
             <button
               onClick={onClose}
               className="hover:bg-white/20 rounded-full p-2 transition-colors"
@@ -68,17 +71,17 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               <X size={24} />
             </button>
           </div>
-          <p className="text-sm text-cyan-100">Enter your details to proceed to payment</p>
+          <p className="text-sm text-cyan-100">{t('purchase_modal.enter_details')}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-600">Plan</span>
-              <span className="text-lg font-bold text-slate-900">{plan.name}</span>
+              <span className="text-sm font-semibold text-slate-600">{t('purchase_modal.plan_label')}</span>
+              <span className="text-lg font-bold text-slate-900">{t(plan.name)}</span>
             </div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-600">Billing</span>
+              <span className="text-sm font-semibold text-slate-600">{t('purchase_modal.billing_label')}</span>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -89,7 +92,7 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
                       : 'bg-white text-slate-600 hover:bg-slate-100'
                   }`}
                 >
-                  Monthly
+                  {t('purchase_modal.monthly_btn')}
                 </button>
                 <button
                   type="button"
@@ -100,22 +103,26 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
                       : 'bg-white text-slate-600 hover:bg-slate-100'
                   }`}
                 >
-                  Annual (Save 15%)
+                  {t('purchase_modal.annual_btn')}
                 </button>
               </div>
             </div>
             <div className="flex items-center justify-between pt-2 border-t border-slate-300">
-              <span className="text-sm font-semibold text-slate-600">Total</span>
-              <span className="text-2xl font-bold text-cyan-600">{price} SAR/mo</span>
+              <span className="text-sm font-semibold text-slate-600">{t('purchase_modal.total_label')}</span>
+              <span className="text-2xl font-bold text-cyan-600">
+                <span dir="ltr">{price}</span> {t('purchase_modal.sar_mo')}
+              </span>
             </div>
-            <p className="text-xs text-slate-500 mt-2">+ Implementation Fee: {plan.implementationFee.toLocaleString()} SAR (one-time)</p>
+            <p className="text-xs text-slate-500 mt-2">
+              {t('purchase_modal.implementation_fee_prefix')} <span dir="ltr">{plan.implementationFee.toLocaleString()}</span> {t('purchase_modal.sar_one_time')}
+            </p>
           </div>
 
           <div>
-            <Label htmlFor="name">Full Name *</Label>
+            <Label htmlFor="name">{t('purchase_modal.full_name')}</Label>
             <Input
               id="name"
-              placeholder="John Doe"
+              placeholder={t('purchase_modal.placeholder_name')}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
@@ -124,10 +131,10 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
           </div>
 
           <div>
-            <Label htmlFor="company">Company Name *</Label>
+            <Label htmlFor="company">{t('purchase_modal.company_name')}</Label>
             <Input
               id="company"
-              placeholder="Your Company"
+              placeholder={t('purchase_modal.placeholder_company')}
               value={formData.company}
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               required
@@ -136,11 +143,11 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
           </div>
 
           <div>
-            <Label htmlFor="email">Business Email *</Label>
+            <Label htmlFor="email">{t('purchase_modal.business_email')}</Label>
             <Input
               id="email"
               type="email"
-              placeholder="john@company.com"
+              placeholder={t('purchase_modal.placeholder_email')}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
@@ -149,11 +156,12 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
           </div>
 
           <div>
-            <Label htmlFor="phone">Phone Number *</Label>
+            <Label htmlFor="phone">{t('purchase_modal.phone_number')}</Label>
             <Input
               id="phone"
               type="tel"
-              placeholder="+966 XX XXX XXXX"
+              dir="ltr"
+              placeholder={t('purchase_modal.placeholder_phone')}
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
@@ -169,19 +177,19 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               className="flex-1"
               disabled={isSubmitting}
             >
-              Cancel
+              {t('purchase_modal.cancel')}
             </Button>
             <Button
               type="submit"
               className="flex-1 bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Processing...' : 'Proceed to Payment'}
+              {isSubmitting ? t('purchase_modal.processing_btn') : t('purchase_modal.proceed_btn')}
             </Button>
           </div>
 
           <p className="text-xs text-slate-500 text-center">
-            🔒 Secure payment powered by Stripe
+            {t('purchase_modal.secure_payment')}
           </p>
         </form>
       </div>

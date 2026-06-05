@@ -191,5 +191,31 @@
     "toast_reject_title": "Submission Rejected",
     "toast_error_title": "Connection Error",
     "toast_error_desc": "Failed to connect to the server. Please try again or call us at +966 58 060 8336."
+  },
+  "purchase_modal": {
+    "get_started": "Get Started with",
+    "enter_details": "Enter your details to proceed to payment",
+    "plan_label": "Plan",
+    "billing_label": "Billing",
+    "monthly_btn": "Monthly",
+    "annual_btn": "Annual (Save 15%)",
+    "total_label": "Total",
+    "sar_mo": "SAR/mo",
+    "implementation_fee_prefix": "+ Implementation Fee:",
+    "sar_one_time": "SAR (one-time)",
+    "full_name": "Full Name *",
+    "placeholder_name": "John Doe",
+    "company_name": "Company Name *",
+    "placeholder_company": "Your Company",
+    "business_email": "Business Email *",
+    "placeholder_email": "john@company.com",
+    "phone_number": "Phone Number *",
+    "placeholder_phone": "+966 XX XXX XXXX",
+    "cancel": "Cancel",
+    "processing_btn": "Processing...",
+    "proceed_btn": "Proceed to Payment",
+    "secure_payment": "🔒 Secure payment powered by Stripe",
+    "toast_error_title": "Error",
+    "toast_error_desc": "Failed to start checkout. Please try again or call +966 58 060 8336."
   }
 }
