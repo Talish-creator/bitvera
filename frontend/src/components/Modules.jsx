@@ -1,7 +1,7 @@
 import React from 'react';
 import { modulesData } from '../mock/data';
 import { DollarSign, Users, Package, Archive, Award, Target, FolderKanban, Warehouse, CreditCard, Factory, ShoppingCart, ShoppingBag } from 'lucide-react';
-import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
+import { useTranslation } from 'react-i18next';
 
 const iconMap = {
   DollarSign,
@@ -19,7 +19,7 @@ const iconMap = {
 };
 
 const Modules = () => {
-  const { t } = useTranslation(); // <-- 2. Activate tool
+  const { t } = useTranslation();
 
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
@@ -46,7 +46,8 @@ const Modules = () => {
                   <Icon size={32} className="text-cyan-600 group-hover:text-white transition-colors" />
                 </div>
                 <h3 className="text-sm font-semibold text-slate-800 group-hover:text-cyan-600 transition-colors">
-                  {t(module.name)}
+                  {/* We tell the translator to look inside the solution_names group! */}
+                  {t(`solution_names.${module.name}`)}
                 </h3>
               </a>
             );
