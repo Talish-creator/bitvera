@@ -154,5 +154,19 @@
   "Privacy Policy": "سياسة الخصوصية",
   "Terms of Service": "شروط الخدمة",
   "Cookie Policy": "سياسة ملفات تعريف الارتباط",
-  "GDPR": "اللائحة العامة لحماية البيانات (GDPR)"
+  "GDPR": "اللائحة العامة لحماية البيانات (GDPR)",
+  "End-to-end project management with task tracking, resource allocation, and timeline management": "إدارة مشاريع شاملة مع تتبع المهام وتخصيص الموارد وإدارة الجداول الزمنية",
+  "Complete financial management system with real-time reporting, automated reconciliation, and compliance features": "نظام إدارة مالية كامل مع تقارير في الوقت الفعلي وتسوية تلقائية وميزات الامتثال",
+  "Streamline purchasing process from requisition to payment with vendor management.": "تبسيط عملية الشراء من الطلب إلى الدفع مع إدارة الموردين.",
+  "Track and manage company assets throughout their lifecycle with depreciation calculation.": "تتبع وإدارة أصول الشركة طوال دورة حياتها مع حساب الاستهلاك.",
+  "Manage production planning, work orders, and shop floor operations efficiently": "إدارة تخطيط الإنتاج وأوامر العمل وعمليات أرضية المصنع بكفاءة",
+  "Complete HR solution for employee lifecycle management, attendance, and performance": "حل شامل للموارد البشرية لإدارة دورة حياة الموظف والحضور والأداء",
+  "Ensure product quality with inspection procedures and quality control processes": "ضمان جودة المنتج من خلال إجراءات الفحص وعمليات مراقبة الجودة",
+  "Automated payroll processing with tax calculations and compliance management": "معالجة آلية لكشوف المرتبات مع حسابات الضرائب وإدارة الامتثال",
+  "Optimize warehouse operations with inventory tracking and stock movements": "تحسين عمليات المستودع من خلال تتبع المخزون وحركات المخزون",
+  "Customer relationship management with lead tracking, opportunities, and sales pipeline": "إدارة علاقات العملاء مع تتبع العملاء المحتملين والفرص ومسار المبيعات",
+  "Real-time inventory tracking with automated reordering and stock optimization": "تتبع المخزون في الوقت الفعلي مع إعادة الطلب التلقائي وتحسين المخزون",
+  "Complete sales cycle management from quotation to delivery and invoicing": "إدارة كاملة لدورة المبيعات من عرض الأسعار إلى التسليم والفوترة",
+  "ERPNext System": "نظام ERPNext",
+  "FAQ's & Download": "الأسئلة الشائعة والتنزيلات"
 }
