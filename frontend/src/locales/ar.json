@@ -5,5 +5,14 @@
     "trusted_partner": "بيتفيرا، شريكك الموثوق لتنفيذ نظام ERPNext.",
     "book_consultation": "احجز استشارة مجانية",
     "book_demo": "احجز عرضًا تجريبيًا"
+  },
+  "navbar": {
+    "solutions": "الحلول",
+    "services": "الخدمات",
+    "pricing": "التسعير",
+    "industries": "الصناعات",
+    "knowledge": "قاعدة المعرفة",
+    "about": "معلومات عنا",
+    "login": "تسجيل الدخول"
   }
 }

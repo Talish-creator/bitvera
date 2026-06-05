@@ -9,7 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import BookingModal from './BookingModal';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'; // <-- Translation tool
 
 // All links have been updated to connect to the new ServicePage!
 const menuData = {
@@ -80,13 +80,13 @@ const Navbar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [isLangOpen, setIsLangOpen] = useState(false); // <-- Controls the language dropdown
+  const [isLangOpen, setIsLangOpen] = useState(false); 
   
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation(); // <-- Activated here
 
   const handleDropdownToggle = (key) => {
     setActiveDropdown(activeDropdown === key ? null : key);
-    setIsLangOpen(false); // Close language menu if opening a different menu
+    setIsLangOpen(false); 
   };
 
   return (
@@ -114,7 +114,7 @@ const Navbar = () => {
                 if (key === 'industries') {
                   return (
                     <a key="industries" href="#industries" className="px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium">
-                      Industries
+                      {t('navbar.industries')}
                     </a>
                   );
                 }
@@ -129,7 +129,7 @@ const Navbar = () => {
                         setIsLangOpen(false);
                       }}
                     >
-                      <span>{menu.title}</span>
+                      <span>{t(`navbar.${key}`)}</span>
                       <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === key ? 'rotate-180' : ''}`} />
                     </button>
                     
@@ -140,7 +140,7 @@ const Navbar = () => {
                       >
                         {/* Dropdown Header */}
                         <div className="px-6 pb-4 mb-2 border-b border-slate-100">
-                          <h3 className="text-lg font-bold text-indigo-950">{menu.title}</h3>
+                          <h3 className="text-lg font-bold text-indigo-950">{t(`navbar.${key}`)}</h3>
                         </div>
 
                         {/* Grid Layout (Solutions) */}
@@ -215,7 +215,7 @@ const Navbar = () => {
             {/* Right Side Buttons */}
             <div className="hidden lg:flex items-center space-x-3">
               
-              {/* NEW: Language Dropdown */}
+              {/* Language Dropdown */}
               <div className="relative">
                 <Button
                   variant="ghost"
@@ -261,18 +261,18 @@ const Navbar = () => {
                 onClick={() => setIsLoginOpen(true)}
                 className="text-slate-700"
               >
-                Login
+                {t('navbar.login')}
               </Button>
               <Button 
                 size="sm" 
                 className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white shadow-md"
                 onClick={() => setIsBookingOpen(true)}
               >
-                Book a Demo
+                {t('hero.book_demo')}
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button (Hamburger) */}
             <div className="lg:hidden flex items-center space-x-2">
               <button
                 className="text-slate-700 p-2"
@@ -287,7 +287,7 @@ const Navbar = () => {
           {isOpen && (
             <div className="lg:hidden py-4 border-t border-slate-200 max-h-[80vh] overflow-y-auto">
               
-              {/* NEW: Mobile Language Selector */}
+              {/* Mobile Language Selector */}
               <div className="px-4 pb-4 mb-2 border-b border-slate-100 flex gap-2">
                 <button 
                   onClick={() => { i18n.changeLanguage('en'); setIsOpen(false); }}
@@ -312,7 +312,7 @@ const Navbar = () => {
                       onClick={() => setIsOpen(false)}
                       className="block px-4 py-3 text-slate-700 hover:bg-slate-50 font-medium"
                     >
-                      Industries
+                      {t('navbar.industries')}
                     </a>
                   );
                 }
@@ -324,7 +324,7 @@ const Navbar = () => {
                       onClick={() => handleDropdownToggle(key)}
                       className="flex items-center justify-between w-full px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors font-medium"
                     >
-                      <span>{menu.title}</span>
+                      <span>{t(`navbar.${key}`)}</span>
                       <ChevronDown size={16} className={`transition-transform ${activeDropdown === key ? 'rotate-180' : ''}`} />
                     </button>
                     {activeDropdown === key && (
@@ -361,7 +361,7 @@ const Navbar = () => {
                     setIsOpen(false);
                   }}
                 >
-                  Login
+                  {t('navbar.login')}
                 </Button>
                 <Button 
                   className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white"
@@ -370,7 +370,7 @@ const Navbar = () => {
                     setIsOpen(false);
                   }}
                 >
-                  Book a Demo
+                  {t('hero.book_demo')}
                 </Button>
               </div>
             </div>

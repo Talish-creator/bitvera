@@ -5,5 +5,14 @@
     "trusted_partner": "BitVera, your trusted ERPNext implementation partner.",
     "book_consultation": "Book a Free Consultation",
     "book_demo": "Book a demo"
+  },
+  "navbar": {
+    "solutions": "Solutions",
+    "services": "Services",
+    "pricing": "Pricing",
+    "industries": "Industries",
+    "knowledge": "Knowledge Base",
+    "about": "About Us",
+    "login": "Login"
   }
 }

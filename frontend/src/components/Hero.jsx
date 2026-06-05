@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { heroData } from '../mock/data';
 import { CheckCircle, Zap, Headphones, Trophy } from 'lucide-react';
 import BookingModal from './BookingModal';
-import { useTranslation } from 'react-i18next'; // <-- 1. Import the translation tool
+import { useTranslation } from 'react-i18next';
 
 const iconMap = {
   CheckCircle,
@@ -13,20 +13,22 @@ const iconMap = {
 };
 
 const FeatureBadge = ({ feature, index }) => {
+  const { t } = useTranslation();
   const Icon = iconMap[feature.icon];
   return (
     <div className="flex items-center space-x-3 p-3 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
       <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
         <Icon size={20} className="text-white" />
       </div>
-      <span className="text-sm font-medium text-slate-700">{feature.text}</span>
+      {/* Translates the badge text dynamically */}
+      <span className="text-sm font-medium text-slate-700">{t(`features.${feature.text}`)}</span>
     </div>
   );
 };
 
 const Hero = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const { t } = useTranslation(); // <-- 2. Activate the tool inside your component
+  const { t } = useTranslation(); 
 
   return (
     <>
@@ -42,13 +44,13 @@ const Hero = () => {
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
                   <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">
-                    {t('hero.title_1')} {/* <-- 3. Swap hardcoded text for dictionary keys */}
+                    {t('hero.title_1')} 
                   </span>
                   <br />
                   <span>{t('hero.title_2')}</span>
                 </h1>
                 <p className="text-lg text-slate-600 max-w-2xl">
-                  {heroData.subtitle}
+                  {t('hero.subtitle')} {/* <-- Translated Subtitle */}
                 </p>
                 <p className="text-base text-slate-500">
                   {t('hero.trusted_partner')}
@@ -102,8 +104,9 @@ const Hero = () => {
                     <CheckCircle size={24} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-slate-800">Implementation</div>
-                    <div className="text-xs text-slate-500">95% Success Rate</div>
+                    {/* Translated hover badge text */}
+                    <div className="text-sm font-semibold text-slate-800">{t('features.Implementation')}</div>
+                    <div className="text-xs text-slate-500">{t('features.95% Success Rate')}</div>
                   </div>
                 </div>
               </div>
