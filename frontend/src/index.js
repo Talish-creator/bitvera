@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@/index.css";
+import "./i18n"; // <-- HERE IS THE ENGINE PLUGGED IN!
 import App from "@/App";
 
 const queryClient = new QueryClient({

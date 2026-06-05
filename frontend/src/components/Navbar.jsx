@@ -4,11 +4,12 @@ import {
   Menu, X, ChevronDown, Calculator, FileCog, Network, 
   PackageCheck, UserSearch, Factory, FileSpreadsheet, 
   Settings, Users, Warehouse, TrendingUp, Package, 
-  Lightbulb, Info, Briefcase, Phone 
+  Lightbulb, Info, Briefcase, Phone, Globe // <-- Added Globe icon
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import BookingModal from './BookingModal';
+import { useTranslation } from 'react-i18next'; // <-- Activated the translation tool!
 
 // All links have been updated to connect to the new ServicePage!
 const menuData = {
@@ -79,6 +80,15 @@ const Navbar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  
+  // Activate Translation Engine
+  const { i18n } = useTranslation();
+
+  // Function to flip the language
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'ar' : 'en';
+    i18n.changeLanguage(newLang);
+  };
 
   const handleDropdownToggle = (key) => {
     setActiveDropdown(activeDropdown === key ? null : key);
@@ -206,6 +216,18 @@ const Navbar = () => {
 
             {/* Right Side Buttons */}
             <div className="hidden lg:flex items-center space-x-3">
+              
+              {/* Language Switch Button */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleLanguage}
+                className="text-slate-700 flex items-center space-x-2"
+              >
+                <Globe size={16} />
+                <span className="font-semibold">{i18n.language === 'en' ? 'AR' : 'EN'}</span>
+              </Button>
+
               <Button 
                 variant="ghost" 
                 size="sm"
@@ -224,12 +246,22 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden text-slate-700 p-2"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="lg:hidden flex items-center space-x-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleLanguage}
+                className="text-slate-700 px-2"
+              >
+                <Globe size={18} />
+              </Button>
+              <button
+                className="text-slate-700 p-2"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu */}
