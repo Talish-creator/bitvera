@@ -107,7 +107,7 @@
   "Exceptional service and support. The customization capabilities allowed us to tailor the system perfectly to our manufacturing needs.": "خدمة ودعم استثنائيان. أتاحت لنا قدرات التخصيص تصميم النظام بشكل مثالي لتلبية احتياجات التصنيع لدينا.",
   "Omar Al-Dosari": "عمر الدوسري",
   "CTO, Manufacturing Plus": "المدير التكنولوجي، التصنيع بلس",
-  "The best decision we made was choosing BitVera IT Solutions. Their expertise in ERPNext and understanding of local regulations is unmatched.": "أفضل قرار اتخذناه كان اختيار بيتفيرا. خبرتهم في ERPNext وفهمهم للوائح المحلية لا مثيل له.",
+  "The best decision we made was choosing BitVera IT Solutions. Their expertise in ERPNext and understanding of local regulations is unmatched.": "أفضل قرار اتخذناه كان اختيار بيتفيرا. خبرتهم في ERPNext وفهمهم للوائح المحلية لا ميل له.",
   "Layla Al-Otaibi": "ليلى العتيبي",
   "Operations Manager, RetailPro": "مديرة العمليات، ريتيل برو",
   "BitVera IT Solutions transformed our business operations completely. The ERP implementation was seamless and the support team is outstanding.": "لقد غيرت بيتفيرا عمليات أعمالنا بالكامل. كان تنفيذ نظام تخطيط موارد المؤسسات سلسًا وفريق الدعم متميز.",
@@ -172,5 +172,24 @@
   "modules_page": {
     "title": "قم بتحويل عملك من خلال حلول البرمجيات كخدمة (SaaS) المبتكرة لدينا",
     "subtitle": "مصممة خصيصاً لك"
+  },
+  "booking_modal": {
+    "title": "احجز استشارة مجانية",
+    "subtitle": "دعنا نناقش احتياجاتك لنظام تخطيط موارد المؤسسات (ERP)",
+    "full_name": "الاسم الكامل *",
+    "company_name": "اسم الشركة *",
+    "business_email": "البريد الإلكتروني للعمل *",
+    "preferred_date": "التاريخ المفضل *",
+    "challenges_label": "أخبرنا عن احتياجاتك",
+    "challenges_placeholder": "ما هي التحديات التي تواجهها؟ ما هي أهدافك؟",
+    "cancel": "إلغاء",
+    "submit_btn": "حجز استشارة",
+    "submitting_btn": "جاري الإرسال...",
+    "call_directly": "أو اتصل بنا مباشرة على",
+    "toast_success_title": "تم بنجاح! 🎉",
+    "toast_success_desc": "تم إرسال طلب الاستشارة الخاص بك بنجاح.",
+    "toast_reject_title": "تم رفض الإرسال",
+    "toast_error_title": "خطأ في الاتصال",
+    "toast_error_desc": "فشل الاتصال بالخادم. يرجى المحاولة مرة أخرى أو الاتصال بنا على +966 58 060 8336."
   }
 }

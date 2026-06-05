@@ -172,5 +172,24 @@
   "modules_page": {
     "title": "Transform your business with our innovative SaaS solutions",
     "subtitle": "Tailored for you"
+  },
+  "booking_modal": {
+    "title": "Book Free Consultation",
+    "subtitle": "Let's discuss your ERP needs",
+    "full_name": "Full Name *",
+    "company_name": "Company Name *",
+    "business_email": "Business Email *",
+    "preferred_date": "Preferred Date *",
+    "challenges_label": "Tell us about your needs",
+    "challenges_placeholder": "What challenges are you facing? What are your goals?",
+    "cancel": "Cancel",
+    "submit_btn": "Book Consultation",
+    "submitting_btn": "Submitting...",
+    "call_directly": "Or call us directly at",
+    "toast_success_title": "Success! 🎉",
+    "toast_success_desc": "Your consultation request has been sent successfully.",
+    "toast_reject_title": "Submission Rejected",
+    "toast_error_title": "Connection Error",
+    "toast_error_desc": "Failed to connect to the server. Please try again or call us at +966 58 060 8336."
   }
 }

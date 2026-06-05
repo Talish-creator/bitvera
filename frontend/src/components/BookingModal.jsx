@@ -5,8 +5,11 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { toast } from '../hooks/use-toast';
+import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
 
 const BookingModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation(); // <-- 2. Activate tool
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -42,8 +45,8 @@ const BookingModal = ({ isOpen, onClose }) => {
       
       if (result.success) {
         toast({
-          title: "Success! 🎉",
-          description: "Your consultation request has been sent successfully.",
+          title: t('booking_modal.toast_success_title'),
+          description: t('booking_modal.toast_success_desc'),
         });
         
         setFormData({
@@ -57,7 +60,7 @@ const BookingModal = ({ isOpen, onClose }) => {
       } else {
         console.error("Web3Forms API Error:", result);
         toast({
-          title: "Submission Rejected",
+          title: t('booking_modal.toast_reject_title'),
           description: result.message || "Please verify your form details and try again.",
           variant: "destructive"
         });
@@ -65,8 +68,8 @@ const BookingModal = ({ isOpen, onClose }) => {
     } catch (error) {
       console.error("Network/System Error:", error);
       toast({
-        title: "Connection Error",
-        description: "Failed to connect to the server. Please try again or call us at +966 58 060 8336.",
+        title: t('booking_modal.toast_error_title'),
+        description: t('booking_modal.toast_error_desc'),
         variant: "destructive"
       });
     } finally {
@@ -81,8 +84,8 @@ const BookingModal = ({ isOpen, onClose }) => {
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-gradient-to-r from-cyan-500 to-teal-600 p-6 text-white flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold">Book Free Consultation</h2>
-            <p className="text-sm text-cyan-100 mt-1">Let's discuss your ERP needs</p>
+            <h2 className="text-2xl font-bold">{t('booking_modal.title')}</h2>
+            <p className="text-sm text-cyan-100 mt-1">{t('booking_modal.subtitle')}</p>
           </div>
           <button
             onClick={onClose}
@@ -94,7 +97,7 @@ const BookingModal = ({ isOpen, onClose }) => {
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <Label htmlFor="name">Full Name *</Label>
+            <Label htmlFor="name">{t('booking_modal.full_name')}</Label>
             <Input
               id="name"
               placeholder="John Doe"
@@ -106,7 +109,7 @@ const BookingModal = ({ isOpen, onClose }) => {
           </div>
 
           <div>
-            <Label htmlFor="company">Company Name *</Label>
+            <Label htmlFor="company">{t('booking_modal.company_name')}</Label>
             <Input
               id="company"
               placeholder="Your Company"
@@ -118,7 +121,7 @@ const BookingModal = ({ isOpen, onClose }) => {
           </div>
 
           <div>
-            <Label htmlFor="email">Business Email *</Label>
+            <Label htmlFor="email">{t('booking_modal.business_email')}</Label>
             <Input
               id="email"
               type="email"
@@ -131,7 +134,7 @@ const BookingModal = ({ isOpen, onClose }) => {
           </div>
 
           <div>
-            <Label htmlFor="demoDate">Preferred Date *</Label>
+            <Label htmlFor="demoDate">{t('booking_modal.preferred_date')}</Label>
             <Input
               id="demoDate"
               type="date"
@@ -144,10 +147,10 @@ const BookingModal = ({ isOpen, onClose }) => {
           </div>
 
           <div>
-            <Label htmlFor="additionalInfo">Tell us about your needs</Label>
+            <Label htmlFor="additionalInfo">{t('booking_modal.challenges_label')}</Label>
             <Textarea
               id="additionalInfo"
-              placeholder="What challenges are you facing? What are your goals?"
+              placeholder={t('booking_modal.challenges_placeholder')}
               value={formData.additionalInfo}
               onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
               rows={4}
@@ -163,20 +166,20 @@ const BookingModal = ({ isOpen, onClose }) => {
               className="flex-1"
               disabled={isSubmitting}
             >
-              Cancel
+              {t('booking_modal.cancel')}
             </Button>
             <Button
               type="submit"
               className="flex-1 bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Submitting...' : 'Book Consultation'}
+              {isSubmitting ? t('booking_modal.submitting_btn') : t('booking_modal.submit_btn')}
             </Button>
           </div>
 
           <p className="text-xs text-slate-500 text-center mt-4">
-            Or call us directly at{' '}
-            <a href="tel:+966580608336" className="text-cyan-600 hover:underline font-semibold">
+            {t('booking_modal.call_directly')}{' '}
+            <a href="tel:+966580608336" className="text-cyan-600 hover:underline font-semibold" dir="ltr">
               +966 58 060 8336
             </a>
           </p>
