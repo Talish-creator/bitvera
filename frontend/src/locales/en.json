@@ -128,5 +128,31 @@
   "Support 24/7": "Support 24/7",
   "Our dedicated support team is available around the clock to ensure your system runs smoothly and your business operations are never interrupted.": "Our dedicated support team is available around the clock to ensure your system runs smoothly and your business operations are never interrupted.",
   "Local Expertise": "Local Expertise",
-  "Based in Saudi Arabia, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market.": "Based in Saudi Arabia, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market."
+  "Based in Saudi Arabia, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market.": "Based in Saudi Arabia, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market.",
+  "footer": {
+    "brand_desc": "Your trusted ERPNext implementation partner for digital transformation.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "riyadh": "Riyadh, KSA",
+    "copyright": "© 2026 BitVera IT Solutions. All rights reserved.",
+    "cookie_settings": "Cookie Settings"
+  },
+  "Solutions": "Solutions",
+  "Services": "Services",
+  "Company": "Company",
+  "Legal": "Legal",
+  "Custom Development": "Custom Development",
+  "Business Consulting": "Business Consulting",
+  "Technical Support": "Technical Support",
+  "Training & Onboarding": "Training & Onboarding",
+  "Maintenance": "Maintenance",
+  "About Us": "About Us",
+  "Careers": "Careers",
+  "Blog": "Blog",
+  "Contact": "Contact",
+  "Privacy Policy": "Privacy Policy",
+  "Terms of Service": "Terms of Service",
+  "Cookie Policy": "Cookie Policy",
+  "GDPR": "GDPR"
 }
