@@ -3,6 +3,7 @@ import { servicesData } from '../mock/data';
 import { Sparkles, Users, Settings, Palette } from 'lucide-react';
 import { Button } from './ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
+import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
 
 const iconMap = {
   Sparkles,
@@ -20,33 +21,33 @@ const imageMap = {
 };
 
 const Services = () => {
-  // FIXED: Changed useState to setActiveService here!
   const [activeService, setActiveService] = useState('erp');
+  const { t } = useTranslation(); // <-- 2. Activate tool
 
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">
-            ERP Solutions That Transform Your Business
+            {t('services_page.title')}
           </h2>
           <p className="text-lg text-slate-600">
-            Select a service to see how we streamline your operations.
+            {t('services_page.subtitle')}
           </p>
         </div>
 
         <Tabs value={activeService} onValueChange={setActiveService} className="w-full">
-          <TabsList className="w-full justify-center bg-white border border-slate-200 p-1 mb-12">
+          <TabsList className="w-full justify-center bg-white border border-slate-200 p-1 mb-12 flex-wrap sm:flex-nowrap h-auto">
             {servicesData.map((service) => {
               const Icon = iconMap[service.icon];
               return (
                 <TabsTrigger
                   key={service.id}
                   value={service.id}
-                  className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-teal-600 data-[state=active]:text-white"
+                  className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-teal-600 data-[state=active]:text-white m-1"
                 >
                   <Icon size={18} />
-                  <span>{service.title}</span>
+                  <span>{t(service.title)}</span>
                 </TabsTrigger>
               );
             })}
@@ -61,7 +62,7 @@ const Services = () => {
                     <div className="aspect-square rounded-xl overflow-hidden flex items-center justify-center bg-slate-50">
                       <img
                         src={imageMap[service.id]}
-                        alt={service.heading}
+                        alt={t(service.heading)}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       />
                     </div>
@@ -73,7 +74,7 @@ const Services = () => {
                 {/* Right - Content */}
                 <div className="space-y-6">
                   <h3 className="text-3xl font-bold text-slate-900">
-                    {service.heading}
+                    {t(service.heading)}
                   </h3>
                   <ul className="space-y-3">
                     {service.features.map((feature, index) => (
@@ -93,7 +94,7 @@ const Services = () => {
                             />
                           </svg>
                         </div>
-                        <span className="text-slate-600">{feature}</span>
+                        <span className="text-slate-600">{t(feature)}</span>
                       </li>
                     ))}
                   </ul>
@@ -108,13 +109,13 @@ const Services = () => {
                         <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
                           {stat.value}
                         </div>
-                        <div className="text-sm text-slate-300 mt-2">{stat.label}</div>
+                        <div className="text-sm text-slate-300 mt-2">{t(stat.label)}</div>
                       </div>
                     ))}
                   </div>
 
                   <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white">
-                    Learn More
+                    {t('services_page.learn_more')}
                   </Button>
                 </div>
               </div>

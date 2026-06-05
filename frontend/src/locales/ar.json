@@ -84,5 +84,20 @@
   "Sales Management: Basic sales": "إدارة المبيعات: مبيعات أساسية",
   "Sales Management: Full Suite": "إدارة المبيعات: مجموعة كاملة",
   "POS (Point of Sale): Basic POS": "نقاط البيع (POS): نقاط بيع أساسية",
-  "POS (Point of Sale): Advanced POS": "نقاط البيع (POS): نقاط بيع متقدمة"
+  "POS (Point of Sale): Advanced POS": "نقاط البيع (POS): نقاط بيع متقدمة",
+  "services_page": {
+    "title": "حلول تخطيط موارد المؤسسات التي تحول عملك",
+    "subtitle": "حدد خدمة لترى كيف نبسط عملياتك.",
+    "learn_more": "اعرف المزيد"
+  },
+  "ERP Implementation": "تنفيذ نظام تخطيط موارد المؤسسات",
+  "CRM Integration": "تكامل إدارة علاقات العملاء",
+  "Process Automation": "أتمتة العمليات",
+  "Custom Solutions": "حلول مخصصة",
+  "Complete ERP Implementation": "تنفيذ كامل لنظام تخطيط موارد المؤسسات",
+  "End-to-end business process integration across all departments": "تكامل شامل لعمليات الأعمال عبر جميع الأقسام",
+  "Real-time data synchronization and reporting capabilities": "مزامنة البيانات في الوقت الفعلي وقدرات إعداد التقارير",
+  "Scalable architecture that grows with your business needs": "بنية قابلة للتطوير تنمو مع احتياجات عملك",
+  "Process Efficiency": "كفاءة العمليات",
+  "Cost Reduction": "تقليل التكاليف"
 }
