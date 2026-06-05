@@ -168,5 +168,9 @@
   "Real-time inventory tracking with automated reordering and stock optimization.": "تتبع المخزون في الوقت الفعلي مع إعادة الطلب التلقائي وتحسين المخزون.",
   "Complete sales cycle management from quotation to delivery and invoicing.": "إدارة كاملة لدورة المبيعات من عرض الأسعار إلى التسليم والفوترة.",
   "ERPNext System": "نظام ERPNext",
-  "FAQ's & Download": "الأسئلة الشائعة والتنزيلات"
+  "FAQ's & Download": "الأسئلة الشائعة والتنزيلات",
+  "modules_page": {
+    "title": "قم بتحويل عملك من خلال حلول البرمجيات كخدمة (SaaS) المبتكرة لدينا",
+    "subtitle": "مصممة خصيصاً لك"
+  }
 }

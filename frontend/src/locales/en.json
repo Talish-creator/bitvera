@@ -168,5 +168,9 @@
   "Real-time inventory tracking with automated reordering and stock optimization.": "Real-time inventory tracking with automated reordering and stock optimization.",
   "Complete sales cycle management from quotation to delivery and invoicing.": "Complete sales cycle management from quotation to delivery and invoicing.",
   "ERPNext System": "ERPNext System",
-  "FAQ's & Download": "FAQ's & Download"
+  "FAQ's & Download": "FAQ's & Download",
+  "modules_page": {
+    "title": "Transform your business with our innovative SaaS solutions",
+    "subtitle": "Tailored for you"
+  }
 }
