@@ -112,5 +112,21 @@
   "Operations Manager, RetailPro": "Operations Manager, RetailPro",
   "BitVera IT Solutions transformed our business operations completely. The ERP implementation was seamless and the support team is outstanding.": "BitVera IT Solutions transformed our business operations completely. The ERP implementation was seamless and the support team is outstanding.",
   "Khalid Al-Rashid": "Khalid Al-Rashid",
-  "CEO, TechCorp Solutions": "CEO, TechCorp Solutions"
+  "CEO, TechCorp Solutions": "CEO, TechCorp Solutions",
+  "why_choose_page": {
+    "title": "Why Choose BitVera?",
+    "subtitle": "We're not just another ERP provider. We're your strategic partner in digital transformation."
+  },
+  "Security & Compliance": "Security & Compliance",
+  "We ensure your data is secure with enterprise-grade security measures and help you maintain compliance with local regulations and industry standards.": "We ensure your data is secure with enterprise-grade security measures and help you maintain compliance with local regulations and industry standards.",
+  "Proven Track Record": "Proven Track Record",
+  "With over 500 successful implementations and 98% client satisfaction rate, we have the experience and expertise to deliver results that exceed expectations.": "With over 500 successful implementations and 98% client satisfaction rate, we have the experience and expertise to deliver results that exceed expectations.",
+  "Expert Implementation": "Expert Implementation",
+  "Our certified ERPNext experts have successfully implemented solutions for businesses across various industries, ensuring best practices and optimal configurations.": "Our certified ERPNext experts have successfully implemented solutions for businesses across various industries, ensuring best practices and optimal configurations.",
+  "Scalable Solutions": "Scalable Solutions",
+  "Our solutions grow with your business. From startup to enterprise, we provide flexible, scalable implementations that adapt to your changing needs.": "Our solutions grow with your business. From startup to enterprise, we provide flexible, scalable implementations that adapt to your changing needs.",
+  "Support 24/7": "Support 24/7",
+  "Our dedicated support team is available around the clock to ensure your system runs smoothly and your business operations are never interrupted.": "Our dedicated support team is available around the clock to ensure your system runs smoothly and your business operations are never interrupted.",
+  "Local Expertise": "Local Expertise",
+  "Based in Saudi Arabia, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market.": "Based in Saudi Arabia, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market."
 }

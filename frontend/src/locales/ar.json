@@ -47,7 +47,7 @@
     "Asset Management": "إدارة الأصول",
     "Procurement Management": "إدارة المشتريات",
     "HR Management": "إدارة الموارد البشرية",
-    "Production or Manufacturing": "الإنتاج أو التصنيع",
+    "Production أو التصنيع": "الإنتاج أو التصنيع",
     "Payroll": "كشوف المرتبات",
     "Quality Management": "إدارة الجودة",
     "CRM": "إدارة علاقات العملاء",
@@ -112,5 +112,21 @@
   "Operations Manager, RetailPro": "مديرة العمليات، ريتيل برو",
   "BitVera IT Solutions transformed our business operations completely. The ERP implementation was seamless and the support team is outstanding.": "لقد غيرت بيتفيرا عمليات أعمالنا بالكامل. كان تنفيذ نظام تخطيط موارد المؤسسات سلسًا وفريق الدعم متميز.",
   "Khalid Al-Rashid": "خالد الراشد",
-  "CEO, TechCorp Solutions": "الرئيس التنفيذي، تيك كورب للحلول"
+  "CEO, TechCorp Solutions": "الرئيس التنفيذي، تيك كورب للحلول",
+  "why_choose_page": {
+    "title": "لماذا تختار بيتفيرا؟",
+    "subtitle": "نحن لسنا مجرد مزود آخر لنظام تخطيط موارد المؤسسات. نحن شريكك الاستراتيجي في التحول الرقمي."
+  },
+  "Security & Compliance": "الأمان والامتثال",
+  "We ensure your data is secure with enterprise-grade security measures and help you maintain compliance with local regulations and industry standards.": "نحن نضمن أمان بياناتك من خلال تدابير أمنية على مستوى المؤسسات ونساعدك في الحفاظ على الامتثال للوائح المحلية ومعايير الصناعة.",
+  "Proven Track Record": "سجل حافل",
+  "With over 500 successful implementations and 98% client satisfaction rate, we have the experience and expertise to deliver results that exceed expectations.": "مع أكثر من 500 عملية تنفيذ ناجحة ومعدل رضا عملاء يبلغ 98%، لدينا الخبرة والكفاءة لتقديم نتائج تفوق التوقعات.",
+  "Expert Implementation": "تنفيذ خبير",
+  "Our certified ERPNext experts have successfully implemented solutions for businesses across various industries, ensuring best practices and optimal configurations.": "نجح خبراؤنا المعتمدون في ERPNext في تنفيذ حلول للشركات عبر مختلف الصناعات، مما يضمن أفضل الممارسات والتكوينات المثلى.",
+  "Scalable Solutions": "حلول قابلة للتطوير",
+  "Our solutions grow with your business. From startup to enterprise, we provide flexible, scalable implementations that adapt to your changing needs.": "حلولنا تنمو مع عملك. من الشركات الناشئة إلى المؤسسات، نقدم تطبيقات مرنة وقابلة للتطوير تتكيف مع احتياجاتك المتغيرة.",
+  "Support 24/7": "دعم على مدار الساعة 24/7",
+  "Our dedicated support team is available around the clock to ensure your system runs smoothly and your business operations are never interrupted.": "فريق الدعم المخصص لدينا متاح على مدار الساعة لضمان تشغيل نظامك بسلاسة وعدم انقطاع عمليات عملك أبدًا.",
+  "Local Expertise": "خبرة محلية",
+  "Based in Saudi Arabia, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market.": "مقرنا في المملكة العربية السعودية، نحن نفهم الممارسات التجارية المحلية واللوائح والفروق الثقافية، ونقدم حلولاً تناسب سوقك حقًا."
 }
