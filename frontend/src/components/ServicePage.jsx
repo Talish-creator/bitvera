@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import BookingModal from './BookingModal'; // <-- We imported your modal here!
+import BookingModal from './BookingModal';
+import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
 import { 
   Plus, X, Calculator, Receipt, CreditCard, Users, CheckCircle2, 
   FileCog, Network, PackageCheck, Factory, FileSpreadsheet, 
@@ -321,6 +322,7 @@ const pageData = {
 const ServicePage = () => {
   const { id } = useParams();
   const [openFaq, setOpenFaq] = useState(null); 
+  const { t } = useTranslation(); // <-- 2. Activate Translation tool
   
   // <-- 1. Added State to control your Booking Modal
   const [isBookingOpen, setIsBookingOpen] = useState(false); 
@@ -349,10 +351,10 @@ const ServicePage = () => {
       <div className="pt-32 pb-20 px-4 bg-white border-b border-slate-100">
         <div className="max-w-5xl mx-auto text-center space-y-8 mt-8">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight">
-            {content.title}
+            {t(content.title)}
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            {content.description}
+            {t(content.description)}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
             
@@ -361,7 +363,7 @@ const ServicePage = () => {
               onClick={() => setIsBookingOpen(true)}
               className="px-8 py-3.5 rounded-lg border-2 border-cyan-600 text-cyan-700 font-bold hover:bg-cyan-50 transition-all duration-300"
             >
-              Book a Free Consultation
+              {t('Book a Free Consultation')}
             </button>
             
             {/* <-- 3. Wired up this Button! */}
@@ -369,7 +371,7 @@ const ServicePage = () => {
               onClick={() => setIsBookingOpen(true)}
               className="px-8 py-3.5 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 transition-all duration-300"
             >
-              Book a demo
+              {t('Book a demo')}
             </button>
             
           </div>
@@ -387,8 +389,8 @@ const ServicePage = () => {
                   <div className="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-500 transition-colors duration-300">
                     <Icon className="w-7 h-7 text-cyan-600 group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">{t(feature.title)}</h3>
+                  <p className="text-slate-600 leading-relaxed">{t(feature.description)}</p>
                 </div>
               );
             })}
@@ -401,7 +403,7 @@ const ServicePage = () => {
         <div className="py-20 px-4 bg-white border-t border-slate-100">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-12">
-              Everything You Should Know
+              {t('Everything You Should Know')}
             </h2>
             
             <div className="space-y-4">
@@ -416,7 +418,7 @@ const ServicePage = () => {
                     onClick={() => toggleFaq(idx)}
                     className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                   >
-                    <span className="text-lg font-semibold text-slate-900 pr-8">{faq.question}</span>
+                    <span className="text-lg font-semibold text-slate-900 pr-8">{t(faq.question)}</span>
                     <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${openFaq === idx ? 'bg-cyan-500 rotate-180' : 'bg-slate-100'}`}>
                       {openFaq === idx ? (
                         <X className="w-5 h-5 text-white" />
@@ -432,7 +434,7 @@ const ServicePage = () => {
                     }`}
                   >
                     <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-cyan-100/50">
-                      {faq.answer}
+                      {t(faq.answer)}
                     </div>
                   </div>
                 </div>
