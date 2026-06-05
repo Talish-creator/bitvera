@@ -54,5 +54,35 @@
     "Warehouse Management": "Warehouse Management",
     "Sales Management": "Sales Management",
     "Inventory Management": "Inventory Management"
-  }
+  },
+  "pricing_page": {
+    "title": "Unlock your Team's Potential, Find the Perfect Plan",
+    "subtitle": "Find the plan that matches your needs, Scales with your growth, and unleashes your team's true potential. Start your free trial today!",
+    "monthly": "Monthly",
+    "annually": "Annually",
+    "save_15": "Save 15%",
+    "most_popular": "Most Popular",
+    "sar_month": "SAR/month",
+    "implementation_fee": "Implementation Fee: SAR",
+    "see_more": "See more features",
+    "choose_plan": "Choose Plan",
+    "disclaimer": "All plans include 14-day free trial • No setup fees • Cancel anytime"
+  },
+  "Standard": "Standard",
+  "Professional": "Professional",
+  "Enterprise": "Enterprise",
+  "Perfect for small businesses": "Perfect for small businesses",
+  "Perfect for growing businesses": "Perfect for growing businesses",
+  "Perfect for large enterprises": "Perfect for large enterprises",
+  "Accounting & Finance: Basic only": "Accounting & Finance: Basic only",
+  "Accounting & Finance: Basic accounting": "Accounting & Finance: Basic accounting",
+  "Accounting & Finance: Full Suite": "Accounting & Finance: Full Suite",
+  "HR Management: Employees only": "HR Management: Employees only",
+  "HR Management: Full Suite": "HR Management: Full Suite",
+  "CRM: Quotations only": "CRM: Quotations only",
+  "CRM: Full Suite": "CRM: Full Suite",
+  "Sales Management: Basic sales": "Sales Management: Basic sales",
+  "Sales Management: Full Suite": "Sales Management: Full Suite",
+  "POS (Point of Sale): Basic POS": "POS (Point of Sale): Basic POS",
+  "POS (Point of Sale): Advanced POS": "POS (Point of Sale): Advanced POS"
 }

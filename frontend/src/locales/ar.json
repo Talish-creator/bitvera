@@ -54,5 +54,35 @@
     "Warehouse Management": "إدارة المستودعات",
     "Sales Management": "إدارة المبيعات",
     "Inventory Management": "إدارة المخزون"
-  }
+  },
+  "pricing_page": {
+    "title": "أطلق العنان لإمكانات فريقك، وابحث عن الخطة المثالية",
+    "subtitle": "ابحث عن الخطة التي تناسب احتياجاتك، وتتوسع مع نموك، وتطلق العنان للإمكانات الحقيقية لفريقك. ابدأ تجربتك المجانية اليوم!",
+    "monthly": "شهرياً",
+    "annually": "سنوياً",
+    "save_15": "وفر 15%",
+    "most_popular": "الأكثر شعبية",
+    "sar_month": "ريال/شهر",
+    "implementation_fee": "رسوم التنفيذ: ريال",
+    "see_more": "رؤية المزيد من الميزات",
+    "choose_plan": "اختر الخطة",
+    "disclaimer": "جميع الخطط تشمل نسخة تجريبية مجانية لمدة 14 يومًا • لا توجد رسوم إعداد • إلغاء في أي وقت"
+  },
+  "Standard": "الأساسية",
+  "Professional": "الاحترافية",
+  "Enterprise": "المؤسسات",
+  "Perfect for small businesses": "مثالية للشركات الصغيرة",
+  "Perfect for growing businesses": "مثالية للشركات النامية",
+  "Perfect for large enterprises": "مثالية للمؤسسات الكبيرة",
+  "Accounting & Finance: Basic only": "المحاسبة والمالية: أساسي فقط",
+  "Accounting & Finance: Basic accounting": "المحاسبة والمالية: محاسبة أساسية",
+  "Accounting & Finance: Full Suite": "المحاسبة والمالية: مجموعة كاملة",
+  "HR Management: Employees only": "إدارة الموارد البشرية: الموظفين فقط",
+  "HR Management: Full Suite": "إدارة الموارد البشرية: مجموعة كاملة",
+  "CRM: Quotations only": "إدارة علاقات العملاء: عروض الأسعار فقط",
+  "CRM: Full Suite": "إدارة علاقات العملاء: مجموعة كاملة",
+  "Sales Management: Basic sales": "إدارة المبيعات: مبيعات أساسية",
+  "Sales Management: Full Suite": "إدارة المبيعات: مجموعة كاملة",
+  "POS (Point of Sale): Basic POS": "نقاط البيع (POS): نقاط بيع أساسية",
+  "POS (Point of Sale): Advanced POS": "نقاط البيع (POS): نقاط بيع متقدمة"
 }
