@@ -3,6 +3,7 @@ import { Button } from './ui/button';
 import { heroData } from '../mock/data';
 import { CheckCircle, Zap, Headphones, Trophy } from 'lucide-react';
 import BookingModal from './BookingModal';
+import { useTranslation } from 'react-i18next'; // <-- 1. Import the translation tool
 
 const iconMap = {
   CheckCircle,
@@ -25,6 +26,7 @@ const FeatureBadge = ({ feature, index }) => {
 
 const Hero = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const { t } = useTranslation(); // <-- 2. Activate the tool inside your component
 
   return (
     <>
@@ -40,16 +42,16 @@ const Hero = () => {
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
                   <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">
-                    Right Solution
+                    {t('hero.title_1')} {/* <-- 3. Swap hardcoded text for dictionary keys */}
                   </span>
                   <br />
-                  <span>From The First Time</span>
+                  <span>{t('hero.title_2')}</span>
                 </h1>
                 <p className="text-lg text-slate-600 max-w-2xl">
                   {heroData.subtitle}
                 </p>
                 <p className="text-base text-slate-500">
-                  BitVera, your trusted ERPNext implementation partner.
+                  {t('hero.trusted_partner')}
                 </p>
               </div>
 
@@ -59,7 +61,7 @@ const Hero = () => {
                   className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300"
                   onClick={() => setIsBookingOpen(true)}
                 >
-                  Book a Free Consultation
+                  {t('hero.book_consultation')}
                 </Button>
                 <Button 
                   size="lg" 
@@ -67,7 +69,7 @@ const Hero = () => {
                   className="border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50"
                   onClick={() => setIsBookingOpen(true)}
                 >
-                  Book a demo
+                  {t('hero.book_demo')}
                 </Button>
               </div>
 

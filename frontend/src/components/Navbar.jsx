@@ -4,12 +4,12 @@ import {
   Menu, X, ChevronDown, Calculator, FileCog, Network, 
   PackageCheck, UserSearch, Factory, FileSpreadsheet, 
   Settings, Users, Warehouse, TrendingUp, Package, 
-  Lightbulb, Info, Briefcase, Phone, Globe // <-- Added Globe icon
+  Lightbulb, Info, Briefcase, Phone, Globe
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import BookingModal from './BookingModal';
-import { useTranslation } from 'react-i18next'; // <-- Activated the translation tool!
+import { useTranslation } from 'react-i18next';
 
 // All links have been updated to connect to the new ServicePage!
 const menuData = {
@@ -80,18 +80,13 @@ const Navbar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isLangOpen, setIsLangOpen] = useState(false); // <-- Controls the language dropdown
   
-  // Activate Translation Engine
   const { i18n } = useTranslation();
-
-  // Function to flip the language
-  const toggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'ar' : 'en';
-    i18n.changeLanguage(newLang);
-  };
 
   const handleDropdownToggle = (key) => {
     setActiveDropdown(activeDropdown === key ? null : key);
+    setIsLangOpen(false); // Close language menu if opening a different menu
   };
 
   return (
@@ -129,7 +124,10 @@ const Navbar = () => {
                   <div key={key} className="relative group">
                     <button 
                       className="flex items-center space-x-1 px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium"
-                      onMouseEnter={() => setActiveDropdown(key)}
+                      onMouseEnter={() => {
+                        setActiveDropdown(key);
+                        setIsLangOpen(false);
+                      }}
                     >
                       <span>{menu.title}</span>
                       <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === key ? 'rotate-180' : ''}`} />
@@ -188,7 +186,7 @@ const Navbar = () => {
                           </div>
                         )}
 
-                        {/* Standard List Layout (Pricing, Knowledge, About) */}
+                        {/* Standard List Layout */}
                         {menu.layout === 'list' && (
                           <div className="flex flex-col px-3 space-y-1">
                             {menu.items.map((item, idx) => {
@@ -217,16 +215,45 @@ const Navbar = () => {
             {/* Right Side Buttons */}
             <div className="hidden lg:flex items-center space-x-3">
               
-              {/* Language Switch Button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={toggleLanguage}
-                className="text-slate-700 flex items-center space-x-2"
-              >
-                <Globe size={16} />
-                <span className="font-semibold">{i18n.language === 'en' ? 'AR' : 'EN'}</span>
-              </Button>
+              {/* NEW: Language Dropdown */}
+              <div className="relative">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    setIsLangOpen(!isLangOpen);
+                    setActiveDropdown(null);
+                  }}
+                  className="text-slate-700 flex items-center space-x-2"
+                >
+                  <Globe size={16} />
+                  <span className="font-semibold uppercase">{i18n.language}</span>
+                  <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
+                </Button>
+
+                {isLangOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-40 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50">
+                    <button
+                      onClick={() => {
+                        i18n.changeLanguage('en');
+                        setIsLangOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-50 transition-colors ${i18n.language === 'en' ? 'text-cyan-600 font-bold' : 'text-slate-700 font-medium'}`}
+                    >
+                      English
+                    </button>
+                    <button
+                      onClick={() => {
+                        i18n.changeLanguage('ar');
+                        setIsLangOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-50 transition-colors ${i18n.language === 'ar' ? 'text-cyan-600 font-bold' : 'text-slate-700 font-medium'}`}
+                    >
+                      العربية (Arabic)
+                    </button>
+                  </div>
+                )}
+              </div>
 
               <Button 
                 variant="ghost" 
@@ -247,14 +274,6 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden flex items-center space-x-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={toggleLanguage}
-                className="text-slate-700 px-2"
-              >
-                <Globe size={18} />
-              </Button>
               <button
                 className="text-slate-700 p-2"
                 onClick={() => setIsOpen(!isOpen)}
@@ -267,6 +286,23 @@ const Navbar = () => {
           {/* Mobile Menu */}
           {isOpen && (
             <div className="lg:hidden py-4 border-t border-slate-200 max-h-[80vh] overflow-y-auto">
+              
+              {/* NEW: Mobile Language Selector */}
+              <div className="px-4 pb-4 mb-2 border-b border-slate-100 flex gap-2">
+                <button 
+                  onClick={() => { i18n.changeLanguage('en'); setIsOpen(false); }}
+                  className={`flex-1 py-2 rounded-lg text-sm font-medium border ${i18n.language === 'en' ? 'bg-cyan-50 border-cyan-200 text-cyan-700' : 'bg-white border-slate-200 text-slate-600'}`}
+                >
+                  English
+                </button>
+                <button 
+                  onClick={() => { i18n.changeLanguage('ar'); setIsOpen(false); }}
+                  className={`flex-1 py-2 rounded-lg text-sm font-medium border ${i18n.language === 'ar' ? 'bg-cyan-50 border-cyan-200 text-cyan-700' : 'bg-white border-slate-200 text-slate-600'}`}
+                >
+                  العربية
+                </button>
+              </div>
+
               {menuOrder.map((key) => {
                 if (key === 'industries') {
                   return (
