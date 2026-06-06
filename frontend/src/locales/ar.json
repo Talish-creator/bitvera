@@ -356,7 +356,7 @@
   "Flexible BOM (Bill of Materials)": "فاتورة مواد (BOM) مرنة",
   "Build dynamic BOMs for each product or process with configurable components.": "بناء فواتير مواد ديناميكية لكل منتج أو عملية باستخدام مكونات قابلة للتهيئة.",
   "Track Production Stages": "تتبع مراحل الإنتاج",
-  "Monitor every step in the line with live updates: started, in progress, or completed.": "مراقبة كل خطوة في خط الإنتاج بتحديثات حية: بدأت، قيد التقدم، أو اكتملت.",
+  "Monitor every step في الخط with live updates: started, in progress, or completed.": "مراقبة كل خطوة في خط الإنتاج بتحديثات حية: بدأت، قيد التقدم، أو اكتملت.",
   "Can we create multiple production orders simultaneously?": "هل يمكننا إنشاء أوامر إنتاج متعددة في وقت واحد؟",
   "Yes, the Production Plan tool allows you to generate multiple work orders at once based on sales demand.": "نعم، تتيح لك أداة خطة الإنتاج إنشاء أوامر عمل متعددة في وقت واحد بناءً على طلب المبيعات.",
   "Are quality checks automated upon goods receipt?": "هل عمليات فحص الجودة تلقائية عند استلام البضائع؟",
@@ -499,5 +499,22 @@
   "Location": "الموقع",
   "Riyadh, KSA": "الرياض، المملكة العربية السعودية",
   "Working Hours": "ساعات العمل",
-  "Saturday - Thursday: 9 AM - 6 PM": "السبت - الخميس: 9 صباحاً - 6 مساءً"
+  "Saturday - Thursday: 9 AM - 6 PM": "السبت - الخميس: 9 صباحاً - 6 مساءً",
+  "Cost Efficiency": "كفاءة التكلفة",
+  "cta_section": {
+    "title": "جربه مجانًا اليوم",
+    "subtitle": "اكتشف إمكانيات النظام.",
+    "card_title": "على بُعد خطوة واحدة",
+    "card_desc": "أدخل بياناتك للبدء",
+    "placeholder_name": "اسمك",
+    "placeholder_company": "اسم الشركة",
+    "placeholder_email": "البريد الإلكتروني للعمل",
+    "placeholder_date": "تاريخ العرض المفضل",
+    "placeholder_info": "معلومات إضافية",
+    "submitting_btn": "جاري الإرسال...",
+    "submit_btn": "ابدأ مجانًا",
+    "toast_success": "تم بنجاح!",
+    "toast_error": "خطأ",
+    "toast_error_desc": "فشل إرسال النموذج. يرجى المحاولة مرة أخرى."
+  }
 }

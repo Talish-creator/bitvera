@@ -6,8 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { CheckCircle, DollarSign, TrendingUp, Zap } from 'lucide-react';
 import { submitContactForm } from '../utils/api';
 import { toast } from '../hooks/use-toast';
+import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
 
 const CTASection = () => {
+  const { t } = useTranslation(); // <-- 2. Activate tool
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -26,7 +29,7 @@ const CTASection = () => {
       
       if (result.success) {
         toast({
-          title: "Success!",
+          title: t('cta_section.toast_success'),
           description: result.message,
         });
         
@@ -41,8 +44,8 @@ const CTASection = () => {
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to submit form. Please try again.",
+        title: t('cta_section.toast_error'),
+        description: t('cta_section.toast_error_desc'),
         variant: "destructive"
       });
     } finally {
@@ -65,10 +68,10 @@ const CTASection = () => {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl font-bold text-slate-900 mb-4">
-                Try it free today
+                {t('cta_section.title')}
               </h2>
               <p className="text-2xl font-semibold text-cyan-600 mb-2">
-                explore the system's capabilities.
+                {t('cta_section.subtitle')}
               </p>
             </div>
 
@@ -80,7 +83,7 @@ const CTASection = () => {
                     <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-lg flex items-center justify-center">
                       <Icon size={20} className="text-white" />
                     </div>
-                    <span className="text-lg text-slate-700 font-medium">{benefit.text}</span>
+                    <span className="text-lg text-slate-700 font-medium">{t(benefit.text)}</span>
                   </div>
                 );
               })}
@@ -90,14 +93,14 @@ const CTASection = () => {
           {/* Right Side - Form */}
           <Card className="border-slate-200 shadow-xl">
             <CardHeader>
-              <CardTitle>One Step Away</CardTitle>
-              <CardDescription>Fill in your details to get started</CardDescription>
+              <CardTitle>{t('cta_section.card_title')}</CardTitle>
+              <CardDescription>{t('cta_section.card_desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Input
-                    placeholder="Your name"
+                    placeholder={t('cta_section.placeholder_name')}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
@@ -106,7 +109,7 @@ const CTASection = () => {
                 </div>
                 <div>
                   <Input
-                    placeholder="Company's name"
+                    placeholder={t('cta_section.placeholder_company')}
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     required
@@ -116,7 +119,7 @@ const CTASection = () => {
                 <div>
                   <Input
                     type="email"
-                    placeholder="Business email"
+                    placeholder={t('cta_section.placeholder_email')}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
@@ -126,7 +129,7 @@ const CTASection = () => {
                 <div>
                   <Input
                     type="date"
-                    placeholder="Preferred Demo Date"
+                    placeholder={t('cta_section.placeholder_date')}
                     value={formData.demoDate}
                     onChange={(e) => setFormData({ ...formData, demoDate: e.target.value })}
                     required
@@ -135,7 +138,7 @@ const CTASection = () => {
                 </div>
                 <div>
                   <Textarea
-                    placeholder="Additional info"
+                    placeholder={t('cta_section.placeholder_info')}
                     value={formData.additionalInfo}
                     onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
                     rows={4}
@@ -148,7 +151,7 @@ const CTASection = () => {
                   size="lg"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Get started for free'}
+                  {isSubmitting ? t('cta_section.submitting_btn') : t('cta_section.submit_btn')}
                 </Button>
               </form>
             </CardContent>

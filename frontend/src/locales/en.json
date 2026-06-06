@@ -499,5 +499,22 @@
   "Location": "Location",
   "Riyadh, KSA": "Riyadh, KSA",
   "Working Hours": "Working Hours",
-  "Saturday - Thursday: 9 AM - 6 PM": "Saturday - Thursday: 9 AM - 6 PM"
+  "Saturday - Thursday: 9 AM - 6 PM": "Saturday - Thursday: 9 AM - 6 PM",
+  "Cost Efficiency": "Cost Efficiency",
+  "cta_section": {
+    "title": "Try it free today",
+    "subtitle": "explore the system's capabilities.",
+    "card_title": "One Step Away",
+    "card_desc": "Fill in your details to get started",
+    "placeholder_name": "Your name",
+    "placeholder_company": "Company's name",
+    "placeholder_email": "Business email",
+    "placeholder_date": "Preferred Demo Date",
+    "placeholder_info": "Additional info",
+    "submitting_btn": "Submitting...",
+    "submit_btn": "Get started for free",
+    "toast_success": "Success!",
+    "toast_error": "Error",
+    "toast_error_desc": "Failed to submit form. Please try again."
+  }
 }
