@@ -4,8 +4,11 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { toast } from '../hooks/use-toast';
+import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
 
 const LoginModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation(); // <-- 2. Activate tool
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -21,8 +24,8 @@ const LoginModal = ({ isOpen, onClose }) => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
-        title: "Login Successful! 🎉",
-        description: "Welcome back to Vortexa!",
+        title: t('login_modal.toast_success_title'),
+        description: t('login_modal.toast_success_desc'),
       });
       
       setFormData({ email: '', password: '' });
@@ -32,8 +35,8 @@ const LoginModal = ({ isOpen, onClose }) => {
       // window.location.href = '/admin';
     } catch (error) {
       toast({
-        title: "Login Failed",
-        description: "Invalid credentials. Please try again.",
+        title: t('login_modal.toast_fail_title'),
+        description: t('login_modal.toast_fail_desc'),
         variant: "destructive"
       });
     } finally {
@@ -48,8 +51,8 @@ const LoginModal = ({ isOpen, onClose }) => {
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
         <div className="bg-gradient-to-r from-cyan-500 to-teal-600 p-6 text-white flex items-center justify-between rounded-t-2xl">
           <div>
-            <h2 className="text-2xl font-bold">Welcome Back</h2>
-            <p className="text-sm text-cyan-100 mt-1">Login to your account</p>
+            <h2 className="text-2xl font-bold">{t('login_modal.welcome_back')}</h2>
+            <p className="text-sm text-cyan-100 mt-1">{t('login_modal.login_to_account')}</p>
           </div>
           <button
             onClick={onClose}
@@ -61,11 +64,11 @@ const LoginModal = ({ isOpen, onClose }) => {
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <Label htmlFor="email">Email Address</Label>
+            <Label htmlFor="email">{t('login_modal.email_label')}</Label>
             <Input
               id="email"
               type="email"
-              placeholder="your@email.com"
+              placeholder={t('login_modal.email_placeholder')}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
@@ -74,7 +77,7 @@ const LoginModal = ({ isOpen, onClose }) => {
           </div>
 
           <div>
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{t('login_modal.password_label')}</Label>
             <Input
               id="password"
               type="password"
@@ -89,10 +92,10 @@ const LoginModal = ({ isOpen, onClose }) => {
           <div className="flex items-center justify-between text-sm">
             <label className="flex items-center space-x-2 cursor-pointer">
               <input type="checkbox" className="rounded border-slate-300" />
-              <span className="text-slate-600">Remember me</span>
+              <span className="text-slate-600">{t('login_modal.remember_me')}</span>
             </label>
             <button type="button" className="text-cyan-600 hover:underline">
-              Forgot password?
+              {t('login_modal.forgot_password')}
             </button>
           </div>
 
@@ -101,13 +104,13 @@ const LoginModal = ({ isOpen, onClose }) => {
             className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Logging in...' : 'Login'}
+            {isSubmitting ? t('login_modal.logging_in') : t('login_modal.login_btn')}
           </Button>
 
-          <p className="text-sm text-slate-600 text-center">
-            Don't have an account?{' '}
+          <p className="text-sm text-slate-600 text-center flex items-center justify-center gap-1">
+            {t('login_modal.no_account')}
             <button type="button" className="text-cyan-600 hover:underline font-semibold">
-              Contact Sales
+              {t('login_modal.contact_sales')}
             </button>
           </p>
         </form>

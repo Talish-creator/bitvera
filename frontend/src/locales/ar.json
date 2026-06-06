@@ -17,7 +17,7 @@
     "login": "تسجيل الدخول"
   },
   "features": {
-    "30 Days Set Up": "إعداد في 30 يومًا",
+    "30 days Set Up": "إعداد في 30 يومًا",
     "ZATCA Compliance": "التوافق مع هيئة الزكاة",
     "Competitive Pricing": "أسعار تنافسية",
     "24/7 Support": "دعم على مدار الساعة",
@@ -373,7 +373,7 @@
   "Enable automated checks when receiving, dispatching, or producing materials.": "تفعيل الفحوصات التلقائية عند استلام أو إرسال أو إنتاج المواد.",
   "What does the Quality module do?": "ماذا تفعل وحدة الجودة؟",
   "It allows you to define inspection criteria, record test results, and manage quality goals across all operations.": "تسمح لك بتحديد معايير الفحص، وتسجيل نتائج الاختبار، وإدارة أهداف الجودة عبر جميع العمليات.",
-  "Can I set different inspection criteria for each product?": "هل يمكنني تعيين معايير فحص مختلفة لكل منتج؟",
+  "Can I set different inspection criteria for each product?": "Can I set different inspection criteria for each product?",
   "Yes, Quality Inspection Templates let you define specific parameters and acceptable ranges for different items.": "نعم، تتيح لك قوالب فحص الجودة تحديد معايير محددة ونطاقات مقبولة للعناصر المختلفة.",
   "How are inspection results documented?": "كيف يتم توثيق نتائج الفحص؟",
   "Results are logged digitally against the specific receipt, delivery, or manufacturing order for full traceability.": "يتم تسجيل النتائج رقمياً مقابل الإيصال أو التسليم أو أمر التصنيع المحدد لتوفير إمكانية التتبع الكاملة.",
@@ -615,5 +615,28 @@
   "Delivery Notes": "مذكرات التسليم",
   "Sales Invoice": "فواتير المبيعات",
   "Sales Analytics": "تحليلات المبيعات",
-  "Customer Portal": "بوابة العملاء"
+  "Customer Portal": "بوابة العملاء",
+  "stats": {
+    "Happy Clients": "عملاء سعداء",
+    "Satisfaction Rate": "نسبة الرضا",
+    "Average Rating": "متوسط التقييم",
+    "Years Experience": "سنوات من الخبرة"
+  },
+  "login_modal": {
+    "welcome_back": "مرحباً بعودتك",
+    "login_to_account": "تسجيل الدخول إلى حسابك",
+    "email_label": "البريد الإلكتروني",
+    "email_placeholder": "your@email.com",
+    "password_label": "كلمة المرور",
+    "remember_me": "تذكرني",
+    "forgot_password": "هل نسيت كلمة المرور؟",
+    "logging_in": "جاري تسجيل الدخول...",
+    "login_btn": "تسجيل الدخول",
+    "no_account": "ليس لديك حساب؟",
+    "contact_sales": "اتصل بالمبيعات",
+    "toast_success_title": "تم تسجيل الدخول بنجاح! 🎉",
+    "toast_success_desc": "مرحباً بعودتك إلى بيتفيرا!",
+    "toast_fail_title": "فشل تسجيل الدخول",
+    "toast_fail_desc": "بيانات الاعتماد غير صالحة. يرجى المحاولة مرة أخرى."
+  }
 }

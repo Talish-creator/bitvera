@@ -17,7 +17,7 @@
     "login": "Login"
   },
   "features": {
-    "30 Days Set Up": "30 Days Set Up",
+    "30 days Set Up": "30 days Set Up",
     "ZATCA Compliance": "ZATCA Compliance",
     "Competitive Pricing": "Competitive Pricing",
     "24/7 Support": "24/7 Support",
@@ -613,5 +613,28 @@
   "Delivery Notes": "Delivery Notes",
   "Sales Invoice": "Sales Invoice",
   "Sales Analytics": "Sales Analytics",
-  "Customer Portal": "Customer Portal"
+  "Customer Portal": "Customer Portal",
+  "stats": {
+    "Happy Clients": "Happy Clients",
+    "Satisfaction Rate": "Satisfaction Rate",
+    "Average Rating": "Average Rating",
+    "Years Experience": "Years Experience"
+  },
+  "login_modal": {
+    "welcome_back": "Welcome Back",
+    "login_to_account": "Login to your account",
+    "email_label": "Email Address",
+    "email_placeholder": "your@email.com",
+    "password_label": "Password",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "logging_in": "Logging in...",
+    "login_btn": "Login",
+    "no_account": "Don't have an account?",
+    "contact_sales": "Contact Sales",
+    "toast_success_title": "Login Successful! 🎉",
+    "toast_success_desc": "Welcome back to BitVera!",
+    "toast_fail_title": "Login Failed",
+    "toast_fail_desc": "Invalid credentials. Please try again."
+  }
 }
