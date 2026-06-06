@@ -519,5 +519,30 @@
   },
   "partners_section": {
     "trusted_by": "Trusted by Leading Organizations"
+  },
+  "navbar_dropdowns": {
+    "Accounting & Finance": "Accounting & Finance",
+    "Project Management": "Project Management",
+    "Asset Management": "Asset Management",
+    "Procurement Management": "Procurement Management",
+    "HR Management": "HR Management",
+    "Production or Manufacturing": "Production or Manufacturing",
+    "Payroll": "Payroll",
+    "Quality Management": "Quality Management",
+    "CRM": "CRM",
+    "Warehouse Management": "Warehouse Management",
+    "Sales Management": "Sales Management",
+    "Inventory Management": "Inventory Management",
+    "ERPNext System implementation": "ERPNext System implementation",
+    "Business Consulting": "Business Consulting",
+    "Subscription plans": "Subscription plans",
+    "Customize your own plan": "Customize your own plan",
+    "ERPNext System": "ERPNext System",
+    "FAQ's & Download": "FAQ's & Download",
+    "Blog": "Blog",
+    "Our Story": "Our Story",
+    "Team": "Team",
+    "Careers": "Careers",
+    "Contact": "Contact"
   }
 }

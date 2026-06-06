@@ -156,7 +156,7 @@ const Navbar = () => {
                                   className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
                                 >
                                   <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
-                                  <span className="text-sm font-medium text-slate-700">{item.name}</span>
+                                  <span className="text-sm font-medium text-slate-700">{t(`navbar_dropdowns.${item.name}`)}</span>
                                 </Link>
                               );
                             })}
@@ -177,7 +177,7 @@ const Navbar = () => {
                                     className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
                                   >
                                     <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
-                                    <span className="text-sm font-medium text-slate-700">{item.name}</span>
+                                    <span className="text-sm font-medium text-slate-700">{t(`navbar_dropdowns.${item.name}`)}</span>
                                   </Link>
                                 );
                               })}
@@ -199,7 +199,7 @@ const Navbar = () => {
                                   className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
                                 >
                                   <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
-                                  <span className="text-sm font-medium text-slate-700">{item.name}</span>
+                                  <span className="text-sm font-medium text-slate-700">{t(`navbar_dropdowns.${item.name}`)}</span>
                                 </Link>
                               );
                             })}
@@ -342,7 +342,7 @@ const Navbar = () => {
                               className="flex items-center space-x-3 px-4 py-3 text-slate-600 hover:text-cyan-600 hover:bg-slate-100 rounded-lg"
                             >
                               <Icon className="w-5 h-5 text-indigo-900" strokeWidth={1.5} />
-                              <span className="text-sm font-medium">{item.name}</span>
+                              <span className="text-sm font-medium">{t(`navbar_dropdowns.${item.name}`)}</span>
                             </Link>
                           );
                         })}

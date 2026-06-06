@@ -128,7 +128,7 @@
   "Support 24/7": "دعم على مدار الساعة 24/7",
   "Our dedicated support team is available around the clock to ensure your system runs smoothly and your business operations are never interrupted.": "فريق الدعم المخصص لدينا متاح على مدار الساعة لضمان تشغيل نظامك بسلاسة وعدم انقطاع عمليات عملك أبدًا.",
   "Local Expertise": "خبرة محلية",
-  "Based in Saudi Arabia, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market.": "مقرنا في المملكة العربية السعودية، نحن نفهم الممارسات التجارية المحلية واللوائح والفروق الثقافية، ونقدم حلولاً تناسب سوقك حقًا.",
+  "Based in المملكة العربية السعودية, we understand local business practices, regulations, and cultural nuances, providing solutions that truly fit your market.": "مقرنا في المملكة العربية السعودية، نحن نفهم الممارسات التجارية المحلية واللوائح والفروق الثقافية، ونقدم حلولاً تناسب سوقك حقًا.",
   "footer": {
     "brand_desc": "شريكك الموثوق لتنفيذ نظام ERPNext للتحول الرقمي.",
     "email": "البريد الإلكتروني",
@@ -390,7 +390,7 @@
   "Is Warehouse Management integrated with sales, procurement, and production?": "هل إدارة المستودعات متكاملة مع المبيعات والمشتريات والإنتاج؟",
   "Yes, stock levels automatically update based on invoices, purchase receipts, and manufacturing consumption.": "نعم، يتم تحديث مستويات المخزون تلقائياً بناءً على الفواتير وإيصالات الشراء واستهلاك التصنيع.",
   "Can barcodes be printed and scanned?": "هل يمكن طباعة ومسح الباركود؟",
-  "بالتأكيد. قم بإنشاء باركود مخصص واستخدم أي ماسح ضوئي قياسي لمعالجة المعاملات بسرعة.": "بالتأكيد. قم بإنشاء باركود مخصص واستخدم أي ماسح ضوئي قياسي لمعالجة المعاملات بسرعة.",
+  "Absolutely. Generate custom barcodes and use any standard scanner to process transactions quickly.": "بالتأكيد. قم بإنشاء باركود مخصص واستخدم أي ماسح ضوئي قياسي لمعالجة المعاملات بسرعة.",
   "Smart Inventory Starts Here — Track. Optimize. Deliver.": "المخزون الذكي يبدأ هنا — تتبع. تحسين. تسليم.",
   "Our Inventory Management module puts you in complete control of every item and quantity, no matter if it's in one warehouse or spread across multiple locations.": "تضعك وحدة إدارة المخزون لدينا في تحكم كامل في كل عنصر وكمية، بغض النظر عما إذا كان في مستودع واحد أو موزعة عبر مواقع متعددة.",
   "Flexible Item Categorization": "تصنيف مرن للعناصر",
@@ -519,5 +519,30 @@
   },
   "partners_section": {
     "trusted_by": "موثوق به من قبل المؤسسات الرائدة"
+  },
+  "navbar_dropdowns": {
+    "Accounting & Finance": "المحاسبة والمالية",
+    "Project Management": "إدارة المشاريع",
+    "Asset Management": "إدارة الأصول",
+    "Procurement Management": "إدارة المشتريات",
+    "HR Management": "إدارة الموارد البشرية",
+    "Production or Manufacturing": "الإنتاج أو التصنيع",
+    "Payroll": "كشوف المرتبات",
+    "Quality Management": "إدارة الجودة",
+    "CRM": "إدارة علاقات العملاء",
+    "Warehouse Management": "إدارة المستودعات",
+    "Sales Management": "إدارة المبيعات",
+    "Inventory Management": "إدارة المخزون",
+    "ERPNext System implementation": "تنفيذ نظام ERPNext",
+    "Business Consulting": "استشارات الأعمال",
+    "Subscription plans": "خطط الاشتراك",
+    "Customize your own plan": "خصص خطتك الخاصة",
+    "ERPNext System": "نظام ERPNext",
+    "FAQ's & Download": "الأسئلة الشائعة والتنزيلات",
+    "Blog": "المدونة",
+    "Our Story": "قصتنا",
+    "Team": "فريقنا",
+    "Careers": "الوظائف",
+    "Contact": "اتصل بنا"
   }
 }
