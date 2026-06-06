@@ -50,7 +50,7 @@ const Hero = () => {
                   <span>{t('hero.title_2')}</span>
                 </h1>
                 <p className="text-lg text-slate-600 max-w-2xl">
-                  {t('hero.subtitle')} {/* <-- Translated Subtitle */}
+                  {t('hero.subtitle')}
                 </p>
                 <p className="text-base text-slate-500">
                   {t('hero.trusted_partner')}
@@ -98,13 +98,14 @@ const Hero = () => {
                   />
                 </div>
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-slate-200">
+              
+              {/* Added ltr: and rtl: to handle the absolute positioning dynamically */}
+              <div className="absolute -bottom-6 ltr:-left-6 rtl:-right-6 bg-white p-4 rounded-xl shadow-xl border border-slate-200">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center">
                     <CheckCircle size={24} className="text-white" />
                   </div>
                   <div>
-                    {/* Translated hover badge text */}
                     <div className="text-sm font-semibold text-slate-800">{t('features.Implementation')}</div>
                     <div className="text-xs text-slate-500">{t('features.95% Success Rate')}</div>
                   </div>

@@ -356,7 +356,7 @@
   "Flexible BOM (Bill of Materials)": "فاتورة مواد (BOM) مرنة",
   "Build dynamic BOMs for each product or process with configurable components.": "بناء فواتير مواد ديناميكية لكل منتج أو عملية باستخدام مكونات قابلة للتهيئة.",
   "Track Production Stages": "تتبع مراحل الإنتاج",
-  "Monitor every step في الخط with live updates: started, in progress, or completed.": "مراقبة كل خطوة في خط الإنتاج بتحديثات حية: بدأت، قيد التقدم، أو اكتملت.",
+  "Monitor every step in the line with live updates: started, in progress, or completed.": "مراقبة كل خطوة في خط الإنتاج بتحديثات حية: بدأت، قيد التقدم، أو اكتملت.",
   "Can we create multiple production orders simultaneously?": "هل يمكننا إنشاء أوامر إنتاج متعددة في وقت واحد؟",
   "Yes, the Production Plan tool allows you to generate multiple work orders at once based on sales demand.": "نعم، تتيح لك أداة خطة الإنتاج إنشاء أوامر عمل متعددة في وقت واحد بناءً على طلب المبيعات.",
   "Are quality checks automated upon goods receipt?": "هل عمليات فحص الجودة تلقائية عند استلام البضائع؟",
