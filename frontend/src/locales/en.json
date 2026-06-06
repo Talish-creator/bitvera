@@ -516,5 +516,8 @@
     "toast_success": "Success!",
     "toast_error": "Error",
     "toast_error_desc": "Failed to submit form. Please try again."
+  },
+  "partners_section": {
+    "trusted_by": "Trusted by Leading Organizations"
   }
 }

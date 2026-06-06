@@ -390,7 +390,7 @@
   "Is Warehouse Management integrated with sales, procurement, and production?": "هل إدارة المستودعات متكاملة مع المبيعات والمشتريات والإنتاج؟",
   "Yes, stock levels automatically update based on invoices, purchase receipts, and manufacturing consumption.": "نعم، يتم تحديث مستويات المخزون تلقائياً بناءً على الفواتير وإيصالات الشراء واستهلاك التصنيع.",
   "Can barcodes be printed and scanned?": "هل يمكن طباعة ومسح الباركود؟",
-  "Absolutely. Generate custom barcodes and use any standard scanner to process transactions quickly.": "بالتأكيد. قم بإنشاء باركود مخصص واستخدم أي ماسح ضوئي قياسي لمعالجة المعاملات بسرعة.",
+  "بالتأكيد. قم بإنشاء باركود مخصص واستخدم أي ماسح ضوئي قياسي لمعالجة المعاملات بسرعة.": "بالتأكيد. قم بإنشاء باركود مخصص واستخدم أي ماسح ضوئي قياسي لمعالجة المعاملات بسرعة.",
   "Smart Inventory Starts Here — Track. Optimize. Deliver.": "المخزون الذكي يبدأ هنا — تتبع. تحسين. تسليم.",
   "Our Inventory Management module puts you in complete control of every item and quantity, no matter if it's in one warehouse or spread across multiple locations.": "تضعك وحدة إدارة المخزون لدينا في تحكم كامل في كل عنصر وكمية، بغض النظر عما إذا كان في مستودع واحد أو موزعة عبر مواقع متعددة.",
   "Flexible Item Categorization": "تصنيف مرن للعناصر",
@@ -516,5 +516,8 @@
     "toast_success": "تم بنجاح!",
     "toast_error": "خطأ",
     "toast_error_desc": "فشل إرسال النموذج. يرجى المحاولة مرة أخرى."
+  },
+  "partners_section": {
+    "trusted_by": "موثوق به من قبل المؤسسات الرائدة"
   }
 }

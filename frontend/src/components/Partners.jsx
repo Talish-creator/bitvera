@@ -1,14 +1,18 @@
 import React from 'react';
 import { partnersData } from '../mock/partners';
+import { useTranslation } from 'react-i18next';
 
 const Partners = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="py-16 bg-white border-y border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-center text-slate-800 mb-12">
-          Trusted by Leading Organizations
+          {t('partners_section.trusted_by')}
         </h2>
-        <div className="relative overflow-hidden">
+        {/* Added dir="ltr" to protect the scrolling animation in Arabic mode */}
+        <div className="relative overflow-hidden" dir="ltr">
           <div className="flex space-x-12 animate-scroll">
             {[...partnersData, ...partnersData].map((partner, index) => (
               <div
