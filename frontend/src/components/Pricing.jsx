@@ -6,14 +6,14 @@ import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import PurchaseModal from './PurchaseModal';
-import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
+import { useTranslation } from 'react-i18next';
 
 const Pricing = () => {
   const [billingPeriod, setBillingPeriod] = useState('monthly');
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   
-  const { t } = useTranslation(); // <-- 2. Activate tool
+  const { t } = useTranslation();
 
   const handleChoosePlan = (plan, index) => {
     const planWithId = {
@@ -83,7 +83,7 @@ const Pricing = () => {
                     {plan.features.slice(0, 5).map((feature) => (
                       <div key={feature} className="flex items-start space-x-2">
                         <Check size={18} className="text-cyan-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-600">{t(feature)}</span>
+                        <span className="text-sm text-slate-600">{t(feature, { nsSeparator: false })}</span>
                       </div>
                     ))}
                     {plan.features.length > 5 && (
@@ -93,7 +93,7 @@ const Pricing = () => {
                           {plan.features.slice(5).map((feature) => (
                             <div key={feature} className="flex items-start space-x-2">
                               <Check size={18} className="text-cyan-600 flex-shrink-0 mt-0.5" />
-                              <span className="text-slate-600">{t(feature)}</span>
+                              <span className="text-slate-600">{t(feature, { nsSeparator: false })}</span>
                             </div>
                           ))}
                         </div>
