@@ -685,5 +685,25 @@
     "Customization: Unlimited": "Customization: Unlimited",
     "Support: Dedicated Account Manager + 24/7 Support": "Support: Dedicated Account Manager + 24/7 Support",
     "Provisioning Timeline: 6-8 weeks": "Provisioning Timeline: 6-8 weeks"
+  },
+  "services_content": {
+    "Seamless CRM Integration": "Seamless CRM Integration",
+    "Unified customer data management across all touchpoints": "Unified customer data management across all touchpoints",
+    "Automated lead nurturing and sales pipeline tracking": "Automated lead nurturing and sales pipeline tracking",
+    "Advanced analytics for customer behavior insights": "Advanced analytics for customer behavior insights",
+    "Lead Conversion": "Lead Conversion",
+    "Sales Increase": "Sales Increase",
+    "Intelligent Process Automation": "Intelligent Process Automation",
+    "Workflow automation for repetitive business processes": "Workflow automation for repetitive business processes",
+    "AI-powered decision making and task routing": "AI-powered decision making and task routing",
+    "Real-time monitoring and optimization capabilities": "Real-time monitoring and optimization capabilities",
+    "Time Savings": "Time Savings",
+    "Accuracy Rate": "Accuracy Rate",
+    "Tailored Customization Plans": "Tailored Customization Plans",
+    "Custom modules designed for your specific industry needs": "Custom modules designed for your specific industry needs",
+    "Flexible integration with existing business systems": "Flexible integration with existing business systems",
+    "Ongoing support and maintenance for custom solutions": "Ongoing support and maintenance for custom solutions",
+    "Custom Fit": "Custom Fit",
+    "ROI Improvement": "ROI Improvement"
   }
 }

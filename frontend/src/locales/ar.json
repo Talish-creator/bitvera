@@ -687,5 +687,25 @@
     "Customization: Unlimited": "التخصيص: غير محدود",
     "Support: Dedicated Account Manager + 24/7 Support": "الدعم: مدير حساب مخصص + دعم 24/7",
     "Provisioning Timeline: 6-8 weeks": "مدة التنفيذ: 6-8 أسابيع"
+  },
+  "services_content": {
+    "Seamless CRM Integration": "تكامل سلس لإدارة علاقات العملاء (CRM)",
+    "Unified customer data management across all touchpoints": "إدارة موحدة لبيانات العملاء عبر جميع نقاط الاتصال",
+    "Automated lead nurturing and sales pipeline tracking": "رعاية آلية للعملاء المحتملين وتتبع مسار المبيعات",
+    "Advanced analytics for customer behavior insights": "تحليلات متقدمة لرؤى سلوك العملاء",
+    "Lead Conversion": "تحويل العملاء المحتملين",
+    "Sales Increase": "زيادة المبيعات",
+    "Intelligent Process Automation": "أتمتة العمليات الذكية",
+    "Workflow automation for repetitive business processes": "أتمتة سير العمل للعمليات التجارية المتكررة",
+    "AI-powered decision making and task routing": "اتخاذ قرارات وتوجيه مهام مدعوم بالذكاء الاصطناعي",
+    "Real-time monitoring and optimization capabilities": "قدرات مراقبة وتحسين في الوقت الفعلي",
+    "Time Savings": "توفير الوقت",
+    "Accuracy Rate": "معدل الدقة",
+    "Tailored Customization Plans": "خطط تخصيص مصممة خصيصاً",
+    "Custom modules designed for your specific industry needs": "وحدات مخصصة مصممة لاحتياجات مجالك المحددة",
+    "Flexible integration with existing business systems": "تكامل مرن مع أنظمة الأعمال الحالية",
+    "Ongoing support and maintenance for custom solutions": "دعم وصيانة مستمرة للحلول المخصصة",
+    "Custom Fit": "ملاءمة مخصصة 100%",
+    "ROI Improvement": "تحسين العائد على الاستثمار"
   }
 }
