@@ -3,8 +3,9 @@ import { X, MessageCircle, Send, Phone, Sparkles, Loader2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { sendAIMessage } from '../utils/api';
-
+import { useTranslation } from 'react-i18next';
 const Chatbot = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
