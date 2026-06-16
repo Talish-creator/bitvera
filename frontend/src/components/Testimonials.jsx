@@ -59,10 +59,19 @@ const Testimonials = () => {
 
   const fetchTestimonials = useCallback(async () => {
     try {
-      const data = await getTestimonials();
-      setTestimonials(data.length > 0 ? data : testimonialsData);
+      // Add a 3-second timeout to prevent infinite loading if backend hangs
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Request timed out')), 3000)
+      );
+      
+      const data = await Promise.race([
+        getTestimonials(),
+        timeoutPromise
+      ]);
+      
+      setTestimonials(data && data.length > 0 ? data : testimonialsData);
     } catch (error) {
-      // Fallback to mock data on error
+      // Fallback to mock data on error or timeout
       setTestimonials(testimonialsData);
     } finally {
       setLoading(false);
