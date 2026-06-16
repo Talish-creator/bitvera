@@ -91,7 +91,7 @@ const Hero = () => {
                 </div>
                 <div className="p-6">
                   <img
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                    src="/images/hero-image.jpeg"
                     alt="ERP Dashboard Analytics"
                     className="w-full h-auto rounded-lg"
                     loading="lazy"

@@ -98,13 +98,13 @@ const Navbar = () => {
             {/* Logo Section */}
             <Link to="/" className="flex items-center space-x-3">
               <img
-                src="https://customer-assets.emergentagent.com/job_style-forge-111/artifacts/o13twt3g_WhatsApp%20Image%202026-06-01%20at%2017.04.10.jpeg"
+                src="/images/logo.jpeg"
                 alt="BitVera IT Solutions Logo"
                 className="h-12 w-auto"
               />
               <div className="flex flex-col">
-                <span className="text-base font-bold text-slate-900">BitVera IT Solutions</span>
-                <span className="text-xs text-slate-500">ERP Implementation Experts</span>
+                <span className="text-base font-bold text-slate-900">{t('BitVera IT Solutions')}</span>
+                <span className="text-xs text-slate-500">{t('ERP Implementation Experts')}</span>
               </div>
             </Link>
 

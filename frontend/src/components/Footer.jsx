@@ -21,12 +21,12 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="https://customer-assets.emergentagent.com/job_style-forge-111/artifacts/o13twt3g_WhatsApp%20Image%202026-06-01%20at%2017.04.10.jpeg"
+                src="/images/logo.jpeg"
                 alt="BitVera Solutions Logo"
                 className="h-10 w-auto bg-white p-1 rounded"
               />
               <div className="flex flex-col">
-                <span className="text-base font-bold">BitVera IT Solutions</span>
+                <span className="text-base font-bold">{t('BitVera IT Solutions')}</span>
               </div>
             </div>
             <p className="text-slate-400 text-sm mb-4">

@@ -112,10 +112,10 @@ const Chatbot = () => {
               </div>
               <div>
                 <h3 className="font-semibold flex items-center gap-2">
-                  AI Assistant
-                  <span className="text-xs bg-white/20 px-2 py-0.5 rounded-full">GPT-5.4</span>
+                  {t('AI Assistant')}
+                  <span className="text-xs bg-white/20 px-2 py-0.5 rounded-full">{t('GPT-5.4')}</span>
                 </h3>
-                <p className="text-xs text-cyan-100">Online • AI-Powered</p>
+                <p className="text-xs text-cyan-100">{t('Online • AI-Powered')}</p>
               </div>
             </div>
             <button
@@ -151,7 +151,7 @@ const Chatbot = () => {
               <div className="flex justify-start">
                 <div className="bg-white text-slate-800 border border-slate-200 shadow-sm rounded-2xl px-4 py-2 flex items-center space-x-2">
                   <Loader2 size={16} className="animate-spin text-cyan-600" />
-                  <span className="text-sm">AI is thinking...</span>
+                  <span className="text-sm">{t('AI is thinking...')}</span>
                 </div>
               </div>
             )}
@@ -180,7 +180,7 @@ const Chatbot = () => {
               className="flex-1 bg-green-500 hover:bg-green-600 text-white"
             >
               <MessageCircle size={16} className="mr-1" />
-              WhatsApp
+              {t('WhatsApp')}
             </Button>
             <Button
               onClick={handleCall}
@@ -188,7 +188,7 @@ const Chatbot = () => {
               className="flex-1 bg-blue-500 hover:bg-blue-600 text-white"
             >
               <Phone size={16} className="mr-1" />
-              Call Now
+              {t('Call Now')}
             </Button>
           </div>
 

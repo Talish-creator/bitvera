@@ -639,7 +639,7 @@
     "toast_fail_title": "فشل تسجيل الدخول",
     "toast_fail_desc": "بيانات الاعتماد غير صالحة. يرجى المحاولة مرة أخرى."
   },
-"pricing_features": {
+  "pricing_features": {
     "Accounting & Finance: Basic accounting": "المحاسبة والمالية: محاسبة أساسية",
     "HR Management: Employees only": "إدارة الموارد البشرية: الموظفين فقط",
     "CRM: Quotations only": "إدارة علاقات العملاء: عروض الأسعار فقط",
@@ -707,5 +707,12 @@
     "Ongoing support and maintenance for custom solutions": "دعم وصيانة مستمرة للحلول المخصصة",
     "Custom Fit": "ملاءمة مخصصة 100%",
     "ROI Improvement": "تحسين العائد على الاستثمار"
-  }
+  },
+  "BitVera IT Solutions": "بيتفيرا لحلول تقنية المعلومات",
+  "ERP Implementation Experts": "خبراء تنفيذ أنظمة تخطيط موارد المؤسسات",
+  "AI Assistant": "المساعد الذكي",
+  "Online • AI-Powered": "متصل • مدعوم بالذكاء الاصطناعي",
+  "AI is thinking...": "الذكاء الاصطناعي يفكر...",
+  "WhatsApp": "واتساب",
+  "Call Now": "اتصل الآن"
 }

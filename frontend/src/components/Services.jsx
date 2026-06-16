@@ -14,10 +14,10 @@ const iconMap = {
 
 // We map each tab to a specific, high-quality live image to guarantee they load instantly!
 const imageMap = {
-  erp: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1024",
-  crm: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
-  automation: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
-  customization: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+  erp: "/images/service-erp.jpeg",
+  crm: "/images/service-crm.jpeg",
+  automation: "/images/service-automation.jpeg",
+  customization: "/images/service-custom.jpeg"
 };
 
 const Services = () => {
