@@ -9,7 +9,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: '1',
-      text: 'Hello! 👋 Welcome to Vortexa - BitVera IT Solutions. I\'m your AI assistant powered by GPT-5.4. How can I help you today?',
+      text: 'Hello! 👋 Welcome to Bitvera. I\'m your AI assistant powered by GPT-5.4. How can I help you today?',
       sender: 'bot',
       timestamp: new Date()
     }
@@ -83,7 +83,7 @@ const Chatbot = () => {
   };
 
   const handleWhatsApp = () => {
-    const message = encodeURIComponent('Hello! I\'m interested in learning more about Vortexa - BitVera IT Solutions.');
+    const message = encodeURIComponent('Hello! I\'m interested in learning more about Bitvera.');
     window.open(`https://wa.me/966580608336?text=${message}`, '_blank');
   };
 

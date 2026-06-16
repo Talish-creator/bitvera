@@ -35,7 +35,6 @@ const Home = () => {
       <Testimonials />
       <CTASection />
       <Footer />
-      <Chatbot />
     </div>
   );
 };
@@ -52,6 +51,7 @@ function App() {
           {/* ------------------------------ */}
           
         </Routes>
+        <Chatbot />
       </BrowserRouter>
       <Toaster />
     </div>

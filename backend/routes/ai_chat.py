@@ -29,7 +29,7 @@ async def chat_with_ai(message: ChatMessage):
         if not api_key:
             raise HTTPException(status_code=500, detail="AI API key not configured")
         
-        system_message = """You are a helpful AI assistant for Vortexa - BitVera IT Solutions, 
+        system_message = """You are a helpful AI assistant for Bitvera, 
         an ERP implementation company in Saudi Arabia. You help customers with:
         - ERP implementation questions
         - Pricing information (Starter: 594 SAR/month, Professional: 2,050 SAR/month, Enterprise: 4,028 SAR/month)
