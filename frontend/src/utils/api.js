@@ -77,18 +77,7 @@ export const sendAIMessage = async (text, sessionId = 'default') => {
     return response.data;
   } catch (error) {
     logError('Error sending AI message', error);
-    
-    // Fallback: If the backend is not reachable (e.g. on Vercel without a deployed Python backend),
-    // we return a mock response instead of throwing an error that breaks the UI.
-    console.warn("Backend unreachable. Returning simulated AI response.");
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          response: `[Simulated Response] I received your message: "${text}". (Note: The AI backend server is currently disconnected or not deployed.)`,
-          session_id: sessionId
-        });
-      }, 1000);
-    });
+    throw error;
   }
 };
 
