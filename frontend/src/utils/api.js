@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
-const API = `${BACKEND_URL}/api`;
+// Always use relative /api path so it correctly hits Vercel Serverless Functions
+const API = '/api';
 
 const logError = (context, error) => {
   // Only log in development, use proper error tracking in production

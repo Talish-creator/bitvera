@@ -1,9 +1,6 @@
 import Groq from 'groq-sdk';
 import clientPromise from '../../lib/db.js';
 
-// Vercel serverless function configuration
-// No need to export default function req, res in Next.js, but for bare Vercel we use module.exports
-// Wait, Vercel supports ESM but usually it's `export default async function handler(req, res)`
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -16,21 +13,32 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Message text is required' });
     }
 
-    const groq = new Groq({
-      apiKey: process.env.GROQ_API_KEY
-    });
+    const groqApiKey = process.env.GROQ_API_KEY;
+    if (!groqApiKey) {
+      console.warn("GROQ_API_KEY is missing!");
+      return res.status(500).json({ error: 'AI API Key not configured' });
+    }
 
-    const client = await clientPromise;
-    const db = client.db(process.env.DB_NAME || 'test_database');
-    const historyCollection = db.collection('chat_histories');
+    const groq = new Groq({ apiKey: groqApiKey });
 
-    // Fetch existing history for this session
-    let history = await historyCollection.findOne({ session_id: session_id || 'default' });
     let messages = [];
+    let historyCollection = null;
 
-    if (history && history.messages) {
-      messages = history.messages;
-    } else {
+    try {
+      const client = await clientPromise;
+      const db = client.db(process.env.DB_NAME || 'test_database');
+      historyCollection = db.collection('chat_histories');
+
+      // Fetch existing history
+      let history = await historyCollection.findOne({ session_id: session_id || 'default' });
+      if (history && history.messages) {
+        messages = history.messages;
+      }
+    } catch (dbError) {
+      console.warn("Database connection skipped for chat. Proceeding without history.", dbError.message);
+    }
+
+    if (messages.length === 0) {
       messages = [
         {
           role: 'system',
@@ -39,34 +47,33 @@ export default async function handler(req, res) {
       ];
     }
 
-    // Add new user message
     messages.push({ role: 'user', content: text });
 
-    // Call Groq AI
     const chatCompletion = await groq.chat.completions.create({
       messages: messages,
-      model: 'llama3-8b-8192',
+      model: 'llama-3.1-8b-instant',
       temperature: 0.7,
       max_tokens: 500,
     });
 
     const aiResponse = chatCompletion.choices[0]?.message?.content || 'I apologize, but I could not generate a response.';
 
-    // Add AI response to history
     messages.push({ role: 'assistant', content: aiResponse });
 
-    // Save back to DB
-    await historyCollection.updateOne(
-      { session_id: session_id || 'default' },
-      { 
-        $set: { 
-          messages,
-          updated_at: new Date()
-        },
-        $setOnInsert: { created_at: new Date() }
-      },
-      { upsert: true }
-    );
+    if (historyCollection) {
+      try {
+        await historyCollection.updateOne(
+          { session_id: session_id || 'default' },
+          { 
+            $set: { messages, updated_at: new Date() },
+            $setOnInsert: { created_at: new Date() }
+          },
+          { upsert: true }
+        );
+      } catch (saveError) {
+        console.warn("Failed to save history to DB.", saveError.message);
+      }
+    }
 
     return res.status(200).json({
       response: aiResponse,
