@@ -1,7 +1,9 @@
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGO_URL;
-const options = {};
+const options = {
+  serverSelectionTimeoutMS: 2000 // 2 seconds timeout to prevent hanging Serverless Functions
+};
 
 let client;
 let clientPromise;
