@@ -35,12 +35,12 @@ const Hero = () => {
       <section className="relative pt-24 pb-20 overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 dark:from-slate-900 via-cyan-50/30 dark:via-slate-800/50 to-teal-50/20 dark:to-slate-900"></div>
         
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 start-10 w-72 h-72 bg-cyan-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 end-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left space-y-8">
+            <div className="text-center lg:text-start space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight transition-colors">
                   <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">
@@ -101,7 +101,7 @@ const Hero = () => {
               </div>
               
               {/* Added ltr: and rtl: to handle the absolute positioning dynamically */}
-              <div className="absolute -bottom-6 ltr:-left-6 rtl:-right-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 transition-colors">
+              <div className="absolute -bottom-6 -start-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 transition-colors">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center">
                     <CheckCircle size={24} className="text-white" />

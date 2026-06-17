@@ -134,18 +134,18 @@ const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-tr from-cyan-500 to-teal-600 rounded-full shadow-[0_8px_30px_rgb(6,182,212,0.4)] hover:shadow-[0_8px_30px_rgb(6,182,212,0.6)] hover:scale-105 transition-all duration-300 flex items-center justify-center group"
+          className="fixed bottom-6 end-6 z-50 w-16 h-16 bg-gradient-to-tr from-cyan-500 to-teal-600 rounded-full shadow-[0_8px_30px_rgb(6,182,212,0.4)] hover:shadow-[0_8px_30px_rgb(6,182,212,0.6)] hover:scale-105 transition-all duration-300 flex items-center justify-center group"
         >
           <Bot size={32} className="text-white transform group-hover:rotate-12 transition-transform duration-300" />
-          <span className="absolute top-0 right-0 w-4 h-4 bg-red-500 border-2 border-white rounded-full animate-pulse"></span>
+          <span className="absolute top-0 end-0 w-4 h-4 bg-red-500 border-2 border-white rounded-full animate-pulse"></span>
         </button>
       )}
 
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-full max-w-sm sm:w-96 h-[650px] max-h-[85vh] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800 ring-1 ring-slate-900/5 dark:ring-white/5 transition-all duration-500 ease-in-out">
+        <div className="fixed bottom-6 end-6 z-50 w-full max-w-sm sm:w-96 h-[650px] max-h-[85vh] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800 ring-1 ring-slate-900/5 dark:ring-white/5 transition-all duration-500 ease-in-out">
           {/* Header */}
           <div className="bg-gradient-to-r from-cyan-600 to-teal-600 p-5 text-white flex items-center justify-between relative overflow-hidden shrink-0">
-            <div className="absolute top-0 left-0 w-full h-full bg-white/10 blur-2xl transform -skew-y-12"></div>
+            <div className="absolute top-0 start-0 w-full h-full bg-white/10 blur-2xl transform -skew-y-12"></div>
             <div className="flex items-center space-x-3 relative z-10">
               <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 shadow-inner">
                 <Sparkles size={24} className="text-white" />
@@ -187,7 +187,7 @@ const Chatbot = () => {
                   ) : (
                     <p className="text-sm whitespace-pre-line leading-relaxed">{message.text}</p>
                   )}
-                  <span className={`text-[10px] mt-2 block ${message.sender === 'user' ? 'text-cyan-100 text-right' : 'text-slate-400 text-left'}`}>
+                  <span className={`text-[10px] mt-2 block ${message.sender === 'user' ? 'text-cyan-100 text-end' : 'text-slate-400 text-start'}`}>
                     {message.timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
@@ -239,7 +239,7 @@ const Chatbot = () => {
                 className="bg-cyan-500 hover:bg-cyan-600 text-white rounded-full w-10 h-10 shadow-md transition-transform active:scale-95 flex-shrink-0"
                 disabled={isTyping || !inputMessage.trim()}
               >
-                {isTyping ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} className="ml-1" />}
+                {isTyping ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} className="ms-1" />}
               </Button>
             </div>
             

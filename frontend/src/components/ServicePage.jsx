@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import BookingModal from './BookingModal';
+import SEO from './SEO';
 import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
 import { 
   Plus, X, Calculator, Receipt, CreditCard, Users, CheckCircle2, 
@@ -345,6 +346,7 @@ const ServicePage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-sans transition-colors duration-300">
+      <SEO titleKey={content.title} descriptionKey={content.description} path={`/service/${id}`} />
       <Navbar />
       
       {/* 1. WHITE/TEAL HERO SECTION */}
@@ -416,9 +418,9 @@ const ServicePage = () => {
                   >
                     <button 
                       onClick={() => toggleFaq(idx)}
-                      className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                      className="w-full flex items-center justify-between p-6 text-start focus:outline-none"
                     >
-                      <span className="text-lg font-semibold text-slate-900 dark:text-white pr-8 transition-colors">{t(faq.question)}</span>
+                      <span className="text-lg font-semibold text-slate-900 dark:text-white pe-8 transition-colors">{t(faq.question)}</span>
                       <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${openFaq === idx ? 'bg-cyan-500 rotate-180' : 'bg-slate-100 dark:bg-slate-700'}`}>
                         {openFaq === idx ? (
                           <X className="w-5 h-5 text-white" />

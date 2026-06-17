@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -21,10 +22,12 @@ import ServicePage from "./components/ServicePage";
 // -------------------------------
 
 import { ThemeProvider } from "./context/ThemeContext";
+import SEO from "./components/SEO";
 
 const Home = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+      <SEO titleKey="Home" />
       <Navbar />
       <Hero />
       <Partners />
@@ -43,9 +46,10 @@ const Home = () => {
 
 function App() {
   return (
-    <ThemeProvider>
-      <div className="App dark:bg-slate-900 dark:text-white transition-colors duration-300">
-        <BrowserRouter>
+    <HelmetProvider>
+      <ThemeProvider>
+        <div className="App dark:bg-slate-900 dark:text-white transition-colors duration-300">
+          <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             
@@ -59,6 +63,7 @@ function App() {
         <Toaster />
       </div>
     </ThemeProvider>
+    </HelmetProvider>
   );
 }
 

@@ -43,7 +43,7 @@ const Pricing = () => {
                 <TabsTrigger value="monthly" className="data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white text-slate-600 dark:text-slate-300">{t('pricing_page.monthly')}</TabsTrigger>
                 <TabsTrigger value="annually" className="relative data-[state=active]:bg-white dark:data-[state=active]:bg-slate-700 data-[state=active]:text-slate-900 dark:data-[state=active]:text-white text-slate-600 dark:text-slate-300">
                   {t('pricing_page.annually')}
-                  <Badge className="ml-2 bg-green-500 text-white text-xs">{t('pricing_page.save_15')}</Badge>
+                  <Badge className="ms-2 bg-green-500 text-white text-xs">{t('pricing_page.save_15')}</Badge>
                 </TabsTrigger>
               </TabsList>
             </Tabs>
@@ -56,7 +56,7 @@ const Pricing = () => {
                 className={`relative bg-white dark:bg-slate-800 ${plan.popular ? 'border-2 border-cyan-500 shadow-2xl shadow-cyan-500/20' : 'border-slate-200 dark:border-slate-700'} hover:shadow-xl transition-all duration-300`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="absolute -top-4 start-1/2 transform -translate-x-1/2">
                     <Badge className="bg-gradient-to-r from-cyan-500 to-teal-600 text-white px-4 py-1">
                       {t('pricing_page.most_popular')}
                     </Badge>
@@ -72,7 +72,7 @@ const Pricing = () => {
                       <span className="text-5xl font-bold text-slate-900 dark:text-white transition-colors">
                         {billingPeriod === 'monthly' ? plan.monthlyPrice : plan.annualPrice}
                       </span>
-                      <span className="text-xl text-slate-500 dark:text-slate-400 ml-2 transition-colors">{t('pricing_page.sar_month')}</span>
+                      <span className="text-xl text-slate-500 dark:text-slate-400 ms-2 transition-colors">{t('pricing_page.sar_month')}</span>
                     </div>
                     <p className="text-sm text-slate-500 dark:text-slate-400 mt-2 transition-colors">
                       {t('pricing_page.implementation_fee')} {plan.implementationFee?.toLocaleString()}
