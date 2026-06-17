@@ -89,23 +89,14 @@ const Hero = () => {
                   <div className="w-3 h-3 rounded-full bg-white/30"></div>
                   <div className="w-3 h-3 rounded-full bg-white/30"></div>
                 </div>
-                <div className="p-6">
-                  <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    className="w-full h-auto rounded-lg shadow-inner"
-                    poster="/images/hero-mockup.png"
-                  >
-                    <source src="/videos/hero-dashboard-loop.mp4" type="video/mp4" />
-                    <img
-                      src="/images/hero-mockup.png"
-                      alt="ERP Dashboard Analytics"
-                      className="w-full h-auto rounded-lg shadow-inner"
-                      loading="lazy"
-                    />
-                  </video>
+                <div className="p-6 relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 -z-10"></div>
+                  <img
+                    src="/images/hero-mockup.png"
+                    alt="BitVera ERP Dashboard"
+                    className="relative w-full h-auto rounded-lg shadow-2xl transform group-hover:-translate-y-2 group-hover:scale-[1.02] transition-all duration-700"
+                    loading="lazy"
+                  />
                 </div>
               </div>
               
