@@ -37,13 +37,13 @@ async def chat_with_ai(message: ChatMessage):
         - Demo booking assistance
         - General inquiries
         
-        Be professional, helpful, and concise. Always mention the phone number +966 58 060 8336 for urgent matters."""
+        Be professional, helpful, and very concise. Keep your responses brief (under 2-3 sentences) to ensure lightning-fast replies. Always mention the phone number +966 58 060 8336 for urgent matters."""
         
         chat = LlmChat(
             api_key=api_key,
             session_id=message.session_id,
             system_message=system_message
-        ).with_model("openai", "gpt-4o")
+        ).with_model("openai", "gpt-4o-mini")
         
         user_message = UserMessage(text=message.text)
         response = await chat.send_message(user_message)
