@@ -68,11 +68,12 @@ export const getPaymentStatus = async (sessionId) => {
 };
 
 // AI Chat API
-export const sendAIMessage = async (text, sessionId = 'default') => {
+export const sendAIMessage = async (text, sessionId = 'default', context = {}) => {
   try {
     const response = await axios.post(`${API}/ai/chat`, {
       text,
-      session_id: sessionId
+      session_id: sessionId,
+      context
     });
     return response.data;
   } catch (error) {
