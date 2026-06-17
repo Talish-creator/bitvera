@@ -2,6 +2,7 @@ import React from 'react';
 import { modulesData } from '../mock/data';
 import { DollarSign, Users, Package, Archive, Award, Target, FolderKanban, Warehouse, CreditCard, Factory, ShoppingCart, ShoppingBag } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const iconMap = {
   DollarSign,
@@ -37,9 +38,9 @@ const Modules = () => {
           {modulesData.map((module, index) => {
             const Icon = iconMap[module.icon];
             return (
-              <a
+              <Link
                 key={index}
-                href={module.link}
+                to={module.link}
                 className="group bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:border-cyan-500 dark:hover:border-cyan-400 hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center space-y-4"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-xl flex items-center justify-center group-hover:from-cyan-500 group-hover:to-teal-600 transition-all duration-300">
@@ -49,7 +50,7 @@ const Modules = () => {
                   {/* We tell the translator to look inside the solution_names group! */}
                   {t(`solution_names.${module.name}`)}
                 </h3>
-              </a>
+              </Link>
             );
           })}
         </div>

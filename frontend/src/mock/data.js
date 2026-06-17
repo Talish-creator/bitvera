@@ -177,18 +177,18 @@ export const pricingPlans = [
 ];
 
 export const modulesData = [
-  { name: "Accounting & Finance", icon: "DollarSign", link: "/accounting-finance" },
-  { name: "HR Management", icon: "Users", link: "/hr-management" },
-  { name: "Asset Management", icon: "Package", link: "/asset-management" },
-  { name: "Inventory Management", icon: "Archive", link: "/inventory-management" },
-  { name: "Quality Management", icon: "Award", link: "/quality-management" },
-  { name: "CRM", icon: "Target", link: "/crm" },
-  { name: "Project Management", icon: "FolderKanban", link: "/project-management" },
-  { name: "Warehouse Management", icon: "Warehouse", link: "/warehouse-management" },
-  { name: "Payroll", icon: "CreditCard", link: "/payroll" },
-  { name: "Production or Manufacturing", icon: "Factory", link: "/manufacturing" },
-  { name: "Sales Management", icon: "ShoppingCart", link: "/sales-management" },
-  { name: "Procurement Management", icon: "ShoppingBag", link: "/procurement-management" }
+  { name: "Accounting & Finance", icon: "DollarSign", link: "/service/accounting" },
+  { name: "HR Management", icon: "Users", link: "/service/hr-management" },
+  { name: "Asset Management", icon: "Package", link: "/service/asset-management" },
+  { name: "Inventory Management", icon: "Archive", link: "/service/inventory" },
+  { name: "Quality Management", icon: "Award", link: "/service/quality" },
+  { name: "CRM", icon: "Target", link: "/service/crm" },
+  { name: "Project Management", icon: "FolderKanban", link: "/service/project-management" },
+  { name: "Warehouse Management", icon: "Warehouse", link: "/service/warehouse" },
+  { name: "Payroll", icon: "CreditCard", link: "/service/payroll" },
+  { name: "Production or Manufacturing", icon: "Factory", link: "/service/production" },
+  { name: "Sales Management", icon: "ShoppingCart", link: "/service/sales" },
+  { name: "Procurement Management", icon: "ShoppingBag", link: "/service/procurement" }
 ];
 
 export const whyChooseData = [
