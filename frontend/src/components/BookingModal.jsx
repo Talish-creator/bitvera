@@ -81,7 +81,7 @@ const BookingModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-transparent dark:border-slate-800 transition-colors">
         <div className="sticky top-0 bg-gradient-to-r from-cyan-500 to-teal-600 p-6 text-white flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold">{t('booking_modal.title')}</h2>
@@ -177,7 +177,7 @@ const BookingModal = ({ isOpen, onClose }) => {
             </Button>
           </div>
 
-          <p className="text-xs text-slate-500 text-center mt-4">
+          <p className="text-xs text-slate-500 dark:text-slate-400 text-center mt-4 transition-colors">
             {t('booking_modal.call_directly')}{' '}
             <a href="tel:+966580608336" className="text-cyan-600 hover:underline font-semibold" dir="ltr">
               +966 58 060 8336

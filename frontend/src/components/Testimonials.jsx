@@ -9,7 +9,7 @@ const TestimonialCard = ({ testimonial }) => {
   const { t } = useTranslation(); // <-- 2. Activate tool inside the Card
 
   return (
-    <Card className="border-slate-200 hover:border-cyan-500 hover:shadow-xl transition-all duration-300">
+    <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-cyan-500 dark:hover:border-cyan-400 hover:shadow-xl transition-all duration-300">
       <CardContent className="pt-6">
         <div className="flex items-center mb-4">
           {[...Array(testimonial.rating)].map((_, i) => (
@@ -17,7 +17,7 @@ const TestimonialCard = ({ testimonial }) => {
           ))}
         </div>
         {/* Wrap the mock data in the translation tool */}
-        <p className="text-slate-600 mb-6 italic">"{t(testimonial.content)}"</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-6 italic transition-colors">"{t(testimonial.content)}"</p>
         <div className="flex items-center space-x-3">
           <img
             src={testimonial.avatar}
@@ -26,8 +26,8 @@ const TestimonialCard = ({ testimonial }) => {
           />
           <div>
             {/* Wrap name and position */}
-            <div className="font-semibold text-slate-900">{t(testimonial.name)}</div>
-            <div className="text-sm text-slate-500">{t(testimonial.position)}</div>
+            <div className="font-semibold text-slate-900 dark:text-white transition-colors">{t(testimonial.name)}</div>
+            <div className="text-sm text-slate-500 dark:text-slate-400 transition-colors">{t(testimonial.position)}</div>
           </div>
         </div>
       </CardContent>
@@ -36,15 +36,15 @@ const TestimonialCard = ({ testimonial }) => {
 };
 
 const LoadingSkeleton = () => (
-  <Card className="border-slate-200 animate-pulse">
+  <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 animate-pulse transition-colors">
     <CardContent className="pt-6">
-      <div className="h-4 bg-slate-200 rounded w-3/4 mb-4"></div>
-      <div className="h-20 bg-slate-200 rounded mb-6"></div>
+      <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-3/4 mb-4"></div>
+      <div className="h-20 bg-slate-200 dark:bg-slate-700 rounded mb-6"></div>
       <div className="flex items-center space-x-3">
-        <div className="w-12 h-12 bg-slate-200 rounded-full"></div>
+        <div className="w-12 h-12 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
         <div className="flex-1">
-          <div className="h-4 bg-slate-200 rounded w-2/3 mb-2"></div>
-          <div className="h-3 bg-slate-200 rounded w-1/2"></div>
+          <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-2/3 mb-2"></div>
+          <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded w-1/2"></div>
         </div>
       </div>
     </CardContent>
@@ -84,13 +84,13 @@ const Testimonials = () => {
 
   if (loading) {
     return (
-      <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
+      <section className="py-20 bg-gradient-to-br from-slate-50 dark:from-slate-900 to-cyan-50/20 dark:to-slate-800/20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">
               {t('testimonials_page.title')}
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-slate-600 dark:text-slate-300 transition-colors">
               {t('testimonials_page.subtitle')}
             </p>
           </div>
@@ -105,13 +105,13 @@ const Testimonials = () => {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
+    <section className="py-20 bg-gradient-to-br from-slate-50 dark:from-slate-900 to-cyan-50/20 dark:to-slate-800/20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">
             {t('testimonials_page.title')}
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-slate-600 dark:text-slate-300 transition-colors">
             {t('testimonials_page.subtitle')}
           </p>
         </div>

@@ -25,26 +25,26 @@ const Services = () => {
   const { t } = useTranslation(); 
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 to-cyan-50/20">
+    <section className="py-20 bg-gradient-to-br from-slate-50 dark:from-slate-900 to-cyan-50/20 dark:to-slate-800/20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">
             {t('services_page.title')}
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-slate-600 dark:text-slate-300 transition-colors">
             {t('services_page.subtitle')}
           </p>
         </div>
 
         <Tabs value={activeService} onValueChange={setActiveService} className="w-full">
-          <TabsList className="w-full justify-center bg-white border border-slate-200 p-1 mb-12 flex-wrap sm:flex-nowrap h-auto">
+          <TabsList className="w-full justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 mb-12 flex-wrap sm:flex-nowrap h-auto transition-colors">
             {servicesData.map((service) => {
               const Icon = iconMap[service.icon];
               return (
                 <TabsTrigger
                   key={service.id}
                   value={service.id}
-                  className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-teal-600 data-[state=active]:text-white m-1"
+                  className="flex items-center space-x-2 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500 data-[state=active]:to-teal-600 data-[state=active]:text-white m-1 transition-colors"
                 >
                   <Icon size={18} />
                   <span>{t(service.title, { nsSeparator: false })}</span>
@@ -58,8 +58,8 @@ const Services = () => {
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left - Image/Illustration */}
                 <div className="relative">
-                  <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 overflow-hidden">
-                    <div className="aspect-square rounded-xl overflow-hidden flex items-center justify-center bg-slate-50">
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-4 overflow-hidden transition-colors">
+                    <div className="aspect-square rounded-xl overflow-hidden flex items-center justify-center bg-slate-50 dark:bg-slate-700">
                       <img
                         src={imageMap[service.id]}
                         alt={t(service.heading, { nsSeparator: false })}
@@ -73,7 +73,7 @@ const Services = () => {
 
                 {/* Right - Content */}
                 <div className="space-y-6">
-                  <h3 className="text-3xl font-bold text-slate-900">
+                  <h3 className="text-3xl font-bold text-slate-900 dark:text-white transition-colors">
                     {t(service.heading, { nsSeparator: false })}
                   </h3>
                   <ul className="space-y-3">
@@ -94,7 +94,7 @@ const Services = () => {
                             />
                           </svg>
                         </div>
-                        <span className="text-slate-600">{t(feature, { nsSeparator: false })}</span>
+                        <span className="text-slate-600 dark:text-slate-300 transition-colors">{t(feature, { nsSeparator: false })}</span>
                       </li>
                     ))}
                   </ul>
@@ -104,7 +104,7 @@ const Services = () => {
                     {service.stats.map((stat, index) => (
                       <div
                         key={index}
-                        className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl p-6 text-center shadow-lg"
+                        className="bg-gradient-to-br from-slate-800 dark:from-slate-700 to-slate-700 dark:to-slate-600 border border-transparent dark:border-slate-500 rounded-xl p-6 text-center shadow-lg transition-colors"
                       >
                         <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
                           {stat.value}

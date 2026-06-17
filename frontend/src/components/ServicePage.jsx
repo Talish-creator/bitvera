@@ -344,16 +344,16 @@ const ServicePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-sans transition-colors duration-300">
       <Navbar />
       
       {/* 1. WHITE/TEAL HERO SECTION */}
-      <div className="pt-32 pb-20 px-4 bg-white border-b border-slate-100">
+      <div className="pt-32 pb-20 px-4 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors">
         <div className="max-w-5xl mx-auto text-center space-y-8 mt-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight transition-colors">
             {t(content.title)}
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed transition-colors">
             {t(content.description)}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
@@ -361,7 +361,7 @@ const ServicePage = () => {
             {/* <-- 2. Wired up this Button! */}
             <button 
               onClick={() => setIsBookingOpen(true)}
-              className="px-8 py-3.5 rounded-lg border-2 border-cyan-600 text-cyan-700 font-bold hover:bg-cyan-50 transition-all duration-300"
+              className="px-8 py-3.5 rounded-lg border-2 border-cyan-600 text-cyan-700 dark:text-cyan-400 font-bold hover:bg-cyan-50 dark:hover:bg-cyan-900/30 transition-all duration-300"
             >
               {t('Book a Free Consultation')}
             </button>
@@ -385,12 +385,12 @@ const ServicePage = () => {
             {content.features.map((feature, idx) => {
               const Icon = feature.icon;
               return (
-                <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:border-cyan-100 transition-all duration-300 group">
-                  <div className="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-500 transition-colors duration-300">
+                <div key={idx} className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md hover:border-cyan-100 dark:hover:border-cyan-800 transition-all duration-300 group">
+                  <div className="w-14 h-14 bg-cyan-50 dark:bg-cyan-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-500 transition-colors duration-300">
                     <Icon className="w-7 h-7 text-cyan-600 group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{t(feature.title)}</h3>
-                  <p className="text-slate-600 leading-relaxed">{t(feature.description)}</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors">{t(feature.title)}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed transition-colors">{t(feature.description)}</p>
                 </div>
               );
             })}
@@ -400,31 +400,31 @@ const ServicePage = () => {
 
       {/* 3. WHITE/TEAL FAQ ACCORDION */}
       {content.faqs.length > 0 && (
-        <div className="py-20 px-4 bg-white border-t border-slate-100">
+        <div className="py-20 px-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white text-center mb-12 transition-colors">
               {t('Everything You Should Know')}
             </h2>
             
             <div className="space-y-4">
               {content.faqs.map((faq, idx) => (
-                <div 
-                  key={idx} 
-                  className={`border rounded-xl overflow-hidden transition-colors duration-300 ${
-                    openFaq === idx ? 'border-cyan-500 bg-cyan-50/30' : 'border-slate-200 bg-white hover:border-cyan-200'
-                  }`}
-                >
-                  <button 
-                    onClick={() => toggleFaq(idx)}
-                    className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  <div 
+                    key={idx} 
+                    className={`border rounded-xl overflow-hidden transition-colors duration-300 ${
+                      openFaq === idx ? 'border-cyan-500 bg-cyan-50/30 dark:bg-cyan-900/20' : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-cyan-200 dark:hover:border-cyan-700'
+                    }`}
                   >
-                    <span className="text-lg font-semibold text-slate-900 pr-8">{t(faq.question)}</span>
-                    <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${openFaq === idx ? 'bg-cyan-500 rotate-180' : 'bg-slate-100'}`}>
-                      {openFaq === idx ? (
-                        <X className="w-5 h-5 text-white" />
-                      ) : (
-                        <Plus className="w-5 h-5 text-slate-600" />
-                      )}
+                    <button 
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                    >
+                      <span className="text-lg font-semibold text-slate-900 dark:text-white pr-8 transition-colors">{t(faq.question)}</span>
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${openFaq === idx ? 'bg-cyan-500 rotate-180' : 'bg-slate-100 dark:bg-slate-700'}`}>
+                        {openFaq === idx ? (
+                          <X className="w-5 h-5 text-white" />
+                        ) : (
+                          <Plus className="w-5 h-5 text-slate-600 dark:text-slate-300" />
+                        )}
                     </div>
                   </button>
                   
@@ -433,7 +433,7 @@ const ServicePage = () => {
                       openFaq === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="p-6 pt-0 text-slate-600 leading-relaxed border-t border-cyan-100/50">
+                    <div className="p-6 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-cyan-100/50 dark:border-cyan-800/50 transition-colors">
                       {t(faq.answer)}
                     </div>
                   </div>

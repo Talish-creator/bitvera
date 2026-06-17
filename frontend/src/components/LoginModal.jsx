@@ -48,7 +48,7 @@ const LoginModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full border border-transparent dark:border-slate-800 transition-colors">
         <div className="bg-gradient-to-r from-cyan-500 to-teal-600 p-6 text-white flex items-center justify-between rounded-t-2xl">
           <div>
             <h2 className="text-2xl font-bold">{t('login_modal.welcome_back')}</h2>
@@ -91,10 +91,10 @@ const LoginModal = ({ isOpen, onClose }) => {
 
           <div className="flex items-center justify-between text-sm">
             <label className="flex items-center space-x-2 cursor-pointer">
-              <input type="checkbox" className="rounded border-slate-300" />
-              <span className="text-slate-600">{t('login_modal.remember_me')}</span>
+              <input type="checkbox" className="rounded border-slate-300 dark:border-slate-600 dark:bg-slate-800" />
+              <span className="text-slate-600 dark:text-slate-300 transition-colors">{t('login_modal.remember_me')}</span>
             </label>
-            <button type="button" className="text-cyan-600 hover:underline">
+            <button type="button" className="text-cyan-600 dark:text-cyan-400 hover:underline transition-colors">
               {t('login_modal.forgot_password')}
             </button>
           </div>
@@ -107,9 +107,9 @@ const LoginModal = ({ isOpen, onClose }) => {
             {isSubmitting ? t('login_modal.logging_in') : t('login_modal.login_btn')}
           </Button>
 
-          <p className="text-sm text-slate-600 text-center flex items-center justify-center gap-1">
+          <p className="text-sm text-slate-600 dark:text-slate-300 text-center flex items-center justify-center gap-1 transition-colors">
             {t('login_modal.no_account')}
-            <button type="button" className="text-cyan-600 hover:underline font-semibold">
+            <button type="button" className="text-cyan-600 dark:text-cyan-400 hover:underline font-semibold transition-colors">
               {t('login_modal.contact_sales')}
             </button>
           </p>

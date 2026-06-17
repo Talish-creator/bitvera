@@ -4,11 +4,12 @@ import {
   Menu, X, ChevronDown, Calculator, FileCog, Network, 
   PackageCheck, UserSearch, Factory, FileSpreadsheet, 
   Settings, Users, Warehouse, TrendingUp, Package, 
-  Lightbulb, Info, Briefcase, Phone, Globe
+  Lightbulb, Info, Briefcase, Phone, Globe, Sun, Moon
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import BookingModal from './BookingModal';
+import { useTheme } from '../context/ThemeContext';
 import { useTranslation } from 'react-i18next'; // <-- Translation tool
 
 // All links have been updated to connect to the new ServicePage!
@@ -82,7 +83,8 @@ const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isLangOpen, setIsLangOpen] = useState(false); 
   
-  const { t, i18n } = useTranslation(); // <-- Activated here
+  const { t, i18n } = useTranslation(); 
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const handleDropdownToggle = (key) => {
     setActiveDropdown(activeDropdown === key ? null : key);
@@ -91,7 +93,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             
@@ -100,11 +102,11 @@ const Navbar = () => {
               <img
                 src="/images/logo.jpeg"
                 alt="BitVera IT Solutions Logo"
-                className="h-12 w-auto"
+                className="h-12 w-auto rounded-lg"
               />
               <div className="flex flex-col">
-                <span className="text-base font-bold text-slate-900">{t('BitVera IT Solutions')}</span>
-                <span className="text-xs text-slate-500">{t('ERP Implementation Experts')}</span>
+                <span className="text-base font-bold text-slate-900 dark:text-white transition-colors">{t('BitVera IT Solutions')}</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 transition-colors">{t('ERP Implementation Experts')}</span>
               </div>
             </Link>
 
@@ -113,7 +115,7 @@ const Navbar = () => {
               {menuOrder.map((key) => {
                 if (key === 'industries') {
                   return (
-                    <a key="industries" href="#industries" className="px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium">
+                    <a key="industries" href="#industries" className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors text-sm font-medium">
                       {t('navbar.industries')}
                     </a>
                   );
@@ -123,7 +125,7 @@ const Navbar = () => {
                 return (
                   <div key={key} className="relative group">
                     <button 
-                      className="flex items-center space-x-1 px-4 py-2 text-slate-700 hover:text-cyan-600 hover:bg-slate-50 rounded-lg transition-colors text-sm font-medium"
+                      className="flex items-center space-x-1 px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors text-sm font-medium"
                       onMouseEnter={() => {
                         setActiveDropdown(key);
                         setIsLangOpen(false);
@@ -135,12 +137,12 @@ const Navbar = () => {
                     
                     {activeDropdown === key && (
                       <div 
-                        className={`absolute left-0 top-full mt-1 ${menu.width} bg-white rounded-2xl shadow-xl border border-slate-200 py-4`}
+                        className={`absolute left-0 top-full mt-1 ${menu.width} bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 py-4 transition-colors`}
                         onMouseLeave={() => setActiveDropdown(null)}
                       >
                         {/* Dropdown Header */}
-                        <div className="px-6 pb-4 mb-2 border-b border-slate-100">
-                          <h3 className="text-lg font-bold text-indigo-950">{t(`navbar.${key}`)}</h3>
+                        <div className="px-6 pb-4 mb-2 border-b border-slate-100 dark:border-slate-800">
+                          <h3 className="text-lg font-bold text-indigo-950 dark:text-indigo-300">{t(`navbar.${key}`)}</h3>
                         </div>
 
                         {/* Grid Layout (Solutions) */}
@@ -153,10 +155,10 @@ const Navbar = () => {
                                   key={idx} 
                                   to={item.link} 
                                   onClick={() => setActiveDropdown(null)}
-                                  className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
+                                  className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors group"
                                 >
-                                  <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
-                                  <span className="text-sm font-medium text-slate-700">{t(`navbar_dropdowns.${item.name}`)}</span>
+                                  <Icon className="w-6 h-6 text-indigo-900 dark:text-indigo-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors" strokeWidth={1.5} />
+                                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t(`navbar_dropdowns.${item.name}`)}</span>
                                 </Link>
                               );
                             })}
@@ -174,15 +176,15 @@ const Navbar = () => {
                                     key={idx} 
                                     to={item.link}
                                     onClick={() => setActiveDropdown(null)}
-                                    className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
+                                    className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors group"
                                   >
-                                    <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
-                                    <span className="text-sm font-medium text-slate-700">{t(`navbar_dropdowns.${item.name}`)}</span>
+                                    <Icon className="w-6 h-6 text-indigo-900 dark:text-indigo-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors" strokeWidth={1.5} />
+                                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t(`navbar_dropdowns.${item.name}`)}</span>
                                   </Link>
                                 );
                               })}
                             </div>
-                            <div className="bg-slate-50 rounded-xl w-full h-full min-h-[140px] border border-slate-100"></div>
+                            <div className="bg-slate-50 dark:bg-slate-800 rounded-xl w-full h-full min-h-[140px] border border-slate-100 dark:border-slate-700"></div>
                           </div>
                         )}
 
@@ -196,10 +198,10 @@ const Navbar = () => {
                                   key={idx} 
                                   to={item.link} 
                                   onClick={() => setActiveDropdown(null)}
-                                  className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 rounded-xl transition-colors group"
+                                  className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors group"
                                 >
-                                  <Icon className="w-6 h-6 text-indigo-900 group-hover:text-indigo-600 transition-colors" strokeWidth={1.5} />
-                                  <span className="text-sm font-medium text-slate-700">{t(`navbar_dropdowns.${item.name}`)}</span>
+                                  <Icon className="w-6 h-6 text-indigo-900 dark:text-indigo-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors" strokeWidth={1.5} />
+                                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t(`navbar_dropdowns.${item.name}`)}</span>
                                 </Link>
                               );
                             })}
@@ -215,6 +217,15 @@ const Navbar = () => {
             {/* Right Side Buttons */}
             <div className="hidden lg:flex items-center space-x-3">
               
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                aria-label="Toggle Dark Mode"
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+
               {/* Language Dropdown */}
               <div className="relative">
                 <Button
@@ -224,7 +235,7 @@ const Navbar = () => {
                     setIsLangOpen(!isLangOpen);
                     setActiveDropdown(null);
                   }}
-                  className="text-slate-700 flex items-center space-x-2"
+                  className="text-slate-700 dark:text-slate-300 flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-800"
                 >
                   <Globe size={16} />
                   <span className="font-semibold uppercase">{i18n.language}</span>
@@ -232,13 +243,13 @@ const Navbar = () => {
                 </Button>
 
                 {isLangOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-40 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50">
+                  <div className="absolute top-full right-0 mt-2 w-40 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 py-2 z-50">
                     <button
                       onClick={() => {
                         i18n.changeLanguage('en');
                         setIsLangOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-50 transition-colors ${i18n.language === 'en' ? 'text-cyan-600 font-bold' : 'text-slate-700 font-medium'}`}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors ${i18n.language === 'en' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : 'text-slate-700 dark:text-slate-300 font-medium'}`}
                     >
                       English
                     </button>
@@ -247,7 +258,7 @@ const Navbar = () => {
                         i18n.changeLanguage('ar');
                         setIsLangOpen(false);
                       }}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-50 transition-colors ${i18n.language === 'ar' ? 'text-cyan-600 font-bold' : 'text-slate-700 font-medium'}`}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors ${i18n.language === 'ar' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : 'text-slate-700 dark:text-slate-300 font-medium'}`}
                     >
                       العربية (Arabic)
                     </button>
@@ -259,13 +270,13 @@ const Navbar = () => {
                 variant="ghost" 
                 size="sm"
                 onClick={() => setIsLoginOpen(true)}
-                className="text-slate-700"
+                className="text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
               >
                 {t('navbar.login')}
               </Button>
               <Button 
                 size="sm" 
-                className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white shadow-md"
+                className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white shadow-md border-none"
                 onClick={() => setIsBookingOpen(true)}
               >
                 {t('hero.book_demo')}
@@ -275,7 +286,13 @@ const Navbar = () => {
             {/* Mobile Menu Button (Hamburger) */}
             <div className="lg:hidden flex items-center space-x-2">
               <button
-                className="text-slate-700 p-2"
+                onClick={toggleTheme}
+                className="p-2 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button
+                className="text-slate-700 dark:text-slate-300 p-2"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}

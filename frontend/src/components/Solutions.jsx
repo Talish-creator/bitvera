@@ -29,7 +29,7 @@ const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-transparent dark:border-slate-700 transition-colors">
         <div className="sticky top-0 bg-gradient-to-r from-indigo-600 to-blue-600 p-6 text-white">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -53,21 +53,21 @@ const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
         </div>
 
         <div className="p-8">
-          <p className="text-lg text-slate-600 mb-8">{t(solution.description)}</p>
+          <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 transition-colors">{t(solution.description)}</p>
 
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">{t('solutions_page.key_features')}</h3>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">{t('solutions_page.key_features')}</h3>
           <div className="grid md:grid-cols-2 gap-4 mb-8">
             {solution.features.map((feature, idx) => (
-              <div key={idx} className="flex items-start space-x-3 p-3 bg-slate-50 rounded-lg">
+              <div key={idx} className="flex items-start space-x-3 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg transition-colors">
                 <Check size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-slate-700">{t(feature)}</span>
+                <span className="text-slate-700 dark:text-slate-300 transition-colors">{t(feature)}</span>
               </div>
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-200 mb-8">
-            <h4 className="font-semibold text-slate-900 mb-2">{t('solutions_page.benefits')}</h4>
-            <ul className="space-y-2 text-slate-600">
+          <div className="bg-gradient-to-r from-indigo-50 dark:from-indigo-900/30 to-blue-50 dark:to-blue-900/30 p-6 rounded-xl border border-indigo-200 dark:border-indigo-800/50 mb-8 transition-colors">
+            <h4 className="font-semibold text-slate-900 dark:text-white mb-2 transition-colors">{t('solutions_page.benefits')}</h4>
+            <ul className="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
               <li>• {t('solutions_page.benefit_1')}</li>
               <li>• {t('solutions_page.benefit_2')}</li>
               <li>• {t('solutions_page.benefit_3')}</li>
@@ -96,7 +96,7 @@ const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
             </Button>
           </div>
 
-          <p className="text-center text-sm text-slate-500 mt-4">
+          <p className="text-center text-sm text-slate-500 dark:text-slate-400 mt-4 transition-colors">
             {t('solutions_page.need_help')}
             <a href="tel:+966580608336" className="text-indigo-600 hover:underline font-semibold mx-1" dir="ltr">
               +966 58 060 8336
@@ -122,11 +122,11 @@ const Solutions = () => {
 
   return (
     <>
-      <section id="solutions" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/20">
+      <section id="solutions" className="py-20 bg-gradient-to-br from-slate-50 dark:from-slate-900 to-blue-50/20 dark:to-slate-800/20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-indigo-900 mb-4">{t('solutions_page.title')}</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-5xl font-bold text-indigo-900 dark:text-indigo-400 mb-4 transition-colors">{t('solutions_page.title')}</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto transition-colors">
               {t('solutions_page.subtitle')}
             </p>
           </div>
@@ -138,7 +138,7 @@ const Solutions = () => {
                 <Card
                   key={solution.id}
                   onClick={() => handleSolutionClick(solution)}
-                  className="cursor-pointer border-2 border-slate-200 hover:border-indigo-500 hover:shadow-xl transition-all duration-300 group"
+                  className="cursor-pointer bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-xl transition-all duration-300 group"
                 >
                   <CardHeader>
                     <div className="flex items-center space-x-4">
@@ -153,7 +153,7 @@ const Solutions = () => {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-slate-600 line-clamp-2">
+                    <CardDescription className="text-slate-600 dark:text-slate-400 line-clamp-2 transition-colors">
                       {t(solution.description)}
                     </CardDescription>
                     <div className="mt-4 flex items-center text-sm text-indigo-600 font-semibold group-hover:translate-x-2 transition-transform">
@@ -169,7 +169,7 @@ const Solutions = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-slate-600 mb-4">
+            <p className="text-slate-600 dark:text-slate-300 mb-4 transition-colors">
               {t('solutions_page.cant_find')}
             </p>
             <Button

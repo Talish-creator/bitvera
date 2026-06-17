@@ -20,9 +20,11 @@ import { Toaster } from "./components/ui/toaster";
 import ServicePage from "./components/ServicePage";
 // -------------------------------
 
+import { ThemeProvider } from "./context/ThemeContext";
+
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
       <Navbar />
       <Hero />
       <Partners />
@@ -41,20 +43,22 @@ const Home = () => {
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          
-          {/* --- HERE IS YOUR NEW ROUTE --- */}
-          <Route path="/service/:id" element={<ServicePage />} />
-          {/* ------------------------------ */}
-          
-        </Routes>
-        <Chatbot />
-      </BrowserRouter>
-      <Toaster />
-    </div>
+    <ThemeProvider>
+      <div className="App dark:bg-slate-900 dark:text-white transition-colors duration-300">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            
+            {/* --- HERE IS YOUR NEW ROUTE --- */}
+            <Route path="/service/:id" element={<ServicePage />} />
+            {/* ------------------------------ */}
+            
+          </Routes>
+          <Chatbot />
+        </BrowserRouter>
+        <Toaster />
+      </div>
+    </ThemeProvider>
   );
 }
 

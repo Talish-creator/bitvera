@@ -60,7 +60,7 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-transparent dark:border-slate-800 transition-colors">
         <div className="sticky top-0 bg-gradient-to-r from-cyan-500 to-teal-600 p-6 text-white">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-2xl font-bold">{t('purchase_modal.get_started')} {t(plan.name)}</h2>
@@ -75,13 +75,13 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+          <div className="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 transition-colors">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-600">{t('purchase_modal.plan_label')}</span>
-              <span className="text-lg font-bold text-slate-900">{t(plan.name)}</span>
+              <span className="text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors">{t('purchase_modal.plan_label')}</span>
+              <span className="text-lg font-bold text-slate-900 dark:text-white transition-colors">{t(plan.name)}</span>
             </div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-600">{t('purchase_modal.billing_label')}</span>
+              <span className="text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors">{t('purchase_modal.billing_label')}</span>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -89,7 +89,7 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
                   className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                     billingPeriod === 'monthly'
                       ? 'bg-cyan-500 text-white'
-                      : 'bg-white text-slate-600 hover:bg-slate-100'
+                      : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-600'
                   }`}
                 >
                   {t('purchase_modal.monthly_btn')}
@@ -100,20 +100,20 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
                   className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                     billingPeriod === 'annual'
                       ? 'bg-cyan-500 text-white'
-                      : 'bg-white text-slate-600 hover:bg-slate-100'
+                      : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-600'
                   }`}
                 >
                   {t('purchase_modal.annual_btn')}
                 </button>
               </div>
             </div>
-            <div className="flex items-center justify-between pt-2 border-t border-slate-300">
-              <span className="text-sm font-semibold text-slate-600">{t('purchase_modal.total_label')}</span>
+            <div className="flex items-center justify-between pt-2 border-t border-slate-300 dark:border-slate-600 transition-colors">
+              <span className="text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors">{t('purchase_modal.total_label')}</span>
               <span className="text-2xl font-bold text-cyan-600">
                 <span dir="ltr">{price}</span> {t('purchase_modal.sar_mo')}
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-2">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 transition-colors">
               {t('purchase_modal.implementation_fee_prefix')} <span dir="ltr">{plan.implementationFee.toLocaleString()}</span> {t('purchase_modal.sar_one_time')}
             </p>
           </div>
@@ -188,7 +188,7 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
             </Button>
           </div>
 
-          <p className="text-xs text-slate-500 text-center">
+          <p className="text-xs text-slate-500 dark:text-slate-400 text-center transition-colors">
             {t('purchase_modal.secure_payment')}
           </p>
         </form>

@@ -110,7 +110,7 @@ const Chatbot = () => {
       )}
 
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-full max-w-sm sm:w-96 h-[650px] max-h-[85vh] bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] flex flex-col overflow-hidden border border-slate-200 ring-1 ring-slate-900/5 transition-all duration-500 ease-in-out">
+        <div className="fixed bottom-6 right-6 z-50 w-full max-w-sm sm:w-96 h-[650px] max-h-[85vh] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] flex flex-col overflow-hidden border border-slate-200 dark:border-slate-800 ring-1 ring-slate-900/5 dark:ring-white/5 transition-all duration-500 ease-in-out">
           {/* Header */}
           <div className="bg-gradient-to-r from-cyan-600 to-teal-600 p-5 text-white flex items-center justify-between relative overflow-hidden shrink-0">
             <div className="absolute top-0 left-0 w-full h-full bg-white/10 blur-2xl transform -skew-y-12"></div>
@@ -137,7 +137,7 @@ const Chatbot = () => {
           </div>
 
           {/* Chat Area */}
-          <div className="flex-1 overflow-y-auto p-5 space-y-5 bg-slate-50/50">
+          <div className="flex-1 overflow-y-auto p-5 space-y-5 bg-slate-50/50 dark:bg-slate-800/50 transition-colors">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -147,7 +147,7 @@ const Chatbot = () => {
                   className={`max-w-[85%] rounded-2xl px-5 py-3 ${
                     message.sender === 'user'
                       ? 'bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-md rounded-br-sm'
-                      : 'bg-white text-slate-800 shadow-sm border border-slate-200 rounded-bl-sm prose prose-sm prose-slate max-w-none'
+                      : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm border border-slate-200 dark:border-slate-700 rounded-bl-sm prose prose-sm prose-slate dark:prose-invert max-w-none transition-colors'
                   }`}
                 >
                   {message.sender === 'bot' ? (
@@ -164,7 +164,7 @@ const Chatbot = () => {
 
             {isTyping && (
               <div className="flex justify-start animate-in fade-in duration-300">
-                <div className="bg-white text-slate-500 border border-slate-200 shadow-sm rounded-2xl rounded-bl-sm px-5 py-4 flex items-center space-x-2">
+                <div className="bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 shadow-sm rounded-2xl rounded-bl-sm px-5 py-4 flex items-center space-x-2 transition-colors">
                   <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
                     <div className="w-2 h-2 bg-cyan-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
@@ -178,12 +178,12 @@ const Chatbot = () => {
 
           {/* Quick Replies Strip */}
           {!isTyping && (
-            <div className="px-3 pb-3 bg-white border-t border-slate-100 pt-3 overflow-x-auto whitespace-nowrap flex gap-2 shrink-0">
+            <div className="px-3 pb-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 pt-3 overflow-x-auto whitespace-nowrap flex gap-2 shrink-0 transition-colors">
               {quickReplies.map((reply) => (
                 <button
                   key={reply.id}
                   onClick={() => handleQuickReply(reply.query)}
-                  className="inline-flex items-center text-xs px-4 py-2 bg-slate-50 border border-slate-200 text-slate-700 rounded-full hover:bg-cyan-50 hover:text-cyan-700 hover:border-cyan-200 transition-all shadow-sm flex-shrink-0 font-medium"
+                  className="inline-flex items-center text-xs px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full hover:bg-cyan-50 dark:hover:bg-cyan-900/50 hover:text-cyan-700 dark:hover:text-cyan-400 hover:border-cyan-200 dark:hover:border-cyan-700 transition-all shadow-sm flex-shrink-0 font-medium"
                 >
                   {reply.text}
                 </button>
@@ -192,13 +192,13 @@ const Chatbot = () => {
           )}
 
           {/* Input Area */}
-          <form onSubmit={handleSendMessage} className="p-4 bg-white border-t border-slate-100 shadow-[0_-10px_20px_-15px_rgba(0,0,0,0.1)] shrink-0">
-            <div className="flex items-center space-x-2 bg-slate-50 rounded-full px-2 py-2 border border-slate-200 focus-within:ring-2 focus-within:ring-cyan-500/20 focus-within:border-cyan-500 transition-all">
+          <form onSubmit={handleSendMessage} className="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 shadow-[0_-10px_20px_-15px_rgba(0,0,0,0.1)] shrink-0 transition-colors">
+            <div className="flex items-center space-x-2 bg-slate-50 dark:bg-slate-800 rounded-full px-2 py-2 border border-slate-200 dark:border-slate-700 focus-within:ring-2 focus-within:ring-cyan-500/20 focus-within:border-cyan-500 transition-all">
               <Input
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder={t("Type your message...")}
-                className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 px-3 h-10 text-sm"
+                className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 px-3 h-10 text-sm dark:text-white transition-colors"
                 disabled={isTyping}
               />
               <Button
@@ -215,15 +215,15 @@ const Chatbot = () => {
               <button
                 type="button"
                 onClick={handleWhatsApp}
-                className="text-xs text-slate-500 hover:text-green-600 flex items-center gap-1 transition-colors font-medium"
+                className="text-xs text-slate-500 dark:text-slate-400 hover:text-green-600 flex items-center gap-1 transition-colors font-medium"
               >
                 <MessageCircle size={14} /> WhatsApp
               </button>
-              <div className="w-px h-4 bg-slate-300"></div>
+              <div className="w-px h-4 bg-slate-300 dark:bg-slate-700 transition-colors"></div>
               <button
                 type="button"
                 onClick={handleCall}
-                className="text-xs text-slate-500 hover:text-blue-600 flex items-center gap-1 transition-colors font-medium"
+                className="text-xs text-slate-500 dark:text-slate-400 hover:text-blue-600 flex items-center gap-1 transition-colors font-medium"
               >
                 <Phone size={14} /> {t('Call Us')}
               </button>
