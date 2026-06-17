@@ -90,12 +90,22 @@ const Hero = () => {
                   <div className="w-3 h-3 rounded-full bg-white/30"></div>
                 </div>
                 <div className="p-6">
-                  <img
-                    src="/images/hero-image.jpeg"
-                    alt="ERP Dashboard Analytics"
-                    className="w-full h-auto rounded-lg"
-                    loading="lazy"
-                  />
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="w-full h-auto rounded-lg shadow-inner"
+                    poster="/images/hero-mockup.png"
+                  >
+                    <source src="/videos/hero-dashboard-loop.mp4" type="video/mp4" />
+                    <img
+                      src="/images/hero-mockup.png"
+                      alt="ERP Dashboard Analytics"
+                      className="w-full h-auto rounded-lg shadow-inner"
+                      loading="lazy"
+                    />
+                  </video>
                 </div>
               </div>
               
