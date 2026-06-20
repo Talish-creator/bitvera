@@ -23,6 +23,8 @@ import ServicePage from "./components/ServicePage";
 
 import { ThemeProvider } from "./context/ThemeContext";
 import SEO from "./components/SEO";
+import CustomCursor from "./components/CustomCursor";
+import AnimatedBackground from "./components/AnimatedBackground";
 
 const Home = () => {
   return (
@@ -48,7 +50,9 @@ function App() {
   return (
     <HelmetProvider>
       <ThemeProvider>
-        <div className="App dark:bg-slate-900 dark:text-white transition-colors duration-300">
+        <div className="App dark:bg-slate-900 dark:text-white transition-colors duration-300 relative z-0">
+          <CustomCursor />
+          <AnimatedBackground />
           <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
