@@ -4,7 +4,7 @@ import {
   Menu, X, ChevronDown, Calculator, FileCog, Network, 
   PackageCheck, UserSearch, Factory, FileSpreadsheet, 
   Settings, Users, Warehouse, TrendingUp, Package, 
-  Lightbulb, Info, Briefcase, Phone, Globe
+  Lightbulb, Info, Briefcase, Phone, Globe, Sun, Moon
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
