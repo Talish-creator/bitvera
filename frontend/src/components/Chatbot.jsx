@@ -11,7 +11,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: '1',
-      text: t('Hello! 👋 Welcome to Bitvera. I\'m your AI assistant. How can I help you today?'),
+      text: t('chatbot.welcome'),
       sender: 'bot',
       timestamp: new Date()
     }
@@ -37,10 +37,10 @@ const Chatbot = () => {
   }, []);
 
   const quickReplies = [
-    { id: 'pricing', text: '💰 ' + t('Pricing Plans'), query: 'What are your pricing plans?' },
-    { id: 'demo', text: '📅 ' + t('Book a Demo'), query: 'I want to book a demo' },
-    { id: 'contact', text: '📞 ' + t('Contact'), query: 'How can I contact you?' },
-    { id: 'services', text: '🛠️ ' + t('Services'), query: 'What services do you provide?' }
+    { id: 'pricing', text: '💰 ' + t('chatbot.pricing_plans'), query: 'What are your pricing plans?' },
+    { id: 'demo', text: '📅 ' + t('chatbot.book_demo'), query: 'I want to book a demo' },
+    { id: 'contact', text: '📞 ' + t('chatbot.contact'), query: 'How can I contact you?' },
+    { id: 'services', text: '🛠️ ' + t('chatbot.services'), query: 'What services do you provide?' }
   ];
 
   const handleQuickReply = async (query) => {
@@ -62,34 +62,22 @@ const Chatbot = () => {
     const lowerText = text.toLowerCase();
     
     if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('plan')) {
-      return "Our pricing is transparent and scalable:\n\n" +
-             "🌱 **Starter:** 594 SAR/month (Core ERP modules)\n" +
-             "💼 **Professional:** 2,050 SAR/month (Advanced features & automation)\n" +
-             "🏢 **Enterprise:** 4,028 SAR/month (Full customization & dedicated support)\n\n" +
-             "Would you like me to recommend a plan based on your business size?";
+      return t('chatbot.response_pricing');
     }
     if (lowerText.includes('demo') || lowerText.includes('book') || lowerText.includes('schedule')) {
-      return "I'd love to help you see BitVera in action! You can schedule a personalized demo with our ERP experts by clicking the **Book a Demo** button at the top of the page. Is there any specific module you want us to highlight during the demo?";
+      return t('chatbot.response_demo');
     }
     if (lowerText.includes('contact') || lowerText.includes('call') || lowerText.includes('support')) {
-      return "Our experts are always ready to assist you!\n\n" +
-             "📞 **Phone:** +966 58 060 8336\n" +
-             "📱 **WhatsApp:** Available using the button below\n\n" +
-             "How else can I help you today?";
+      return t('chatbot.response_contact');
     }
     if (lowerText.includes('service') || lowerText.includes('erp') || lowerText.includes('offer')) {
-      return "We specialize in complete ERPNext architecture tailored for modern businesses. Our core capabilities include:\n\n" +
-             "• Full ERPNext Implementation & Customization\n" +
-             "• CRM & Sales Automation\n" +
-             "• ZATCA Phase 2 E-Invoicing Compliance\n" +
-             "• Custom Cloud Hosting & Integrations\n\n" +
-             "Which of these areas are you most interested in exploring?";
+      return t('chatbot.response_services');
     }
     if (lowerText.includes('hello') || lowerText.includes('hi ') || lowerText.includes('hey')) {
-      return "Hello there! 👋 I'm the BitVera smart assistant. I can help you with pricing, exploring our ERP services, or booking a demo. What would you like to know?";
+      return t('chatbot.response_greeting');
     }
     
-    return "That's a great question! Since every business workflow is unique, to give you the most accurate answer, I recommend speaking directly with our implementation experts. You can reach us at **+966 58 060 8336** or book a quick demo. Is there anything else about our services I can summarize for you?";
+    return t('chatbot.response_default');
   };
 
   const getAIResponse = async (userText) => {
@@ -102,7 +90,7 @@ const Chatbot = () => {
       addMessage(response, 'bot');
     } catch (error) {
       addMessage(
-        'I apologize, but I\'m having trouble processing that. Please call us at +966 58 060 8336.',
+        t('chatbot.error_message'),
         'bot'
       );
     } finally {
@@ -152,11 +140,11 @@ const Chatbot = () => {
               </div>
               <div>
                 <h3 className="font-bold text-lg flex items-center gap-2 tracking-tight text-text-accent">
-                  {t('AI Assistant')}
+                  {t('chatbot.ai_assistant')}
                 </h3>
                 <p className="text-xs text-text-accent/70 font-medium flex items-center gap-1">
                   <span className="w-2 h-2 bg-text-accent rounded-full animate-pulse"></span>
-                  {t('Online • Smart Context')}
+                  {t('chatbot.status')}
                 </p>
               </div>
             </div>
@@ -229,7 +217,7 @@ const Chatbot = () => {
               <Input
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
-                placeholder={t("Type your message...")}
+                placeholder={t('chatbot.placeholder')}
                 className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 px-3 h-10 text-sm text-text-accent placeholder:text-text-accent/40 transition-colors"
                 disabled={isTyping}
               />
@@ -257,7 +245,7 @@ const Chatbot = () => {
                 onClick={handleCall}
                 className="text-xs text-text-accent/60 hover:text-text-accent flex items-center gap-1 transition-colors font-medium"
               >
-                <Phone size={14} /> {t('Call Us')}
+                <Phone size={14} /> {t('chatbot.call_us')}
               </button>
             </div>
           </form>
