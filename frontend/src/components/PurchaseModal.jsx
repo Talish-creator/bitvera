@@ -59,37 +59,37 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
   const price = billingPeriod === 'monthly' ? plan.monthlyPrice : plan.annualPrice;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-transparent dark:border-slate-800 transition-colors">
-        <div className="sticky top-0 bg-gradient-to-r from-cyan-500 to-teal-600 p-6 text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+      <div className="bg-[#101010]/90 backdrop-blur-xl rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-white/10 transition-colors">
+        <div className="sticky top-0 bg-[#101010]/90 p-6 text-[#DEDBC8] border-b border-white/10 z-10">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-2xl font-bold">{t('purchase_modal.get_started')} {t(plan.name)}</h2>
             <button
               onClick={onClose}
-              className="hover:bg-white/20 rounded-full p-2 transition-colors"
+              className="hover:bg-white/10 rounded-full p-2 transition-colors text-[#DEDBC8]"
             >
               <X size={24} />
             </button>
           </div>
-          <p className="text-sm text-cyan-100">{t('purchase_modal.enter_details')}</p>
+          <p className="text-sm text-[#DEDBC8]/70">{t('purchase_modal.enter_details')}</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          <div className="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 transition-colors">
+        <form onSubmit={handleSubmit} className="p-6 space-y-4 text-[#DEDBC8]">
+          <div className="bg-[#212121] p-4 rounded-lg border border-white/10 transition-colors">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors">{t('purchase_modal.plan_label')}</span>
-              <span className="text-lg font-bold text-slate-900 dark:text-white transition-colors">{t(plan.name)}</span>
+              <span className="text-sm font-semibold text-[#DEDBC8]/70 transition-colors">{t('purchase_modal.plan_label')}</span>
+              <span className="text-lg font-bold text-[#DEDBC8] transition-colors">{t(plan.name)}</span>
             </div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors">{t('purchase_modal.billing_label')}</span>
+              <span className="text-sm font-semibold text-[#DEDBC8]/70 transition-colors">{t('purchase_modal.billing_label')}</span>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => setBillingPeriod('monthly')}
                   className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                     billingPeriod === 'monthly'
-                      ? 'bg-cyan-500 text-white'
-                      : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-600'
+                      ? 'bg-[#DEDBC8] text-black'
+                      : 'bg-black/50 text-[#DEDBC8]/70 hover:bg-white/10 hover:text-[#DEDBC8]'
                   }`}
                 >
                   {t('purchase_modal.monthly_btn')}
@@ -99,27 +99,27 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
                   onClick={() => setBillingPeriod('annual')}
                   className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                     billingPeriod === 'annual'
-                      ? 'bg-cyan-500 text-white'
-                      : 'bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-600'
+                      ? 'bg-[#DEDBC8] text-black'
+                      : 'bg-black/50 text-[#DEDBC8]/70 hover:bg-white/10 hover:text-[#DEDBC8]'
                   }`}
                 >
                   {t('purchase_modal.annual_btn')}
                 </button>
               </div>
             </div>
-            <div className="flex items-center justify-between pt-2 border-t border-slate-300 dark:border-slate-600 transition-colors">
-              <span className="text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors">{t('purchase_modal.total_label')}</span>
-              <span className="text-2xl font-bold text-cyan-600">
+            <div className="flex items-center justify-between pt-2 border-t border-white/10 transition-colors">
+              <span className="text-sm font-semibold text-[#DEDBC8]/70 transition-colors">{t('purchase_modal.total_label')}</span>
+              <span className="text-2xl font-bold text-[#DEDBC8]">
                 <span dir="ltr">{price}</span> {t('purchase_modal.sar_mo')}
               </span>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 transition-colors">
+            <p className="text-xs text-[#DEDBC8]/50 mt-2 transition-colors">
               {t('purchase_modal.implementation_fee_prefix')} <span dir="ltr">{plan.implementationFee.toLocaleString()}</span> {t('purchase_modal.sar_one_time')}
             </p>
           </div>
 
           <div>
-            <Label htmlFor="name">{t('purchase_modal.full_name')}</Label>
+            <Label htmlFor="name" className="text-[#DEDBC8]">{t('purchase_modal.full_name')}</Label>
             <Input
               id="name"
               placeholder={t('purchase_modal.placeholder_name')}
@@ -127,11 +127,12 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
               disabled={isSubmitting}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="company">{t('purchase_modal.company_name')}</Label>
+            <Label htmlFor="company" className="text-[#DEDBC8]">{t('purchase_modal.company_name')}</Label>
             <Input
               id="company"
               placeholder={t('purchase_modal.placeholder_company')}
@@ -139,11 +140,12 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               required
               disabled={isSubmitting}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="email">{t('purchase_modal.business_email')}</Label>
+            <Label htmlFor="email" className="text-[#DEDBC8]">{t('purchase_modal.business_email')}</Label>
             <Input
               id="email"
               type="email"
@@ -152,11 +154,12 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
               disabled={isSubmitting}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="phone">{t('purchase_modal.phone_number')}</Label>
+            <Label htmlFor="phone" className="text-[#DEDBC8]">{t('purchase_modal.phone_number')}</Label>
             <Input
               id="phone"
               type="tel"
@@ -166,6 +169,7 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
               disabled={isSubmitting}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
             />
           </div>
 
@@ -174,21 +178,21 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               type="button"
               variant="outline"
               onClick={onClose}
-              className="flex-1"
+              className="flex-1 bg-transparent border-white/10 text-[#DEDBC8] hover:bg-white/5 hover:text-[#DEDBC8]"
               disabled={isSubmitting}
             >
               {t('purchase_modal.cancel')}
             </Button>
             <Button
               type="submit"
-              className="flex-1 bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white"
+              className="flex-1 bg-[#DEDBC8] hover:bg-[#DEDBC8]/90 text-black font-semibold"
               disabled={isSubmitting}
             >
               {isSubmitting ? t('purchase_modal.processing_btn') : t('purchase_modal.proceed_btn')}
             </Button>
           </div>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400 text-center transition-colors">
+          <p className="text-xs text-[#DEDBC8]/50 text-center transition-colors mt-4">
             {t('purchase_modal.secure_payment')}
           </p>
         </form>

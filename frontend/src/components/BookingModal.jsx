@@ -80,24 +80,24 @@ const BookingModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-transparent dark:border-slate-800 transition-colors">
-        <div className="sticky top-0 bg-gradient-to-r from-cyan-500 to-teal-600 p-6 text-white flex items-center justify-between">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+      <div className="bg-[#101010]/90 backdrop-blur-xl rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-white/10 transition-colors">
+        <div className="sticky top-0 bg-[#101010]/90 p-6 text-[#DEDBC8] flex items-center justify-between border-b border-white/10 z-10">
           <div>
             <h2 className="text-2xl font-bold">{t('booking_modal.title')}</h2>
-            <p className="text-sm text-cyan-100 mt-1">{t('booking_modal.subtitle')}</p>
+            <p className="text-sm text-[#DEDBC8]/70 mt-1">{t('booking_modal.subtitle')}</p>
           </div>
           <button
             onClick={onClose}
-            className="hover:bg-white/20 rounded-full p-2 transition-colors"
+            className="hover:bg-white/10 rounded-full p-2 transition-colors text-[#DEDBC8]"
           >
             <X size={24} />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-6 space-y-4 text-[#DEDBC8]">
           <div>
-            <Label htmlFor="name">{t('booking_modal.full_name')}</Label>
+            <Label htmlFor="name" className="text-[#DEDBC8]">{t('booking_modal.full_name')}</Label>
             <Input
               id="name"
               placeholder="John Doe"
@@ -105,11 +105,12 @@ const BookingModal = ({ isOpen, onClose }) => {
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
               disabled={isSubmitting}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="company">{t('booking_modal.company_name')}</Label>
+            <Label htmlFor="company" className="text-[#DEDBC8]">{t('booking_modal.company_name')}</Label>
             <Input
               id="company"
               placeholder="Your Company"
@@ -117,11 +118,12 @@ const BookingModal = ({ isOpen, onClose }) => {
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               required
               disabled={isSubmitting}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="email">{t('booking_modal.business_email')}</Label>
+            <Label htmlFor="email" className="text-[#DEDBC8]">{t('booking_modal.business_email')}</Label>
             <Input
               id="email"
               type="email"
@@ -130,11 +132,12 @@ const BookingModal = ({ isOpen, onClose }) => {
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
               disabled={isSubmitting}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="demoDate">{t('booking_modal.preferred_date')}</Label>
+            <Label htmlFor="demoDate" className="text-[#DEDBC8]">{t('booking_modal.preferred_date')}</Label>
             <Input
               id="demoDate"
               type="date"
@@ -143,11 +146,12 @@ const BookingModal = ({ isOpen, onClose }) => {
               required
               disabled={isSubmitting}
               min={new Date().toISOString().split('T')[0]}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] [&::-webkit-calendar-picker-indicator]:invert-[0.8] mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="additionalInfo">{t('booking_modal.challenges_label')}</Label>
+            <Label htmlFor="additionalInfo" className="text-[#DEDBC8]">{t('booking_modal.challenges_label')}</Label>
             <Textarea
               id="additionalInfo"
               placeholder={t('booking_modal.challenges_placeholder')}
@@ -155,6 +159,7 @@ const BookingModal = ({ isOpen, onClose }) => {
               onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
               rows={4}
               disabled={isSubmitting}
+              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
             />
           </div>
 
@@ -163,23 +168,23 @@ const BookingModal = ({ isOpen, onClose }) => {
               type="button"
               variant="outline"
               onClick={onClose}
-              className="flex-1"
+              className="flex-1 bg-transparent border-white/10 text-[#DEDBC8] hover:bg-white/5 hover:text-[#DEDBC8]"
               disabled={isSubmitting}
             >
               {t('booking_modal.cancel')}
             </Button>
             <Button
               type="submit"
-              className="flex-1 bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white"
+              className="flex-1 bg-[#DEDBC8] hover:bg-[#DEDBC8]/90 text-black font-semibold"
               disabled={isSubmitting}
             >
               {isSubmitting ? t('booking_modal.submitting_btn') : t('booking_modal.submit_btn')}
             </Button>
           </div>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400 text-center mt-4 transition-colors">
+          <p className="text-xs text-[#DEDBC8]/50 text-center mt-4 transition-colors">
             {t('booking_modal.call_directly')}{' '}
-            <a href="tel:+966580608336" className="text-cyan-600 hover:underline font-semibold" dir="ltr">
+            <a href="tel:+966580608336" className="text-[#DEDBC8] hover:underline font-semibold" dir="ltr">
               +966 58 060 8336
             </a>
           </p>

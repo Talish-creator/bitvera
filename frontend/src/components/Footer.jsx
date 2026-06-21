@@ -26,8 +26,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-slate-900 dark:bg-slate-950 text-white transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="relative bg-black text-white transition-colors duration-300 border-t border-white/10 overflow-hidden">
+      <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -45,19 +46,19 @@ const Footer = () => {
               {t('footer.brand_desc')}
             </p>
             <div className="flex space-x-3">
-              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-[#0077b5] transition-colors">
+              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#101010] border border-white/10 rounded-lg flex items-center justify-center hover:bg-[#DEDBC8] hover:text-black transition-colors">
                 <Linkedin size={18} />
               </a>
-              <a href="https://www.instagram.com/bitvera_erp_solution/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-[#E1306C] transition-colors">
+              <a href="https://www.instagram.com/bitvera_erp_solution/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#101010] border border-white/10 rounded-lg flex items-center justify-center hover:bg-[#DEDBC8] hover:text-black transition-colors">
                 <Instagram size={18} />
               </a>
-              <a href="https://snapchat.com/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-[#FFFC00] hover:text-black transition-colors">
+              <a href="https://snapchat.com/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#101010] border border-white/10 rounded-lg flex items-center justify-center hover:bg-[#DEDBC8] hover:text-black transition-colors">
                 <SnapchatIcon size={18} />
               </a>
-              <a href="https://www.facebook.com/profile.php?id=61590713159077" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-[#1877F2] transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61590713159077" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#101010] border border-white/10 rounded-lg flex items-center justify-center hover:bg-[#DEDBC8] hover:text-black transition-colors">
                 <Facebook size={18} />
               </a>
-              <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-slate-700 transition-colors">
+              <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-[#101010] border border-white/10 rounded-lg flex items-center justify-center hover:bg-[#DEDBC8] hover:text-black transition-colors">
                 <XIcon size={16} />
               </a>
             </div>
@@ -70,7 +71,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-slate-400 hover:text-cyan-500 transition-colors text-sm">
+                    <a href="#" className="text-gray-400 hover:text-[#DEDBC8] transition-colors text-sm">
                       {t(link)}
                     </a>
                   </li>
@@ -81,34 +82,34 @@ const Footer = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="border-t border-slate-800 pt-8 mb-8">
+        <div className="border-t border-white/10 pt-8 mb-8">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center">
-                <Mail size={18} className="text-cyan-500" />
+              <div className="w-10 h-10 bg-[#101010] border border-white/10 rounded-lg flex items-center justify-center">
+                <Mail size={18} className="text-[#DEDBC8]" />
               </div>
               <div>
-                <div className="text-xs text-slate-400">{t('footer.email')}</div>
+                <div className="text-xs text-gray-400">{t('footer.email')}</div>
                 <div className="text-sm">info@bitvera.com</div>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center">
-                <Phone size={18} className="text-cyan-500" />
+              <div className="w-10 h-10 bg-[#101010] border border-white/10 rounded-lg flex items-center justify-center">
+                <Phone size={18} className="text-[#DEDBC8]" />
               </div>
               <div>
-                <div className="text-xs text-slate-400">{t('footer.phone')}</div>
-                <a href="tel:+966580608336" className="text-sm hover:text-cyan-500 transition-colors" dir="ltr">
+                <div className="text-xs text-gray-400">{t('footer.phone')}</div>
+                <a href="tel:+966580608336" className="text-sm hover:text-[#DEDBC8] transition-colors" dir="ltr">
                   +966 58 060 8336
                 </a>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center">
-                <MapPin size={18} className="text-cyan-500" />
+              <div className="w-10 h-10 bg-[#101010] border border-white/10 rounded-lg flex items-center justify-center">
+                <MapPin size={18} className="text-[#DEDBC8]" />
               </div>
               <div>
-                <div className="text-xs text-slate-400">{t('footer.location')}</div>
+                <div className="text-xs text-gray-400">{t('footer.location')}</div>
                 <div className="text-sm">{t('footer.riyadh')}</div>
               </div>
             </div>
@@ -116,18 +117,18 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-slate-400 text-sm">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-gray-400 text-sm">
             {t('footer.copyright')}
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-slate-400 hover:text-cyan-500 transition-colors">
+            <a href="#" className="text-gray-400 hover:text-[#DEDBC8] transition-colors">
               {t('Privacy Policy')}
             </a>
-            <a href="#" className="text-slate-400 hover:text-cyan-500 transition-colors">
+            <a href="#" className="text-gray-400 hover:text-[#DEDBC8] transition-colors">
               {t('Terms of Service')}
             </a>
-            <a href="#" className="text-slate-400 hover:text-cyan-500 transition-colors">
+            <a href="#" className="text-gray-400 hover:text-[#DEDBC8] transition-colors">
               {t('footer.cookie_settings')}
             </a>
           </div>

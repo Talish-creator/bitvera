@@ -6,9 +6,10 @@ const Partners = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-center text-slate-800 dark:text-slate-300 mb-12 transition-colors">
+    <section className="relative py-16 bg-black border-y border-white/10 transition-colors duration-300">
+      <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2 className="text-2xl font-bold text-center text-[#DEDBC8] mb-12 transition-colors">
           {t('partners_section.trusted_by')}
         </h2>
         {/* Added dir="ltr" to protect the scrolling animation in Arabic mode */}
@@ -17,7 +18,7 @@ const Partners = () => {
             {[...partnersData, ...partnersData].map((partner, index) => (
               <div
                 key={`${partner.name}-${index}`}
-                className="flex-shrink-0 w-40 h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 bg-transparent dark:brightness-200"
+                className="flex-shrink-0 w-40 h-20 flex items-center justify-center opacity-30 hover:opacity-100 transition-all duration-500 hover:drop-shadow-[0_0_12px_#DEDBC8] grayscale hover:grayscale-0 bg-transparent"
               >
                 <img
                   src={partner.logo}

@@ -345,17 +345,18 @@ const ServicePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-sans transition-colors duration-300">
+    <div className="relative min-h-screen bg-black font-sans transition-colors duration-300">
+      <div className="fixed inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay z-0"></div>
       <SEO titleKey={content.title} descriptionKey={content.description} path={`/service/${id}`} />
       <Navbar />
       
-      {/* 1. WHITE/TEAL HERO SECTION */}
-      <div className="pt-32 pb-20 px-4 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors">
+      {/* 1. CINEMATIC DARK HERO SECTION */}
+      <div className="relative z-10 pt-32 pb-20 px-4 bg-[#101010] border-b border-white/10 transition-colors">
         <div className="max-w-5xl mx-auto text-center space-y-8 mt-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight transition-colors">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight transition-colors">
             {t(content.title)}
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed transition-colors">
+          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors">
             {t(content.description)}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
@@ -363,7 +364,7 @@ const ServicePage = () => {
             {/* <-- 2. Wired up this Button! */}
             <button 
               onClick={() => setIsBookingOpen(true)}
-              className="px-8 py-3.5 rounded-lg border-2 border-cyan-600 text-cyan-700 dark:text-cyan-400 font-bold hover:bg-cyan-50 dark:hover:bg-cyan-900/30 transition-all duration-300"
+              className="px-8 py-3.5 rounded-lg border-2 border-white/10 text-white font-bold hover:bg-white/5 transition-all duration-300"
             >
               {t('Book a Free Consultation')}
             </button>
@@ -371,7 +372,7 @@ const ServicePage = () => {
             {/* <-- 3. Wired up this Button! */}
             <button 
               onClick={() => setIsBookingOpen(true)}
-              className="px-8 py-3.5 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 transition-all duration-300"
+              className="px-8 py-3.5 rounded-lg bg-[#DEDBC8] text-black font-bold shadow-lg hover:shadow-[#DEDBC8]/20 hover:bg-white hover:-translate-y-0.5 transition-all duration-300"
             >
               {t('Book a demo')}
             </button>
@@ -380,19 +381,20 @@ const ServicePage = () => {
         </div>
       </div>
 
-      {/* 2. WHITE/TEAL FEATURES GRID */}
+      {/* 2. CINEMATIC DARK FEATURES GRID */}
       {content.features.length > 0 && (
-        <div className="py-20 px-4 max-w-7xl mx-auto">
+        <div className="relative z-10 py-20 px-4 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {content.features.map((feature, idx) => {
               const Icon = feature.icon;
               return (
-                <div key={idx} className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md hover:border-cyan-100 dark:hover:border-cyan-800 transition-all duration-300 group">
-                  <div className="w-14 h-14 bg-cyan-50 dark:bg-cyan-900/30 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-500 transition-colors duration-300">
-                    <Icon className="w-7 h-7 text-cyan-600 group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
+                <div key={idx} className="bg-[#101010] p-8 rounded-2xl shadow-sm border border-white/10 hover:border-[#DEDBC8]/50 hover:shadow-[#DEDBC8]/5 transition-all duration-300 group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
+                  <div className="w-14 h-14 bg-[#212121] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#DEDBC8] transition-colors duration-300 relative z-10">
+                    <Icon className="w-7 h-7 text-[#DEDBC8] group-hover:text-black transition-colors duration-300" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 transition-colors">{t(feature.title)}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed transition-colors">{t(feature.description)}</p>
+                  <h3 className="text-xl font-bold text-white mb-3 transition-colors relative z-10">{t(feature.title)}</h3>
+                  <p className="text-gray-400 leading-relaxed transition-colors relative z-10">{t(feature.description)}</p>
                 </div>
               );
             })}
@@ -400,11 +402,11 @@ const ServicePage = () => {
         </div>
       )}
 
-      {/* 3. WHITE/TEAL FAQ ACCORDION */}
+      {/* 3. CINEMATIC DARK FAQ ACCORDION */}
       {content.faqs.length > 0 && (
-        <div className="py-20 px-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors">
+        <div className="relative z-10 py-20 px-4 bg-black border-t border-white/10 transition-colors">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white text-center mb-12 transition-colors">
+            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 transition-colors">
               {t('Everything You Should Know')}
             </h2>
             
@@ -412,30 +414,31 @@ const ServicePage = () => {
               {content.faqs.map((faq, idx) => (
                   <div 
                     key={idx} 
-                    className={`border rounded-xl overflow-hidden transition-colors duration-300 ${
-                      openFaq === idx ? 'border-cyan-500 bg-cyan-50/30 dark:bg-cyan-900/20' : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-cyan-200 dark:hover:border-cyan-700'
+                    className={`border rounded-xl overflow-hidden transition-colors duration-300 relative ${
+                      openFaq === idx ? 'border-[#DEDBC8]/50 bg-[#101010]' : 'border-white/10 bg-[#101010] hover:border-[#DEDBC8]/30'
                     }`}
                   >
+                    <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
                     <button 
                       onClick={() => toggleFaq(idx)}
-                      className="w-full flex items-center justify-between p-6 text-start focus:outline-none"
+                      className="w-full flex items-center justify-between p-6 text-start focus:outline-none relative z-10"
                     >
-                      <span className="text-lg font-semibold text-slate-900 dark:text-white pe-8 transition-colors">{t(faq.question)}</span>
-                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${openFaq === idx ? 'bg-cyan-500 rotate-180' : 'bg-slate-100 dark:bg-slate-700'}`}>
+                      <span className="text-lg font-semibold text-white pe-8 transition-colors">{t(faq.question)}</span>
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${openFaq === idx ? 'bg-[#DEDBC8] rotate-180' : 'bg-[#212121]'}`}>
                         {openFaq === idx ? (
-                          <X className="w-5 h-5 text-white" />
+                          <X className="w-5 h-5 text-black" />
                         ) : (
-                          <Plus className="w-5 h-5 text-slate-600 dark:text-slate-300" />
+                          <Plus className="w-5 h-5 text-white" />
                         )}
                     </div>
                   </button>
                   
                   <div 
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    className={`overflow-hidden transition-all duration-300 ease-in-out relative z-10 ${
                       openFaq === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="p-6 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-cyan-100/50 dark:border-cyan-800/50 transition-colors">
+                    <div className="p-6 pt-0 text-gray-400 leading-relaxed border-t border-white/10 transition-colors">
                       {t(faq.answer)}
                     </div>
                   </div>
