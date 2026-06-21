@@ -1,403 +1,49 @@
 import React, { useState } from 'react';
-import { Button } from './ui/button';
-import { 
-  Menu, X, ChevronDown, Calculator, FileCog, Network, 
-  PackageCheck, UserSearch, Factory, FileSpreadsheet, 
-  Settings, Users, Warehouse, TrendingUp, Package, 
-  Lightbulb, Info, Briefcase, Phone, Globe, Sun, Moon
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
-import LoginModal from './LoginModal';
-import BookingModal from './BookingModal';
-import { useTheme } from '../context/ThemeContext';
-import { useTranslation } from 'react-i18next'; // <-- Translation tool
+import { useTranslation } from 'react-i18next';
+import { ChevronDown, Globe } from 'lucide-react';
 
-// All links have been updated to connect to the new ServicePage!
-const menuData = {
-  solutions: {
-    title: 'Solutions',
-    layout: 'grid',
-    width: 'w-[650px]',
-    items: [
-      { name: 'Accounting & Finance', icon: Calculator, link: '/service/accounting' },
-      { name: 'Project Management', icon: FileCog, link: '/service/project-management' },
-      { name: 'Asset Management', icon: Network, link: '/service/asset-management' },
-      { name: 'Procurement Management', icon: PackageCheck, link: '/service/procurement' },
-      { name: 'HR Management', icon: UserSearch, link: '/service/hr-management' },
-      { name: 'Production or Manufacturing', icon: Factory, link: '/service/production' },
-      { name: 'Payroll', icon: FileSpreadsheet, link: '/service/payroll' },
-      { name: 'Quality Management', icon: Settings, link: '/service/quality' },
-      { name: 'CRM', icon: Users, link: '/service/crm' },
-      { name: 'Warehouse Management', icon: Warehouse, link: '/service/warehouse' },
-      { name: 'Sales Management', icon: TrendingUp, link: '/service/sales' },
-      { name: 'Inventory Management', icon: Package, link: '/service/inventory' }
-    ]
-  },
-  services: {
-    title: 'Services',
-    layout: 'split',
-    width: 'w-[550px]',
-    items: [
-      { name: 'ERPNext System implementation', icon: FileSpreadsheet, link: '/service/erpnext' },
-      { name: 'Business Consulting', icon: Lightbulb, link: '/service/consulting' }
-    ]
-  },
-  pricing: {
-    title: 'Pricing',
-    layout: 'list',
-    width: 'w-72',
-    items: [
-      { name: 'Subscription plans', icon: FileSpreadsheet, link: '/service/subscriptions' },
-      { name: 'Customize your own plan', icon: FileSpreadsheet, link: '/service/custom-plan' }
-    ]
-  },
-  knowledge: {
-    title: 'Knowledge Base',
-    layout: 'list',
-    width: 'w-72',
-    items: [
-      { name: 'ERPNext System', icon: FileSpreadsheet, link: '/service/erp-knowledge' },
-      { name: 'FAQ\'s & Download', icon: FileSpreadsheet, link: '/service/faq' },
-      { name: 'Blog', icon: FileSpreadsheet, link: '/service/blog' }
-    ]
-  },
-  about: {
-    title: 'About Us',
-    layout: 'list',
-    width: 'w-64',
-    items: [
-      { name: 'Our Story', icon: Info, link: '/service/story' },
-      { name: 'Team', icon: Users, link: '/service/team' },
-      { name: 'Careers', icon: Briefcase, link: '/service/careers' },
-      { name: 'Contact', icon: Phone, link: '/service/contact' }
-    ]
-  }
-};
-
-const menuOrder = ['solutions', 'services', 'pricing', 'industries', 'knowledge', 'about'];
+const menuOrder = ['solutions', 'services', 'pricing', 'knowledge', 'about'];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const { t, i18n } = useTranslation();
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [isLangOpen, setIsLangOpen] = useState(false); 
-  
-  const { t, i18n } = useTranslation(); 
-  const { isDarkMode, toggleTheme } = useTheme();
 
   const handleDropdownToggle = (key) => {
     setActiveDropdown(activeDropdown === key ? null : key);
-    setIsLangOpen(false); 
   };
 
   return (
-    <>
-      <nav className="fixed top-0 start-0 end-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            
-            {/* Logo Section */}
-            <Link to="/" className="flex items-center space-x-3">
-              <img
-                src="/images/logo.jpeg"
-                alt="BitVera IT Solutions Logo"
-                className="h-12 w-auto rounded-lg"
-              />
-              <div className="flex flex-col">
-                <span className="text-base font-bold text-slate-900 dark:text-white transition-colors">{t('BitVera IT Solutions')}</span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 transition-colors">{t('ERP Implementation Experts')}</span>
-              </div>
-            </Link>
-
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-1">
-              {menuOrder.map((key) => {
-                if (key === 'industries') {
-                  return (
-                    <a key="industries" href="#industries" className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors text-sm font-medium">
-                      {t('navbar.industries')}
-                    </a>
-                  );
-                }
-
-                const menu = menuData[key];
-                return (
-                  <div key={key} className="relative group">
-                    <button 
-                      className="flex items-center space-x-1 px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors text-sm font-medium"
-                      onMouseEnter={() => {
-                        setActiveDropdown(key);
-                        setIsLangOpen(false);
-                      }}
-                    >
-                      <span>{t(`navbar.${key}`)}</span>
-                      <ChevronDown size={16} className={`transition-transform duration-200 ${activeDropdown === key ? 'rotate-180' : ''}`} />
-                    </button>
-                    
-                    {activeDropdown === key && (
-                      <div 
-                        className={`absolute start-0 top-full mt-1 ${menu.width} bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 py-4 transition-colors`}
-                        onMouseLeave={() => setActiveDropdown(null)}
-                      >
-                        {/* Dropdown Header */}
-                        <div className="px-6 pb-4 mb-2 border-b border-slate-100 dark:border-slate-800">
-                          <h3 className="text-lg font-bold text-indigo-950 dark:text-indigo-300">{t(`navbar.${key}`)}</h3>
-                        </div>
-
-                        {/* Grid Layout (Solutions) */}
-                        {menu.layout === 'grid' && (
-                          <div className="grid grid-cols-2 gap-2 px-3">
-                            {menu.items.map((item, idx) => {
-                              const Icon = item.icon;
-                              return (
-                                <Link 
-                                  key={idx} 
-                                  to={item.link} 
-                                  onClick={() => setActiveDropdown(null)}
-                                  className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors group"
-                                >
-                                  <Icon className="w-6 h-6 text-indigo-900 dark:text-indigo-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors" strokeWidth={1.5} />
-                                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t(`navbar_dropdowns.${item.name}`)}</span>
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        )}
-
-                        {/* Split Layout (Services) */}
-                        {menu.layout === 'split' && (
-                          <div className="grid grid-cols-2 gap-4 px-4">
-                            <div className="flex flex-col space-y-2">
-                              {menu.items.map((item, idx) => {
-                                const Icon = item.icon;
-                                return (
-                                  <Link 
-                                    key={idx} 
-                                    to={item.link}
-                                    onClick={() => setActiveDropdown(null)}
-                                    className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors group"
-                                  >
-                                    <Icon className="w-6 h-6 text-indigo-900 dark:text-indigo-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors" strokeWidth={1.5} />
-                                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t(`navbar_dropdowns.${item.name}`)}</span>
-                                  </Link>
-                                );
-                              })}
-                            </div>
-                            <div className="bg-slate-50 dark:bg-slate-800 rounded-xl w-full h-full min-h-[140px] border border-slate-100 dark:border-slate-700"></div>
-                          </div>
-                        )}
-
-                        {/* Standard List Layout */}
-                        {menu.layout === 'list' && (
-                          <div className="flex flex-col px-3 space-y-1">
-                            {menu.items.map((item, idx) => {
-                              const Icon = item.icon;
-                              return (
-                                <Link 
-                                  key={idx} 
-                                  to={item.link} 
-                                  onClick={() => setActiveDropdown(null)}
-                                  className="flex items-center space-x-4 px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-colors group"
-                                >
-                                  <Icon className="w-6 h-6 text-indigo-900 dark:text-indigo-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors" strokeWidth={1.5} />
-                                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t(`navbar_dropdowns.${item.name}`)}</span>
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Right Side Buttons */}
-            <div className="hidden lg:flex items-center space-x-3">
-              
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                aria-label="Toggle Dark Mode"
-              >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-
-              {/* Language Dropdown */}
-              <div className="relative">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    setIsLangOpen(!isLangOpen);
-                    setActiveDropdown(null);
-                  }}
-                  className="text-slate-700 dark:text-slate-300 flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-800"
-                >
-                  <Globe size={16} />
-                  <span className="font-semibold uppercase">{i18n.language}</span>
-                  <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
-                </Button>
-
-                {isLangOpen && (
-                  <div className="absolute top-full end-0 mt-2 w-40 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 py-2 z-50">
-                    <button
-                      onClick={() => {
-                        i18n.changeLanguage('en');
-                        setIsLangOpen(false);
-                      }}
-                      className={`w-full text-start px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors ${i18n.language === 'en' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : 'text-slate-700 dark:text-slate-300 font-medium'}`}
-                    >
-                      English
-                    </button>
-                    <button
-                      onClick={() => {
-                        i18n.changeLanguage('ar');
-                        setIsLangOpen(false);
-                      }}
-                      className={`w-full text-start px-4 py-2 text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors ${i18n.language === 'ar' ? 'text-cyan-600 dark:text-cyan-400 font-bold' : 'text-slate-700 dark:text-slate-300 font-medium'}`}
-                    >
-                      العربية (Arabic)
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              <Button 
-                variant="ghost" 
-                size="sm"
-                onClick={() => setIsLoginOpen(true)}
-                className="text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                {t('navbar.login')}
-              </Button>
-              <Button 
-                size="sm" 
-                className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white shadow-md border-none"
-                onClick={() => setIsBookingOpen(true)}
-              >
-                {t('hero.book_demo')}
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button (Hamburger) */}
-            <div className="lg:hidden flex items-center space-x-2">
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-              <button
-                className="text-slate-700 dark:text-slate-300 p-2"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Menu */}
-          {isOpen && (
-            <div className="lg:hidden py-4 border-t border-slate-200 max-h-[80vh] overflow-y-auto">
-              
-              {/* Mobile Language Selector */}
-              <div className="px-4 pb-4 mb-2 border-b border-slate-100 flex gap-2">
-                <button 
-                  onClick={() => { i18n.changeLanguage('en'); setIsOpen(false); }}
-                  className={`flex-1 py-2 rounded-lg text-sm font-medium border ${i18n.language === 'en' ? 'bg-cyan-50 border-cyan-200 text-cyan-700' : 'bg-white border-slate-200 text-slate-600'}`}
-                >
-                  English
-                </button>
-                <button 
-                  onClick={() => { i18n.changeLanguage('ar'); setIsOpen(false); }}
-                  className={`flex-1 py-2 rounded-lg text-sm font-medium border ${i18n.language === 'ar' ? 'bg-cyan-50 border-cyan-200 text-cyan-700' : 'bg-white border-slate-200 text-slate-600'}`}
-                >
-                  العربية
-                </button>
-              </div>
-
-              {menuOrder.map((key) => {
-                if (key === 'industries') {
-                  return (
-                    <a 
-                      key="industries" 
-                      href="#industries" 
-                      onClick={() => setIsOpen(false)}
-                      className="block px-4 py-3 text-slate-700 hover:bg-slate-50 font-medium"
-                    >
-                      {t('navbar.industries')}
-                    </a>
-                  );
-                }
-
-                const menu = menuData[key];
-                return (
-                  <div key={key} className="mb-2">
-                    <button
-                      onClick={() => handleDropdownToggle(key)}
-                      className="flex items-center justify-between w-full px-4 py-3 text-slate-700 hover:bg-slate-50 transition-colors font-medium"
-                    >
-                      <span>{t(`navbar.${key}`)}</span>
-                      <ChevronDown size={16} className={`transition-transform ${activeDropdown === key ? 'rotate-180' : ''}`} />
-                    </button>
-                    {activeDropdown === key && (
-                      <div className="bg-slate-50 py-2 px-2">
-                        {menu.items.map((item, idx) => {
-                          const Icon = item.icon;
-                          return (
-                            <Link
-                              key={idx}
-                              to={item.link}
-                              onClick={() => {
-                                setActiveDropdown(null);
-                                setIsOpen(false);
-                              }}
-                              className="flex items-center space-x-3 px-4 py-3 text-slate-600 hover:text-cyan-600 hover:bg-slate-100 rounded-lg"
-                            >
-                              <Icon className="w-5 h-5 text-indigo-900" strokeWidth={1.5} />
-                              <span className="text-sm font-medium">{t(`navbar_dropdowns.${item.name}`)}</span>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-              
-              <div className="px-4 py-4 space-y-2 border-t border-slate-200 mt-2">
-                <Button 
-                  variant="outline" 
-                  className="w-full"
-                  onClick={() => {
-                    setIsLoginOpen(true);
-                    setIsOpen(false);
-                  }}
-                >
-                  {t('navbar.login')}
-                </Button>
-                <Button 
-                  className="w-full bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white"
-                  onClick={() => {
-                    setIsBookingOpen(true);
-                    setIsOpen(false);
-                  }}
-                >
-                  {t('hero.book_demo')}
-                </Button>
-              </div>
-            </div>
-          )}
+    <div className="bg-black rounded-b-2xl md:rounded-b-3xl px-4 py-2 md:px-8 flex items-center justify-center gap-3 sm:gap-6 md:gap-12 lg:gap-14 shadow-2xl relative z-50">
+      {menuOrder.map((key) => (
+        <div key={key} className="relative group">
+          <button 
+            className="flex items-center text-[10px] sm:text-xs md:text-sm transition-colors duration-300"
+            style={{ color: 'rgba(225, 224, 204, 0.8)' }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#E1E0CC';
+              setActiveDropdown(key);
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'rgba(225, 224, 204, 0.8)';
+            }}
+          >
+            {t(`navbar.${key}`)}
+          </button>
         </div>
-      </nav>
+      ))}
 
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
-    </>
+      {/* Language Toggle */}
+      <button 
+        onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en')}
+        className="flex items-center gap-1 text-[10px] sm:text-xs md:text-sm font-medium uppercase transition-colors duration-300"
+        style={{ color: 'rgba(225, 224, 204, 0.8)' }}
+        onMouseEnter={(e) => e.currentTarget.style.color = '#E1E0CC'}
+        onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(225, 224, 204, 0.8)'}
+      >
+        <Globe size={14} />
+        {i18n.language}
+      </button>
+    </div>
   );
 };
 

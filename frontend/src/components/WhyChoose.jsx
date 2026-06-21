@@ -1,53 +1,34 @@
 import React from 'react';
-import { whyChooseData } from '../mock/data';
-import { Target, TrendingUp, Shield, MapPin, Clock, Layers } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { useTranslation } from 'react-i18next'; // <-- 1. Import Translation Tool
-
-const iconMap = {
-  Target,
-  TrendingUp,
-  Shield,
-  MapPin,
-  Clock,
-  Layers
-};
+import { useTranslation } from 'react-i18next';
+import WordsPullUpMultiStyle from './ui/WordsPullUpMultiStyle';
+import AnimatedLetter from './ui/AnimatedLetter';
 
 const WhyChoose = () => {
-  const { t } = useTranslation(); // <-- 2. Activate tool
+  const { t } = useTranslation();
+
+  const titleSegments = [
+    { text: t('why_choose_page.title'), className: "font-serif italic" }
+  ];
 
   return (
-    <section className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors">
-            {t('why_choose_page.title')}
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto transition-colors">
-            {t('why_choose_page.subtitle')}
-          </p>
+    <section className="bg-black py-24 md:py-32 flex items-center justify-center">
+      <div className="bg-[#101010] w-full max-w-6xl mx-4 sm:mx-6 lg:mx-8 rounded-3xl p-8 md:p-16 flex flex-col items-center text-center">
+        
+        {/* Top Label */}
+        <span className="text-primary text-[10px] sm:text-xs uppercase tracking-widest mb-8 md:mb-12">
+          {t('BitVera IT Solutions')}
+        </span>
+
+        {/* Main Heading */}
+        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl max-w-4xl mx-auto leading-[0.95] sm:leading-[0.9] text-[#DEDBC8] mb-12 md:mb-16">
+          <WordsPullUpMultiStyle segments={titleSegments} />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {whyChooseData.map((item, index) => {
-            const Icon = iconMap[item.icon];
-            return (
-              <Card key={index} className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-cyan-500 dark:hover:border-cyan-400 hover:shadow-xl transition-all duration-300 group">
-                <CardHeader>
-                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-cyan-500 group-hover:to-teal-600 transition-all duration-300">
-                    <Icon size={28} className="text-cyan-600 group-hover:text-white transition-colors" />
-                  </div>
-                  {/* Translate mapped dynamic title */}
-                  <CardTitle className="text-xl dark:text-white transition-colors">{t(item.title)}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {/* Translate mapped dynamic description */}
-                  <CardDescription className="text-slate-600 dark:text-slate-400 transition-colors">{t(item.description)}</CardDescription>
-                </CardContent>
-              </Card>
-            );
-          })}
+        {/* Scroll-Revealed Subtitle */}
+        <div className="text-[#DEDBC8] text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+          <AnimatedLetter text={t('why_choose_page.subtitle')} />
         </div>
+
       </div>
     </section>
   );

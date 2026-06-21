@@ -1,124 +1,82 @@
 import React, { useState } from 'react';
-import { Button } from './ui/button';
-import { heroData } from '../mock/data';
-import { CheckCircle, Zap, Headphones, Trophy } from 'lucide-react';
-import BookingModal from './BookingModal';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-const iconMap = {
-  CheckCircle,
-  Zap,
-  Headphones,
-  Trophy
-};
-
-const FeatureBadge = ({ feature, index }) => {
-  const { t } = useTranslation();
-  const Icon = iconMap[feature.icon];
-  return (
-    <div className="flex items-center space-x-3 p-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow">
-      <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
-        <Icon size={20} className="text-white" />
-      </div>
-      {/* Translates the badge text dynamically */}
-      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{t(`features.${feature.text}`)}</span>
-    </div>
-  );
-};
+import BookingModal from './BookingModal';
+import WordsPullUp from './ui/WordsPullUp';
+import Navbar from './Navbar';
 
 const Hero = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
 
   return (
-    <>
-      <section className="relative pt-24 pb-20 overflow-hidden transition-colors duration-300">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 dark:from-slate-900 via-cyan-50/30 dark:via-slate-800/50 to-teal-50/20 dark:to-slate-900"></div>
-        
-        <div className="absolute top-20 start-10 w-72 h-72 bg-cyan-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 end-10 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl"></div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-start space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white leading-tight transition-colors">
-                  <span className="bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">
-                    {t('hero.title_1')} 
-                  </span>
-                  <br />
-                  <span>{t('hero.title_2')}</span>
-                </h1>
-                <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl transition-colors">
-                  {t('hero.subtitle')}
-                </p>
-                <p className="text-base text-slate-500 dark:text-slate-400 transition-colors">
-                  {t('hero.trusted_partner')}
-                </p>
-              </div>
+    <section className="h-screen w-full bg-black p-4 md:p-6">
+      <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
+        />
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-cyan-500 to-teal-600 hover:from-cyan-600 hover:to-teal-700 text-white shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300"
-                  onClick={() => setIsBookingOpen(true)}
-                >
-                  {t('hero.book_consultation')}
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-2 border-cyan-500 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-900/30"
-                  onClick={() => setIsBookingOpen(true)}
-                >
-                  {t('hero.book_demo')}
-                </Button>
-              </div>
+        {/* Overlays */}
+        <div className="noise-overlay opacity-[0.7] mix-blend-overlay pointer-events-none z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 pointer-events-none z-10" />
 
-              <div className="grid grid-cols-2 gap-4 pt-8">
-                {heroData.features.map((feature, index) => (
-                  <FeatureBadge key={`feature-${index}`} feature={feature} index={index} />
-                ))}
-              </div>
+        {/* Navbar inside Hero container */}
+        <div className="absolute top-0 left-0 w-full flex justify-center z-50">
+          <Navbar />
+        </div>
+
+        {/* Bottom Content */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 z-20">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+            
+            {/* Giant Heading */}
+            <div className="md:col-span-8">
+              <WordsPullUp 
+                text={t('hero.title_1') + " " + t('hero.title_2')} 
+                className="text-[26vw] sm:text-[24vw] md:text-[22vw] lg:text-[20vw] xl:text-[19vw] 2xl:text-[20vw] font-medium leading-[0.85] tracking-[-0.07em] text-[#E1E0CC]"
+                showAsterisk={true}
+              />
             </div>
 
-            <div className="relative">
-              <div className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden transform hover:scale-105 transition-all duration-500">
-                <div className="bg-gradient-to-r from-cyan-500 to-teal-600 h-10 flex items-center px-4 space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-white/30"></div>
-                  <div className="w-3 h-3 rounded-full bg-white/30"></div>
-                  <div className="w-3 h-3 rounded-full bg-white/30"></div>
+            {/* Subtitle & CTA */}
+            <div className="md:col-span-4 flex flex-col items-start md:items-end justify-end space-y-6 md:pb-4">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="text-primary/70 text-xs sm:text-sm md:text-base leading-[1.2] max-w-sm md:text-right"
+              >
+                {t('hero.subtitle')}
+              </motion.p>
+
+              <motion.button
+                onClick={() => setIsBookingOpen(true)}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="group flex items-center gap-2 hover:gap-3 bg-primary text-black rounded-full pl-5 pr-2 py-2 transition-all duration-300"
+              >
+                <span className="font-medium text-sm sm:text-base">{t('hero.book_consultation')}</span>
+                <div className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                  <ArrowRight size={18} className="text-[#DEDBC8]" />
                 </div>
-                <div className="p-6 relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 -z-10"></div>
-                  <img
-                    src="/images/hero-mockup.png"
-                    alt="BitVera ERP Dashboard"
-                    className="relative w-full h-auto rounded-lg shadow-2xl transform group-hover:-translate-y-2 group-hover:scale-[1.02] transition-all duration-700"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-              
-              {/* Added ltr: and rtl: to handle the absolute positioning dynamically */}
-              <div className="absolute -bottom-6 -start-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 transition-colors">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center">
-                    <CheckCircle size={24} className="text-white" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-slate-800 dark:text-white transition-colors">{t('features.Implementation')}</div>
-                    <div className="text-xs text-slate-500 dark:text-slate-400 transition-colors">{t('features.95% Success Rate')}</div>
-                  </div>
-                </div>
-              </div>
+              </motion.button>
             </div>
           </div>
         </div>
-      </section>
-
+      </div>
+      
       <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
-    </>
+    </section>
   );
 };
 
