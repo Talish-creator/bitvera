@@ -28,35 +28,35 @@ html {
 
 @layer base {
   :root {
-    /* Light Mode (Warm Vintage Cream) */
-    --surface-main: 245 244 239; /* #f5f4ef */
-    --surface-raised: 233 231 220; /* #e9e7dc */
-    --surface-elevated: 223 221 206; /* #dfddce */
-    --text-primary: 26 26 26; /* #1a1a1a */
-    --text-secondary: 85 85 85; /* #555555 */
-    --text-accent: 90 87 73; /* #5a5749 */
+    /* Light Mode (Crisp Modern Studio) */
+    --surface-main: 250 250 250; /* #fafafa - very light grey background */
+    --surface-raised: 255 255 255; /* #ffffff - pure white for cards */
+    --surface-elevated: 244 244 245; /* #f4f4f5 - zinc-100 for hovered/elevated elements */
+    --text-primary: 9 9 11; /* #09090b - zinc-950 for deep, crisp text */
+    --text-secondary: 113 113 122; /* #71717a - zinc-500 for subtle text */
+    --text-accent: 37 99 235; /* #2563eb - blue-600 for vibrant, trustworthy accents */
     --border-glass: 0 0 0; /* will use with /10 opacity */
     
     /* Defaults for Tailwind UI / shadcn if needed */
-    --background: 245 244 239;
-    --foreground: 26 26 26;
-    --card: 233 231 220;
-    --card-foreground: 26 26 26;
-    --popover: 245 244 239;
-    --popover-foreground: 26 26 26;
-    --primary: 90 87 73;
+    --background: 250 250 250;
+    --foreground: 9 9 11;
+    --card: 255 255 255;
+    --card-foreground: 9 9 11;
+    --popover: 250 250 250;
+    --popover-foreground: 9 9 11;
+    --primary: 37 99 235;
     --primary-foreground: 255 255 255;
-    --secondary: 223 221 206;
-    --secondary-foreground: 26 26 26;
-    --muted: 223 221 206;
-    --muted-foreground: 85 85 85;
-    --accent: 223 221 206;
-    --accent-foreground: 26 26 26;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 223 221 206;
-    --input: 223 221 206;
-    --ring: 90 87 73;
+    --secondary: 244 244 245;
+    --secondary-foreground: 9 9 11;
+    --muted: 244 244 245;
+    --muted-foreground: 113 113 122;
+    --accent: 244 244 245;
+    --accent-foreground: 9 9 11;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 228 228 231; /* zinc-200 */
+    --input: 228 228 231;
+    --ring: 37 99 235;
     --radius: 0.5rem;
   }
   
