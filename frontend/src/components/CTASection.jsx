@@ -61,17 +61,17 @@ const CTASection = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-black transition-colors duration-300 overflow-hidden">
+    <section className="relative py-20 bg-surface-main transition-colors duration-300 overflow-hidden">
       <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Benefits */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-4xl font-bold text-white mb-4 transition-colors">
+              <h2 className="text-4xl font-bold text-text-primary mb-4 transition-colors">
                 {t('cta_section.title')}
               </h2>
-              <p className="text-2xl font-semibold text-[#DEDBC8] mb-2 transition-colors">
+              <p className="text-2xl font-semibold text-text-accent mb-2 transition-colors">
                 {t('cta_section.subtitle')}
               </p>
             </div>
@@ -81,10 +81,10 @@ const CTASection = () => {
                 const Icon = benefit.icon;
                 return (
                   <div key={index} className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-[#212121] border border-white/10 rounded-lg flex items-center justify-center">
-                      <Icon size={20} className="text-[#DEDBC8]" />
+                    <div className="w-10 h-10 bg-surface-elevated border border-border-glass/10 rounded-lg flex items-center justify-center">
+                      <Icon size={20} className="text-text-accent" />
                     </div>
-                    <span className="text-lg text-gray-300 font-medium transition-colors">{t(benefit.text)}</span>
+                    <span className="text-lg text-text-secondary font-medium transition-colors">{t(benefit.text)}</span>
                   </div>
                 );
               })}
@@ -92,11 +92,11 @@ const CTASection = () => {
           </div>
 
           {/* Right Side - Form */}
-          <Card className="bg-[#101010] border-white/10 shadow-2xl relative overflow-hidden transition-colors">
+          <Card className="bg-surface-raised border-border-glass/10 shadow-2xl relative overflow-hidden transition-colors">
             <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
             <CardHeader className="relative z-10">
-              <CardTitle className="text-white transition-colors">{t('cta_section.card_title')}</CardTitle>
-              <CardDescription className="text-gray-400 transition-colors">{t('cta_section.card_desc')}</CardDescription>
+              <CardTitle className="text-text-primary transition-colors">{t('cta_section.card_title')}</CardTitle>
+              <CardDescription className="text-text-secondary transition-colors">{t('cta_section.card_desc')}</CardDescription>
             </CardHeader>
             <CardContent className="relative z-10">
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -149,7 +149,7 @@ const CTASection = () => {
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-[#DEDBC8] hover:bg-white text-black font-semibold transition-colors"
+                  className="w-full bg-text-accent hover:bg-surface-main hover:text-text-primary text-surface-main font-semibold transition-colors"
                   size="lg"
                   disabled={isSubmitting}
                 >

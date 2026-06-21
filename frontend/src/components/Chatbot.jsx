@@ -134,42 +134,42 @@ const Chatbot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 end-6 z-50 w-16 h-16 bg-[#101010] border border-white/10 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_8px_30px_rgba(222,219,200,0.2)] hover:scale-105 transition-all duration-300 flex items-center justify-center group"
+          className="fixed bottom-6 end-6 z-50 w-16 h-16 bg-surface-raised border border-border-glass/10 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_8px_30px_rgba(222,219,200,0.2)] hover:scale-105 transition-all duration-300 flex items-center justify-center group"
         >
-          <Bot size={32} className="text-[#DEDBC8] transform group-hover:rotate-12 transition-transform duration-300" />
-          <span className="absolute top-0 end-0 w-4 h-4 bg-[#DEDBC8] border-2 border-[#101010] rounded-full animate-pulse"></span>
+          <Bot size={32} className="text-text-accent transform group-hover:rotate-12 transition-transform duration-300" />
+          <span className="absolute top-0 end-0 w-4 h-4 bg-text-accent border-2 border-surface-raised rounded-full animate-pulse"></span>
         </button>
       )}
 
       {isOpen && (
-        <div className="fixed bottom-6 end-6 z-50 w-full max-w-sm sm:w-96 h-[650px] max-h-[85vh] bg-[#101010]/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden border border-white/10 ring-1 ring-white/5 transition-all duration-500 ease-in-out">
+        <div className="fixed bottom-6 end-6 z-50 w-full max-w-sm sm:w-96 h-[650px] max-h-[85vh] bg-surface-raised/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden border border-border-glass/10 ring-1 ring-white/5 transition-all duration-500 ease-in-out">
           {/* Header */}
-          <div className="bg-[#101010] border-b border-white/10 p-5 text-[#DEDBC8] flex items-center justify-between relative overflow-hidden shrink-0">
+          <div className="bg-surface-raised border-b border-border-glass/10 p-5 text-text-accent flex items-center justify-between relative overflow-hidden shrink-0">
             <div className="absolute top-0 start-0 w-full h-full bg-white/5 blur-2xl transform -skew-y-12"></div>
             <div className="flex items-center space-x-3 relative z-10">
-              <div className="w-12 h-12 bg-[#212121] rounded-full flex items-center justify-center border border-white/10 shadow-inner">
-                <Sparkles size={24} className="text-[#DEDBC8]" />
+              <div className="w-12 h-12 bg-surface-elevated rounded-full flex items-center justify-center border border-border-glass/10 shadow-inner">
+                <Sparkles size={24} className="text-text-accent" />
               </div>
               <div>
-                <h3 className="font-bold text-lg flex items-center gap-2 tracking-tight text-[#DEDBC8]">
+                <h3 className="font-bold text-lg flex items-center gap-2 tracking-tight text-text-accent">
                   {t('AI Assistant')}
                 </h3>
-                <p className="text-xs text-[#DEDBC8]/70 font-medium flex items-center gap-1">
-                  <span className="w-2 h-2 bg-[#DEDBC8] rounded-full animate-pulse"></span>
+                <p className="text-xs text-text-accent/70 font-medium flex items-center gap-1">
+                  <span className="w-2 h-2 bg-text-accent rounded-full animate-pulse"></span>
                   {t('Online • Smart Context')}
                 </p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="hover:bg-white/10 rounded-full p-2 transition-colors relative z-10 text-[#DEDBC8]"
+              className="hover:bg-white/10 rounded-full p-2 transition-colors relative z-10 text-text-accent"
             >
               <X size={20} />
             </button>
           </div>
 
           {/* Chat Area */}
-          <div className="flex-1 overflow-y-auto p-5 space-y-5 bg-black/50 transition-colors">
+          <div className="flex-1 overflow-y-auto p-5 space-y-5 bg-surface-main/50 transition-colors">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -178,8 +178,8 @@ const Chatbot = () => {
                 <div
                   className={`max-w-[85%] rounded-2xl px-5 py-3 ${
                     message.sender === 'user'
-                      ? 'bg-[#DEDBC8] text-black shadow-md rounded-br-sm'
-                      : 'bg-[#212121] text-[#DEDBC8] shadow-sm border border-white/10 rounded-bl-sm prose prose-sm prose-invert max-w-none transition-colors'
+                      ? 'bg-text-accent text-black shadow-md rounded-br-sm'
+                      : 'bg-surface-elevated text-text-accent shadow-sm border border-border-glass/10 rounded-bl-sm prose prose-sm prose-invert max-w-none transition-colors'
                   }`}
                 >
                   {message.sender === 'bot' ? (
@@ -187,7 +187,7 @@ const Chatbot = () => {
                   ) : (
                     <p className="text-sm whitespace-pre-line leading-relaxed font-medium">{message.text}</p>
                   )}
-                  <span className={`text-[10px] mt-2 block ${message.sender === 'user' ? 'text-black/60 text-end' : 'text-[#DEDBC8]/50 text-start'}`}>
+                  <span className={`text-[10px] mt-2 block ${message.sender === 'user' ? 'text-black/60 text-end' : 'text-text-accent/50 text-start'}`}>
                     {message.timestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
@@ -196,11 +196,11 @@ const Chatbot = () => {
 
             {isTyping && (
               <div className="flex justify-start animate-in fade-in duration-300">
-                <div className="bg-[#212121] text-[#DEDBC8]/70 border border-white/10 shadow-sm rounded-2xl rounded-bl-sm px-5 py-4 flex items-center space-x-2 transition-colors">
+                <div className="bg-surface-elevated text-text-accent/70 border border-border-glass/10 shadow-sm rounded-2xl rounded-bl-sm px-5 py-4 flex items-center space-x-2 transition-colors">
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-[#DEDBC8] rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                    <div className="w-2 h-2 bg-[#DEDBC8] rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                    <div className="w-2 h-2 bg-[#DEDBC8] rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-text-accent rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                    <div className="w-2 h-2 bg-text-accent rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                    <div className="w-2 h-2 bg-text-accent rounded-full animate-bounce"></div>
                   </div>
                 </div>
               </div>
@@ -210,12 +210,12 @@ const Chatbot = () => {
 
           {/* Quick Replies Strip */}
           {!isTyping && (
-            <div className="px-3 pb-3 bg-[#101010] border-t border-white/10 pt-3 overflow-x-auto whitespace-nowrap flex gap-2 shrink-0 transition-colors">
+            <div className="px-3 pb-3 bg-surface-raised border-t border-border-glass/10 pt-3 overflow-x-auto whitespace-nowrap flex gap-2 shrink-0 transition-colors">
               {quickReplies.map((reply) => (
                 <button
                   key={reply.id}
                   onClick={() => handleQuickReply(reply.query)}
-                  className="inline-flex items-center text-xs px-4 py-2 bg-[#212121] border border-white/10 text-[#DEDBC8] rounded-full hover:bg-[#DEDBC8] hover:text-black hover:border-[#DEDBC8] transition-all shadow-sm flex-shrink-0 font-medium"
+                  className="inline-flex items-center text-xs px-4 py-2 bg-surface-elevated border border-border-glass/10 text-text-accent rounded-full hover:bg-text-accent hover:text-black hover:border-text-accent transition-all shadow-sm flex-shrink-0 font-medium"
                 >
                   {reply.text}
                 </button>
@@ -224,19 +224,19 @@ const Chatbot = () => {
           )}
 
           {/* Input Area */}
-          <form onSubmit={handleSendMessage} className="p-4 bg-[#101010] border-t border-white/10 shadow-[0_-10px_20px_-15px_rgba(0,0,0,0.5)] shrink-0 transition-colors">
-            <div className="flex items-center space-x-2 bg-[#212121] rounded-full px-2 py-2 border border-white/10 focus-within:border-[#DEDBC8] transition-all">
+          <form onSubmit={handleSendMessage} className="p-4 bg-surface-raised border-t border-border-glass/10 shadow-[0_-10px_20px_-15px_rgba(0,0,0,0.5)] shrink-0 transition-colors">
+            <div className="flex items-center space-x-2 bg-surface-elevated rounded-full px-2 py-2 border border-border-glass/10 focus-within:border-text-accent transition-all">
               <Input
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder={t("Type your message...")}
-                className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 px-3 h-10 text-sm text-[#DEDBC8] placeholder:text-[#DEDBC8]/40 transition-colors"
+                className="flex-1 bg-transparent border-none shadow-none focus-visible:ring-0 px-3 h-10 text-sm text-text-accent placeholder:text-text-accent/40 transition-colors"
                 disabled={isTyping}
               />
               <Button
                 type="submit"
                 size="icon"
-                className="bg-[#DEDBC8] hover:bg-[#DEDBC8]/90 text-black rounded-full w-10 h-10 shadow-md transition-transform active:scale-95 flex-shrink-0"
+                className="bg-text-accent hover:bg-text-accent/90 text-black rounded-full w-10 h-10 shadow-md transition-transform active:scale-95 flex-shrink-0"
                 disabled={isTyping || !inputMessage.trim()}
               >
                 {isTyping ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} className="ms-1" />}
@@ -247,7 +247,7 @@ const Chatbot = () => {
               <button
                 type="button"
                 onClick={handleWhatsApp}
-                className="text-xs text-[#DEDBC8]/60 hover:text-[#DEDBC8] flex items-center gap-1 transition-colors font-medium"
+                className="text-xs text-text-accent/60 hover:text-text-accent flex items-center gap-1 transition-colors font-medium"
               >
                 <MessageCircle size={14} /> WhatsApp
               </button>
@@ -255,7 +255,7 @@ const Chatbot = () => {
               <button
                 type="button"
                 onClick={handleCall}
-                className="text-xs text-[#DEDBC8]/60 hover:text-[#DEDBC8] flex items-center gap-1 transition-colors font-medium"
+                className="text-xs text-text-accent/60 hover:text-text-accent flex items-center gap-1 transition-colors font-medium"
               >
                 <Phone size={14} /> {t('Call Us')}
               </button>

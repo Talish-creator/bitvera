@@ -59,37 +59,37 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
   const price = billingPeriod === 'monthly' ? plan.monthlyPrice : plan.annualPrice;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-[#101010]/90 backdrop-blur-xl rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-white/10 transition-colors">
-        <div className="sticky top-0 bg-[#101010]/90 p-6 text-[#DEDBC8] border-b border-white/10 z-10">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-surface-main/80 backdrop-blur-sm">
+      <div className="bg-surface-raised/90 backdrop-blur-xl rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto border border-border-glass/10 transition-colors">
+        <div className="sticky top-0 bg-surface-raised/90 p-6 text-text-accent border-b border-border-glass/10 z-10">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-2xl font-bold">{t('purchase_modal.get_started')} {t(plan.name)}</h2>
             <button
               onClick={onClose}
-              className="hover:bg-white/10 rounded-full p-2 transition-colors text-[#DEDBC8]"
+              className="hover:bg-white/10 rounded-full p-2 transition-colors text-text-accent"
             >
               <X size={24} />
             </button>
           </div>
-          <p className="text-sm text-[#DEDBC8]/70">{t('purchase_modal.enter_details')}</p>
+          <p className="text-sm text-text-accent/70">{t('purchase_modal.enter_details')}</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-4 text-[#DEDBC8]">
-          <div className="bg-[#212121] p-4 rounded-lg border border-white/10 transition-colors">
+        <form onSubmit={handleSubmit} className="p-6 space-y-4 text-text-accent">
+          <div className="bg-surface-elevated p-4 rounded-lg border border-border-glass/10 transition-colors">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-[#DEDBC8]/70 transition-colors">{t('purchase_modal.plan_label')}</span>
-              <span className="text-lg font-bold text-[#DEDBC8] transition-colors">{t(plan.name)}</span>
+              <span className="text-sm font-semibold text-text-accent/70 transition-colors">{t('purchase_modal.plan_label')}</span>
+              <span className="text-lg font-bold text-text-accent transition-colors">{t(plan.name)}</span>
             </div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-[#DEDBC8]/70 transition-colors">{t('purchase_modal.billing_label')}</span>
+              <span className="text-sm font-semibold text-text-accent/70 transition-colors">{t('purchase_modal.billing_label')}</span>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => setBillingPeriod('monthly')}
                   className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                     billingPeriod === 'monthly'
-                      ? 'bg-[#DEDBC8] text-black'
-                      : 'bg-black/50 text-[#DEDBC8]/70 hover:bg-white/10 hover:text-[#DEDBC8]'
+                      ? 'bg-text-accent text-black'
+                      : 'bg-surface-main/50 text-text-accent/70 hover:bg-white/10 hover:text-text-accent'
                   }`}
                 >
                   {t('purchase_modal.monthly_btn')}
@@ -99,27 +99,27 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
                   onClick={() => setBillingPeriod('annual')}
                   className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                     billingPeriod === 'annual'
-                      ? 'bg-[#DEDBC8] text-black'
-                      : 'bg-black/50 text-[#DEDBC8]/70 hover:bg-white/10 hover:text-[#DEDBC8]'
+                      ? 'bg-text-accent text-black'
+                      : 'bg-surface-main/50 text-text-accent/70 hover:bg-white/10 hover:text-text-accent'
                   }`}
                 >
                   {t('purchase_modal.annual_btn')}
                 </button>
               </div>
             </div>
-            <div className="flex items-center justify-between pt-2 border-t border-white/10 transition-colors">
-              <span className="text-sm font-semibold text-[#DEDBC8]/70 transition-colors">{t('purchase_modal.total_label')}</span>
-              <span className="text-2xl font-bold text-[#DEDBC8]">
+            <div className="flex items-center justify-between pt-2 border-t border-border-glass/10 transition-colors">
+              <span className="text-sm font-semibold text-text-accent/70 transition-colors">{t('purchase_modal.total_label')}</span>
+              <span className="text-2xl font-bold text-text-accent">
                 <span dir="ltr">{price}</span> {t('purchase_modal.sar_mo')}
               </span>
             </div>
-            <p className="text-xs text-[#DEDBC8]/50 mt-2 transition-colors">
+            <p className="text-xs text-text-accent/50 mt-2 transition-colors">
               {t('purchase_modal.implementation_fee_prefix')} <span dir="ltr">{plan.implementationFee.toLocaleString()}</span> {t('purchase_modal.sar_one_time')}
             </p>
           </div>
 
           <div>
-            <Label htmlFor="name" className="text-[#DEDBC8]">{t('purchase_modal.full_name')}</Label>
+            <Label htmlFor="name" className="text-text-accent">{t('purchase_modal.full_name')}</Label>
             <Input
               id="name"
               placeholder={t('purchase_modal.placeholder_name')}
@@ -127,12 +127,12 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
               disabled={isSubmitting}
-              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
+              className="bg-surface-elevated border-border-glass/10 text-text-accent focus:border-text-accent focus-visible:ring-text-accent placeholder:text-text-accent/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="company" className="text-[#DEDBC8]">{t('purchase_modal.company_name')}</Label>
+            <Label htmlFor="company" className="text-text-accent">{t('purchase_modal.company_name')}</Label>
             <Input
               id="company"
               placeholder={t('purchase_modal.placeholder_company')}
@@ -140,12 +140,12 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               required
               disabled={isSubmitting}
-              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
+              className="bg-surface-elevated border-border-glass/10 text-text-accent focus:border-text-accent focus-visible:ring-text-accent placeholder:text-text-accent/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="email" className="text-[#DEDBC8]">{t('purchase_modal.business_email')}</Label>
+            <Label htmlFor="email" className="text-text-accent">{t('purchase_modal.business_email')}</Label>
             <Input
               id="email"
               type="email"
@@ -154,12 +154,12 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
               disabled={isSubmitting}
-              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
+              className="bg-surface-elevated border-border-glass/10 text-text-accent focus:border-text-accent focus-visible:ring-text-accent placeholder:text-text-accent/30 mt-1.5"
             />
           </div>
 
           <div>
-            <Label htmlFor="phone" className="text-[#DEDBC8]">{t('purchase_modal.phone_number')}</Label>
+            <Label htmlFor="phone" className="text-text-accent">{t('purchase_modal.phone_number')}</Label>
             <Input
               id="phone"
               type="tel"
@@ -169,7 +169,7 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
               disabled={isSubmitting}
-              className="bg-[#212121] border-white/10 text-[#DEDBC8] focus:border-[#DEDBC8] focus-visible:ring-[#DEDBC8] placeholder:text-[#DEDBC8]/30 mt-1.5"
+              className="bg-surface-elevated border-border-glass/10 text-text-accent focus:border-text-accent focus-visible:ring-text-accent placeholder:text-text-accent/30 mt-1.5"
             />
           </div>
 
@@ -178,21 +178,21 @@ const PurchaseModal = ({ isOpen, onClose, plan }) => {
               type="button"
               variant="outline"
               onClick={onClose}
-              className="flex-1 bg-transparent border-white/10 text-[#DEDBC8] hover:bg-white/5 hover:text-[#DEDBC8]"
+              className="flex-1 bg-transparent border-border-glass/10 text-text-accent hover:bg-white/5 hover:text-text-accent"
               disabled={isSubmitting}
             >
               {t('purchase_modal.cancel')}
             </Button>
             <Button
               type="submit"
-              className="flex-1 bg-[#DEDBC8] hover:bg-[#DEDBC8]/90 text-black font-semibold"
+              className="flex-1 bg-text-accent hover:bg-text-accent/90 text-black font-semibold"
               disabled={isSubmitting}
             >
               {isSubmitting ? t('purchase_modal.processing_btn') : t('purchase_modal.proceed_btn')}
             </Button>
           </div>
 
-          <p className="text-xs text-[#DEDBC8]/50 text-center transition-colors mt-4">
+          <p className="text-xs text-text-accent/50 text-center transition-colors mt-4">
             {t('purchase_modal.secure_payment')}
           </p>
         </form>

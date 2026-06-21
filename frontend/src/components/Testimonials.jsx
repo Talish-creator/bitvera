@@ -9,26 +9,26 @@ const TestimonialCard = ({ testimonial }) => {
   const { t } = useTranslation(); // <-- 2. Activate tool inside the Card
 
   return (
-    <Card className="relative bg-[#212121] border-white/10 hover:border-[#DEDBC8]/50 hover:shadow-2xl hover:shadow-[#DEDBC8]/5 transition-all duration-300 overflow-hidden">
+    <Card className="relative bg-surface-elevated border-border-glass/10 hover:border-text-accent/50 hover:shadow-2xl hover:shadow-text-accent/5 transition-all duration-300 overflow-hidden">
       <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
       <CardContent className="pt-6 relative z-10">
         <div className="flex items-center mb-4">
           {[...Array(testimonial.rating)].map((_, i) => (
-            <Star key={`star-${testimonial.id}-${i}`} size={18} className="text-[#DEDBC8] fill-[#DEDBC8]" />
+            <Star key={`star-${testimonial.id}-${i}`} size={18} className="text-text-accent fill-text-accent" />
           ))}
         </div>
         {/* Wrap the mock data in the translation tool */}
-        <p className="text-white/80 mb-6 italic transition-colors">"{t(testimonial.content)}"</p>
+        <p className="text-text-primary mb-6 italic transition-colors">"{t(testimonial.content)}"</p>
         <div className="flex items-center space-x-3">
           <img
             src={testimonial.avatar}
             alt={testimonial.name}
-            className="w-12 h-12 rounded-full border border-white/10"
+            className="w-12 h-12 rounded-full border border-border-glass/10"
           />
           <div>
             {/* Wrap name and position */}
-            <div className="font-semibold text-[#DEDBC8] transition-colors">{t(testimonial.name)}</div>
-            <div className="text-sm text-white/50 transition-colors">{t(testimonial.position)}</div>
+            <div className="font-semibold text-text-accent transition-colors">{t(testimonial.name)}</div>
+            <div className="text-sm text-text-primary/50 transition-colors">{t(testimonial.position)}</div>
           </div>
         </div>
       </CardContent>
@@ -37,15 +37,15 @@ const TestimonialCard = ({ testimonial }) => {
 };
 
 const LoadingSkeleton = () => (
-  <Card className="bg-[#212121] border-white/10 animate-pulse transition-colors">
+  <Card className="bg-surface-elevated border-border-glass/10 animate-pulse transition-colors">
     <CardContent className="pt-6">
-      <div className="h-4 bg-white/10 rounded w-3/4 mb-4"></div>
-      <div className="h-20 bg-white/10 rounded mb-6"></div>
+      <div className="h-4 bg-border-glass/10 rounded w-3/4 mb-4"></div>
+      <div className="h-20 bg-border-glass/10 rounded mb-6"></div>
       <div className="flex items-center space-x-3">
-        <div className="w-12 h-12 bg-white/10 rounded-full"></div>
+        <div className="w-12 h-12 bg-border-glass/10 rounded-full"></div>
         <div className="flex-1">
-          <div className="h-4 bg-white/10 rounded w-2/3 mb-2"></div>
-          <div className="h-3 bg-white/10 rounded w-1/2"></div>
+          <div className="h-4 bg-border-glass/10 rounded w-2/3 mb-2"></div>
+          <div className="h-3 bg-border-glass/10 rounded w-1/2"></div>
         </div>
       </div>
     </CardContent>
@@ -85,14 +85,14 @@ const Testimonials = () => {
 
   if (loading) {
     return (
-      <section className="relative py-20 bg-black transition-colors duration-300">
+      <section className="relative py-20 bg-surface-main transition-colors duration-300">
         <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4 transition-colors">
+            <h2 className="text-4xl font-bold text-text-primary mb-4 transition-colors">
               {t('testimonials_page.title')}
             </h2>
-            <p className="text-lg text-[#DEDBC8]/70 transition-colors">
+            <p className="text-lg text-text-accent/70 transition-colors">
               {t('testimonials_page.subtitle')}
             </p>
           </div>
@@ -107,14 +107,14 @@ const Testimonials = () => {
   }
 
   return (
-    <section className="relative py-20 bg-black transition-colors duration-300">
+    <section className="relative py-20 bg-surface-main transition-colors duration-300">
       <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4 transition-colors">
+          <h2 className="text-4xl font-bold text-text-primary mb-4 transition-colors">
             {t('testimonials_page.title')}
           </h2>
-          <p className="text-lg text-[#DEDBC8]/70 transition-colors">
+          <p className="text-lg text-text-accent/70 transition-colors">
             {t('testimonials_page.subtitle')}
           </p>
         </div>

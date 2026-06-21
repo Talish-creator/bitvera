@@ -80,18 +80,41 @@ const Navbar = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const { t, i18n } = useTranslation();
 
+  // Theme Toggle Logic
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme === 'dark';
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return true; // Default to dark for Prisma aesthetic
+  });
+
+  React.useEffect(() => {
+    const root = window.document.documentElement;
+    if (isDarkMode) {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
   return (
     <div className="absolute top-0 left-0 w-full flex justify-center z-50">
-      <div className="bg-black/90 backdrop-blur-xl rounded-b-3xl px-8 py-4 flex items-center justify-center gap-12 shadow-2xl border-x border-b border-white/10 relative">
+      <div className="bg-surface-raised/90 backdrop-blur-xl rounded-b-3xl px-8 py-4 flex items-center justify-center gap-12 shadow-2xl border-x border-b border-border-glass/10 relative">
         {menuOrder.map((key) => {
           const menu = menuData[key];
           return (
             <div key={key} className="relative group">
               <button 
-                className="flex items-center gap-1 text-[13px] font-medium tracking-wide transition-colors duration-300"
-                style={{ color: 'rgba(225, 224, 204, 0.8)' }}
+                className="flex items-center gap-1 text-[13px] font-medium tracking-wide transition-colors duration-300 text-text-accent opacity-80 hover:opacity-100"
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#DEDBC8';
                   setActiveDropdown(key);
                   setIsLangOpen(false);
                 }}
@@ -102,12 +125,12 @@ const Navbar = () => {
 
               {activeDropdown === key && (
                 <div 
-                  className={`absolute left-1/2 -translate-x-1/2 top-full mt-4 ${menu.width} bg-[#101010]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 py-4`}
+                  className={`absolute left-1/2 -translate-x-1/2 top-full mt-4 ${menu.width} bg-surface-raised/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-border-glass/10 py-4`}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
                   {/* Dropdown Header */}
-                  <div className="px-6 pb-4 mb-2 border-b border-white/10">
-                    <h3 className="text-lg font-serif italic text-[#DEDBC8]">{t(`navbar.${key}`)}</h3>
+                  <div className="px-6 pb-4 mb-2 border-b border-border-glass/10">
+                    <h3 className="text-lg font-serif italic text-text-accent">{t(`navbar.${key}`)}</h3>
                   </div>
 
                   {/* Grid Layout (Solutions) */}
@@ -120,10 +143,10 @@ const Navbar = () => {
                             key={idx} 
                             to={item.link} 
                             onClick={() => setActiveDropdown(null)}
-                            className="flex items-center space-x-4 px-3 py-3 hover:bg-white/5 rounded-xl transition-colors group"
+                            className="flex items-center space-x-4 px-3 py-3 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors group"
                           >
-                            <Icon className="w-5 h-5 text-[#DEDBC8] opacity-70 group-hover:opacity-100 transition-opacity" />
-                            <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{t(`navbar_dropdowns.${item.name}`)}</span>
+                            <Icon className="w-5 h-5 text-text-accent opacity-70 group-hover:opacity-100 transition-opacity" />
+                            <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">{t(`navbar_dropdowns.${item.name}`)}</span>
                           </Link>
                         );
                       })}
@@ -141,15 +164,15 @@ const Navbar = () => {
                               key={idx} 
                               to={item.link}
                               onClick={() => setActiveDropdown(null)}
-                              className="flex items-center space-x-4 px-3 py-3 hover:bg-white/5 rounded-xl transition-colors group"
+                              className="flex items-center space-x-4 px-3 py-3 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors group"
                             >
-                              <Icon className="w-5 h-5 text-[#DEDBC8] opacity-70 group-hover:opacity-100 transition-opacity" />
-                              <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{t(`navbar_dropdowns.${item.name}`)}</span>
+                              <Icon className="w-5 h-5 text-text-accent opacity-70 group-hover:opacity-100 transition-opacity" />
+                              <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">{t(`navbar_dropdowns.${item.name}`)}</span>
                             </Link>
                           );
                         })}
                       </div>
-                      <div className="bg-[#212121]/50 rounded-xl w-full h-full min-h-[140px] border border-white/5 flex items-center justify-center relative overflow-hidden">
+                      <div className="bg-surface-elevated/50 rounded-xl w-full h-full min-h-[140px] border border-border-glass/5 flex items-center justify-center relative overflow-hidden">
                         <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay"></div>
                       </div>
                     </div>
@@ -165,10 +188,10 @@ const Navbar = () => {
                             key={idx} 
                             to={item.link} 
                             onClick={() => setActiveDropdown(null)}
-                            className="flex items-center space-x-4 px-3 py-3 hover:bg-white/5 rounded-xl transition-colors group"
+                            className="flex items-center space-x-4 px-3 py-3 hover:bg-black/5 dark:hover:bg-white/5 rounded-xl transition-colors group"
                           >
-                            <Icon className="w-5 h-5 text-[#DEDBC8] opacity-70 group-hover:opacity-100 transition-opacity" />
-                            <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{t(`navbar_dropdowns.${item.name}`)}</span>
+                            <Icon className="w-5 h-5 text-text-accent opacity-70 group-hover:opacity-100 transition-opacity" />
+                            <span className="text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">{t(`navbar_dropdowns.${item.name}`)}</span>
                           </Link>
                         );
                       })}
@@ -180,60 +203,71 @@ const Navbar = () => {
           );
         })}
 
-        {/* Language Toggle */}
-        <div className="relative group">
-          <button 
-            className="flex items-center gap-1 text-[13px] font-medium uppercase transition-colors duration-300"
-            style={{ color: 'rgba(225, 224, 204, 0.8)' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = '#DEDBC8';
-              setIsLangOpen(true);
-              setActiveDropdown(null);
-            }}
-          >
-            <Globe size={14} />
-            {i18n.language}
-            <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
-          </button>
+        {/* Utilities Toggle Group */}
+        <div className="flex items-center gap-4">
           
-          {isLangOpen && (
-            <div 
-              className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-40 bg-[#101010]/95 backdrop-blur-xl rounded-xl shadow-2xl border border-white/10 py-2 z-50"
-              onMouseLeave={() => setIsLangOpen(false)}
+          {/* Theme Toggle */}
+          <button 
+            onClick={toggleTheme}
+            className="flex items-center justify-center w-8 h-8 rounded-full text-text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+            aria-label="Toggle Theme"
+          >
+            {isDarkMode ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+
+          {/* Language Toggle */}
+          <div className="relative group">
+            <button 
+              className="flex items-center gap-1 text-[13px] font-medium uppercase transition-colors duration-300 text-text-accent opacity-80 hover:opacity-100"
+              onMouseEnter={(e) => {
+                setIsLangOpen(true);
+                setActiveDropdown(null);
+              }}
             >
-              <button
-                onClick={() => {
-                  i18n.changeLanguage('en');
-                  setIsLangOpen(false);
-                }}
-                className={`w-full text-start px-4 py-3 text-sm hover:bg-white/5 transition-colors ${i18n.language === 'en' ? 'text-[#DEDBC8] font-bold' : 'text-gray-300 font-medium'}`}
+              <Globe size={14} />
+              {i18n.language}
+              <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {isLangOpen && (
+              <div 
+                className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-40 bg-surface-raised/95 backdrop-blur-xl rounded-xl shadow-2xl border border-border-glass/10 py-2 z-50"
+                onMouseLeave={() => setIsLangOpen(false)}
               >
-                English
-              </button>
-              <button
-                onClick={() => {
-                  i18n.changeLanguage('ar');
-                  setIsLangOpen(false);
-                }}
-                className={`w-full text-start px-4 py-3 text-sm hover:bg-white/5 transition-colors ${i18n.language === 'ar' ? 'text-[#DEDBC8] font-bold' : 'text-gray-300 font-medium'}`}
-              >
-                العربية (Arabic)
-              </button>
-            </div>
-          )}
+                <button
+                  onClick={() => {
+                    i18n.changeLanguage('en');
+                    setIsLangOpen(false);
+                  }}
+                  className={`w-full text-start px-4 py-3 text-sm hover:bg-black/5 dark:hover:bg-white/5 transition-colors ${i18n.language === 'en' ? 'text-text-accent font-bold' : 'text-text-secondary font-medium'}`}
+                >
+                  English
+                </button>
+                <button
+                  onClick={() => {
+                    i18n.changeLanguage('ar');
+                    setIsLangOpen(false);
+                  }}
+                  className={`w-full text-start px-4 py-3 text-sm hover:bg-black/5 dark:hover:bg-white/5 transition-colors ${i18n.language === 'ar' ? 'text-text-accent font-bold' : 'text-text-secondary font-medium'}`}
+                >
+                  العربية (Arabic)
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-4 pl-4 border-l border-white/10">
+        <div className="flex items-center gap-4 pl-4 border-l border-border-glass/10">
           <button 
             onClick={() => setIsLoginOpen(true)}
-            className="text-[13px] font-medium text-gray-300 hover:text-[#DEDBC8] transition-colors"
+            className="text-[13px] font-medium text-text-secondary hover:text-text-accent transition-colors"
           >
             {t('navbar.login')}
           </button>
           <button 
             onClick={() => setIsBookingOpen(true)}
-            className="bg-[#DEDBC8] text-black px-4 py-2 rounded-full text-[13px] font-bold hover:bg-white transition-colors"
+            className="bg-text-accent text-surface-main px-4 py-2 rounded-full text-[13px] font-bold hover:brightness-110 transition-all"
           >
             {t('hero.book_demo')}
           </button>

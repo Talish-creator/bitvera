@@ -11,7 +11,7 @@ const Hero = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="h-screen w-full bg-black p-4 md:p-6">
+    <section className="h-screen w-full bg-surface-main p-4 md:p-6">
       <div className="relative w-full h-full rounded-2xl md:rounded-[2rem] overflow-hidden">
         {/* Background Video */}
         <video
@@ -66,8 +66,8 @@ const Hero = () => {
                 className="group flex items-center gap-2 hover:gap-3 bg-primary text-black rounded-full pl-5 pr-2 py-2 transition-all duration-300"
               >
                 <span className="font-medium text-sm sm:text-base">{t('hero.book_consultation')}</span>
-                <div className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                  <ArrowRight size={18} className="text-[#DEDBC8]" />
+                <div className="bg-surface-main rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                  <ArrowRight size={18} className="text-text-accent" />
                 </div>
               </motion.button>
             </div>

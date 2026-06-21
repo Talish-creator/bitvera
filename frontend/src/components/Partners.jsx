@@ -6,10 +6,10 @@ const Partners = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative py-16 bg-black border-y border-white/10 transition-colors duration-300">
+    <section className="relative py-16 bg-surface-main border-y border-border-glass/10 transition-colors duration-300">
       <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 className="text-2xl font-bold text-center text-[#DEDBC8] mb-12 transition-colors">
+        <h2 className="text-2xl font-bold text-center text-text-accent mb-12 transition-colors">
           {t('partners_section.trusted_by')}
         </h2>
         {/* Added dir="ltr" to protect the scrolling animation in Arabic mode */}

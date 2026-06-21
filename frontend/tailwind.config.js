@@ -16,39 +16,52 @@ module.exports = {
   			serif: ['"Instrument Serif"', 'serif'],
   		},
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: 'rgb(var(--background))',
+  			foreground: 'rgb(var(--foreground))',
+  			surface: {
+  				main: 'rgb(var(--surface-main))',
+  				raised: 'rgb(var(--surface-raised))',
+  				elevated: 'rgb(var(--surface-elevated))',
+  			},
+  			text: {
+  				primary: 'rgb(var(--text-primary))',
+  				secondary: 'rgb(var(--text-secondary))',
+  				accent: 'rgb(var(--text-accent))',
+  			},
+  			border: {
+  				glass: 'rgba(var(--border-glass), <alpha-value>)',
+  				DEFAULT: 'rgb(var(--border))',
+  			},
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: 'rgb(var(--card))',
+  				foreground: 'rgb(var(--card-foreground))'
   			},
   			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: 'rgb(var(--popover))',
+  				foreground: 'rgb(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: '#DEDBC8',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: 'rgb(var(--primary))',
+  				foreground: 'rgb(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: 'rgb(var(--secondary))',
+  				foreground: 'rgb(var(--secondary-foreground))'
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: 'rgb(var(--muted))',
+  				foreground: 'rgb(var(--muted-foreground))'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: 'rgb(var(--accent))',
+  				foreground: 'rgb(var(--accent-foreground))'
   			},
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
+  			input: 'rgb(var(--input))',
+  			ring: 'rgb(var(--ring))',
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',

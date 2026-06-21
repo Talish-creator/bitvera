@@ -24,32 +24,32 @@ const SolutionModal = ({ solution, isOpen, onClose, onBookDemo }) => {
   if (!isOpen || !solution) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="bg-[#101010] rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-white/10">
-        <div className="sticky top-0 bg-black/80 backdrop-blur-md p-6 border-b border-white/10 flex justify-between items-center z-10">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-surface-main/80 backdrop-blur-sm">
+      <div className="bg-surface-raised rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-border-glass/10">
+        <div className="sticky top-0 bg-surface-main/80 backdrop-blur-md p-6 border-b border-border-glass/10 flex justify-between items-center z-10">
           <div className="flex items-center space-x-4">
-            {Icon && <Icon size={32} className="text-[#DEDBC8]" />}
-            <h2 className="text-2xl font-bold text-[#DEDBC8]">{t(`solution_names.${solution.name}`)}</h2>
+            {Icon && <Icon size={32} className="text-text-accent" />}
+            <h2 className="text-2xl font-bold text-text-accent">{t(`solution_names.${solution.name}`)}</h2>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
+          <button onClick={onClose} className="text-text-secondary hover:text-text-primary transition-colors">
             <X size={24} />
           </button>
         </div>
         <div className="p-8">
-          <p className="text-gray-300 mb-8">{t(solution.description)}</p>
+          <p className="text-text-secondary mb-8">{t(solution.description)}</p>
           <div className="grid md:grid-cols-2 gap-4 mb-8">
             {solution.features.map((feature, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-4 bg-[#212121] rounded-lg">
-                <Check size={20} className="text-[#DEDBC8] mt-0.5 flex-shrink-0" />
-                <span className="text-gray-300">{t(feature)}</span>
+              <div key={idx} className="flex items-start gap-3 p-4 bg-surface-elevated rounded-lg">
+                <Check size={20} className="text-text-accent mt-0.5 flex-shrink-0" />
+                <span className="text-text-secondary">{t(feature)}</span>
               </div>
             ))}
           </div>
           <div className="flex gap-4">
-            <Button onClick={() => { onClose(); onBookDemo(); }} className="flex-1 bg-[#DEDBC8] text-black hover:bg-white">
+            <Button onClick={() => { onClose(); onBookDemo(); }} className="flex-1 bg-text-accent text-black hover:bg-white">
               {t('solutions_page.schedule_demo')}
             </Button>
-            <Button variant="outline" onClick={onClose} className="flex-1 border-white/20 text-white hover:bg-white/10">
+            <Button variant="outline" onClick={onClose} className="flex-1 border-white/20 text-text-primary hover:bg-white/10">
               {t('solutions_page.close')}
             </Button>
           </div>
@@ -72,7 +72,7 @@ const Solutions = () => {
   };
 
   const headerSegments = [
-    { text: t('solutions_page.title'), className: "text-[#DEDBC8]" },
+    { text: t('solutions_page.title'), className: "text-text-accent" },
     { text: t('solutions_page.subtitle'), className: "text-gray-500 block w-full mt-2" }
   ];
 
@@ -81,7 +81,7 @@ const Solutions = () => {
 
   return (
     <>
-      <section id="solutions" className="relative min-h-screen bg-black py-24 md:py-32 overflow-hidden">
+      <section id="solutions" className="relative min-h-screen bg-surface-main py-24 md:py-32 overflow-hidden">
         <div className="bg-noise absolute inset-0 opacity-[0.15] pointer-events-none" />
         
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,10 +122,10 @@ const Solutions = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ delay: (idx + 1) * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="bg-[#212121] rounded-2xl md:rounded-3xl p-6 md:p-8 flex flex-col h-[400px] md:h-full hover:bg-[#2a2a2a] transition-colors"
+                  className="bg-surface-elevated rounded-2xl md:rounded-3xl p-6 md:p-8 flex flex-col h-[400px] md:h-full hover:bg-[#2a2a2a] transition-colors"
                 >
                   <div className="flex justify-between items-start mb-8">
-                    <Icon className="text-[#DEDBC8] w-6 h-6" />
+                    <Icon className="text-text-accent w-6 h-6" />
                     <span className="text-gray-500 font-serif italic text-xl">0{idx + 1}</span>
                   </div>
                   
@@ -136,15 +136,15 @@ const Solutions = () => {
                   <ul className="space-y-4 mb-auto">
                     {solution.features.slice(0, 3).map((feature, fIdx) => (
                       <li key={fIdx} className="flex items-start gap-3">
-                        <Check size={16} className="text-[#DEDBC8] mt-1 flex-shrink-0" />
-                        <span className="text-gray-400 text-sm leading-relaxed">{t(feature)}</span>
+                        <Check size={16} className="text-text-accent mt-1 flex-shrink-0" />
+                        <span className="text-text-secondary text-sm leading-relaxed">{t(feature)}</span>
                       </li>
                     ))}
                   </ul>
 
                   <button 
                     onClick={() => handleSolutionClick(solution)}
-                    className="mt-8 text-[#DEDBC8] flex items-center gap-2 group text-sm font-medium hover:text-white transition-colors"
+                    className="mt-8 text-text-accent flex items-center gap-2 group text-sm font-medium hover:text-text-primary transition-colors"
                   >
                     {t('solutions_page.learn_more')}
                     <ArrowRight size={16} className="transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

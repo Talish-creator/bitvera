@@ -345,18 +345,18 @@ const ServicePage = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-black font-sans transition-colors duration-300">
+    <div className="relative min-h-screen bg-surface-main font-sans transition-colors duration-300">
       <div className="fixed inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay z-0"></div>
       <SEO titleKey={content.title} descriptionKey={content.description} path={`/service/${id}`} />
       <Navbar />
       
       {/* 1. CINEMATIC DARK HERO SECTION */}
-      <div className="relative z-10 pt-32 pb-20 px-4 bg-[#101010] border-b border-white/10 transition-colors">
+      <div className="relative z-10 pt-32 pb-20 px-4 bg-surface-raised border-b border-border-glass/10 transition-colors">
         <div className="max-w-5xl mx-auto text-center space-y-8 mt-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight transition-colors">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-primary leading-tight tracking-tight transition-colors">
             {t(content.title)}
           </h1>
-          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed transition-colors">
+          <p className="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed transition-colors">
             {t(content.description)}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
@@ -364,7 +364,7 @@ const ServicePage = () => {
             {/* <-- 2. Wired up this Button! */}
             <button 
               onClick={() => setIsBookingOpen(true)}
-              className="px-8 py-3.5 rounded-lg border-2 border-white/10 text-white font-bold hover:bg-white/5 transition-all duration-300"
+              className="px-8 py-3.5 rounded-lg border-2 border-border-glass/10 text-text-primary font-bold hover:bg-white/5 transition-all duration-300"
             >
               {t('Book a Free Consultation')}
             </button>
@@ -372,7 +372,7 @@ const ServicePage = () => {
             {/* <-- 3. Wired up this Button! */}
             <button 
               onClick={() => setIsBookingOpen(true)}
-              className="px-8 py-3.5 rounded-lg bg-[#DEDBC8] text-black font-bold shadow-lg hover:shadow-[#DEDBC8]/20 hover:bg-white hover:-translate-y-0.5 transition-all duration-300"
+              className="px-8 py-3.5 rounded-lg bg-text-accent text-black font-bold shadow-lg hover:shadow-[#DEDBC8]/20 hover:bg-white hover:-translate-y-0.5 transition-all duration-300"
             >
               {t('Book a demo')}
             </button>
@@ -388,13 +388,13 @@ const ServicePage = () => {
             {content.features.map((feature, idx) => {
               const Icon = feature.icon;
               return (
-                <div key={idx} className="bg-[#101010] p-8 rounded-2xl shadow-sm border border-white/10 hover:border-[#DEDBC8]/50 hover:shadow-[#DEDBC8]/5 transition-all duration-300 group relative overflow-hidden">
+                <div key={idx} className="bg-surface-raised p-8 rounded-2xl shadow-sm border border-border-glass/10 hover:border-[#DEDBC8]/50 hover:shadow-[#DEDBC8]/5 transition-all duration-300 group relative overflow-hidden">
                   <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
-                  <div className="w-14 h-14 bg-[#212121] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#DEDBC8] transition-colors duration-300 relative z-10">
-                    <Icon className="w-7 h-7 text-[#DEDBC8] group-hover:text-black transition-colors duration-300" strokeWidth={1.5} />
+                  <div className="w-14 h-14 bg-surface-elevated rounded-xl flex items-center justify-center mb-6 group-hover:bg-text-accent transition-colors duration-300 relative z-10">
+                    <Icon className="w-7 h-7 text-text-accent group-hover:text-black transition-colors duration-300" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3 transition-colors relative z-10">{t(feature.title)}</h3>
-                  <p className="text-gray-400 leading-relaxed transition-colors relative z-10">{t(feature.description)}</p>
+                  <h3 className="text-xl font-bold text-text-primary mb-3 transition-colors relative z-10">{t(feature.title)}</h3>
+                  <p className="text-text-secondary leading-relaxed transition-colors relative z-10">{t(feature.description)}</p>
                 </div>
               );
             })}
@@ -404,9 +404,9 @@ const ServicePage = () => {
 
       {/* 3. CINEMATIC DARK FAQ ACCORDION */}
       {content.faqs.length > 0 && (
-        <div className="relative z-10 py-20 px-4 bg-black border-t border-white/10 transition-colors">
+        <div className="relative z-10 py-20 px-4 bg-surface-main border-t border-border-glass/10 transition-colors">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 transition-colors">
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary text-center mb-12 transition-colors">
               {t('Everything You Should Know')}
             </h2>
             
@@ -415,7 +415,7 @@ const ServicePage = () => {
                   <div 
                     key={idx} 
                     className={`border rounded-xl overflow-hidden transition-colors duration-300 relative ${
-                      openFaq === idx ? 'border-[#DEDBC8]/50 bg-[#101010]' : 'border-white/10 bg-[#101010] hover:border-[#DEDBC8]/30'
+                      openFaq === idx ? 'border-[#DEDBC8]/50 bg-surface-raised' : 'border-border-glass/10 bg-surface-raised hover:border-[#DEDBC8]/30'
                     }`}
                   >
                     <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
@@ -423,12 +423,12 @@ const ServicePage = () => {
                       onClick={() => toggleFaq(idx)}
                       className="w-full flex items-center justify-between p-6 text-start focus:outline-none relative z-10"
                     >
-                      <span className="text-lg font-semibold text-white pe-8 transition-colors">{t(faq.question)}</span>
-                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${openFaq === idx ? 'bg-[#DEDBC8] rotate-180' : 'bg-[#212121]'}`}>
+                      <span className="text-lg font-semibold text-text-primary pe-8 transition-colors">{t(faq.question)}</span>
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 ${openFaq === idx ? 'bg-text-accent rotate-180' : 'bg-surface-elevated'}`}>
                         {openFaq === idx ? (
                           <X className="w-5 h-5 text-black" />
                         ) : (
-                          <Plus className="w-5 h-5 text-white" />
+                          <Plus className="w-5 h-5 text-text-primary" />
                         )}
                     </div>
                   </button>
@@ -438,7 +438,7 @@ const ServicePage = () => {
                       openFaq === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="p-6 pt-0 text-gray-400 leading-relaxed border-t border-white/10 transition-colors">
+                    <div className="p-6 pt-0 text-text-secondary leading-relaxed border-t border-border-glass/10 transition-colors">
                       {t(faq.answer)}
                     </div>
                   </div>
