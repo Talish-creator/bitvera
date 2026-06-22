@@ -710,12 +710,17 @@
     "status": "Online • Smart Context",
     "placeholder": "Type your message...",
     "call_us": "Call Us",
-    "response_pricing": "Our pricing is transparent and scalable:\n\n🌱 **Starter:** 594 SAR/month (Core ERP modules)\n💼 **Professional:** 2,050 SAR/month (Advanced features & automation)\n🏢 **Enterprise:** 4,028 SAR/month (Full customization & dedicated support)\n\nWould you like me to recommend a plan based on your business size?",
+    "response_pricing": "Our pricing is transparent and scalable:\n\n🌱 **Standard:** 550 SAR/month\n💼 **Professional:** 2,000 SAR/month\n🏢 **Enterprise:** 4,000 SAR/month\n\nWould you like me to recommend a plan based on your business size?",
     "response_demo": "I'd love to help you see BitVera in action! You can schedule a personalized demo with our ERP experts by clicking the **Book a Demo** button at the top of the page. Is there any specific module you want us to highlight during the demo?",
     "response_contact": "Our experts are always ready to assist you!\n\n📞 **Phone:** +966 58 060 8336\n📱 **WhatsApp:** Available using the button below\n\nHow else can I help you today?",
     "response_services": "We specialize in complete ERPNext architecture tailored for modern businesses. Our core capabilities include:\n\n• Full ERPNext Implementation & Customization\n• CRM & Sales Automation\n• ZATCA Phase 2 E-Invoicing Compliance\n• Custom Cloud Hosting & Integrations\n\nWhich of these areas are you most interested in exploring?",
     "response_greeting": "Hello there! 👋 I'm the BitVera smart assistant. I can help you with pricing, exploring our ERP services, or booking a demo. What would you like to know?",
     "response_default": "That's a great question! Since every business workflow is unique, to give you the most accurate answer, I recommend speaking directly with our implementation experts. You can reach us at **+966 58 060 8336** or book a quick demo. Is there anything else about our services I can summarize for you?",
-    "error_message": "I apologize, but I'm having trouble processing that. Please call us at +966 58 060 8336."
+    "error_message": "I apologize, but I'm having trouble processing that. Please call us at +966 58 060 8336.",
+    "response_implementation": "Our implementation timeline depends on the modules you choose, but standard setups take between 30 to 45 days. We use an Agile methodology to ensure you get value quickly. Are you looking to implement immediately?",
+    "response_customization": "Yes! BitVera specializes in complete ERPNext customization. We can tailor workflows, reports, and modules to fit your exact business needs. Would you like to speak to an expert about your specific requirements?",
+    "response_zatca": "Absolutely. Our ERPNext solutions are 100% compliant with Saudi ZATCA e-invoicing regulations (Phase 1 and Phase 2), so you won't have to worry about tax compliance.",
+    "quick_zatca": "ZATCA Compliance",
+    "quick_customization": "Customization"
   }
 }

@@ -38,14 +38,18 @@ const Chatbot = () => {
 
   const quickReplies = [
     { id: 'pricing', text: '💰 ' + t('chatbot.pricing_plans'), query: 'What are your pricing plans?' },
+    { id: 'zatca', text: '🧾 ' + t('chatbot.quick_zatca'), query: 'Is the system ZATCA compliant?' },
+    { id: 'customization', text: '⚙️ ' + t('chatbot.quick_customization'), query: 'Can you customize the ERP?' },
     { id: 'demo', text: '📅 ' + t('chatbot.book_demo'), query: 'I want to book a demo' },
-    { id: 'contact', text: '📞 ' + t('chatbot.contact'), query: 'How can I contact you?' },
     { id: 'services', text: '🛠️ ' + t('chatbot.services'), query: 'What services do you provide?' }
   ];
 
   const handleQuickReply = async (query) => {
     addMessage(query, 'user');
-    await getAIResponse(query);
+    setIsTyping(true);
+    const response = await getAIResponse(query);
+    setIsTyping(false);
+    addMessage(response, 'bot');
   };
 
   const addMessage = (text, sender) => {
@@ -63,6 +67,15 @@ const Chatbot = () => {
     
     if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('plan')) {
       return t('chatbot.response_pricing');
+    }
+    if (lowerText.includes('zatca') || lowerText.includes('tax') || lowerText.includes('invoice') || lowerText.includes('invoicing')) {
+      return t('chatbot.response_zatca');
+    }
+    if (lowerText.includes('custom') || lowerText.includes('modify') || lowerText.includes('tailor')) {
+      return t('chatbot.response_customization');
+    }
+    if (lowerText.includes('time') || lowerText.includes('long') || lowerText.includes('implement')) {
+      return t('chatbot.response_implementation');
     }
     if (lowerText.includes('demo') || lowerText.includes('book') || lowerText.includes('schedule')) {
       return t('chatbot.response_demo');
