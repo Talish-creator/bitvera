@@ -721,6 +721,18 @@
     "response_customization": "Yes! BitVera specializes in complete ERPNext customization. We can tailor workflows, reports, and modules to fit your exact business needs. Would you like to speak to an expert about your specific requirements?",
     "response_zatca": "Absolutely. Our ERPNext solutions are 100% compliant with Saudi ZATCA e-invoicing regulations (Phase 1 and Phase 2), so you won't have to worry about tax compliance.",
     "quick_zatca": "ZATCA Compliance",
-    "quick_customization": "Customization"
+    "quick_customization": "Customization",
+    "response_hr": "Our HR Management module covers the complete employee lifecycle: attendance, leaves, payroll (compliant with Saudi labor laws), recruitment, and performance evaluations.",
+    "response_accounting": "The Accounting & Finance module includes full double-entry accounting, automated journal entries, cost centers, and is fully integrated with ZATCA e-invoicing for Saudi Arabia.",
+    "response_inventory": "With our Inventory and Warehouse Management, you can track stock movements across multiple warehouses in real-time, manage serial/batch numbers, and automate reordering.",
+    "response_manufacturing": "Our Manufacturing module gives you complete control over production planning, Bill of Materials (BOM), workstation routing, and quality inspections.",
+    "response_training": "Yes, absolutely! We provide comprehensive training sessions for your entire team to ensure smooth adoption of the new ERP system. We also provide user manuals and video tutorials.",
+    "response_migration": "Data migration is a core part of our implementation process. We securely extract, clean, and import your historical data from legacy systems like QuickBooks, Odoo, or Excel sheets into ERPNext.",
+    "response_languages": "The ERP system fully supports both Arabic and English. Users can switch their interface language at any time with a single click, with full Right-to-Left (RTL) support for Arabic.",
+    "response_mobile": "Yes, ERPNext is fully responsive on mobile browsers, and there is also a dedicated Mobile App available for both iOS and Android to manage operations on the go.",
+    "response_hosting": "We offer flexible hosting options! You can choose our secure Cloud Hosting (with daily backups and 99.9% uptime) or we can deploy the system On-Premise on your own servers.",
+    "response_integration": "ERPNext has powerful REST APIs. We can easily integrate it with third-party platforms like Shopify, WooCommerce, Magento, payment gateways, and shipping providers.",
+    "response_support": "We offer 24/7 technical support, regular system updates, and maintenance SLA packages to ensure your business operations never face downtime.",
+    "response_pos": "Yes, we provide a lightning-fast, offline-capable Point of Sale (POS) system that syncs perfectly with your inventory and accounting in real-time."
   }
 }

@@ -65,23 +65,63 @@ const Chatbot = () => {
   const generateLocalAIResponse = (text) => {
     const lowerText = text.toLowerCase();
     
+    // Financial & ZATCA
     if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('plan')) {
       return t('chatbot.response_pricing');
     }
     if (lowerText.includes('zatca') || lowerText.includes('tax') || lowerText.includes('invoice') || lowerText.includes('invoicing')) {
       return t('chatbot.response_zatca');
     }
+    if (lowerText.includes('accounting') || lowerText.includes('finance')) {
+      return t('chatbot.response_accounting');
+    }
+
+    // Specific Modules
+    if (lowerText.includes('hr ') || lowerText.includes('human') || lowerText.includes('payroll') || lowerText.includes('attendance') || lowerText.includes('leave')) {
+      return t('chatbot.response_hr');
+    }
+    if (lowerText.includes('inventory') || lowerText.includes('warehouse') || lowerText.includes('stock')) {
+      return t('chatbot.response_inventory');
+    }
+    if (lowerText.includes('manufactur') || lowerText.includes('production') || lowerText.includes('bom')) {
+      return t('chatbot.response_manufacturing');
+    }
+    if (lowerText.includes('pos ') || lowerText.includes('point of sale') || lowerText.includes('retail')) {
+      return t('chatbot.response_pos');
+    }
+
+    // Technical & Service Inquiries
     if (lowerText.includes('custom') || lowerText.includes('modify') || lowerText.includes('tailor')) {
       return t('chatbot.response_customization');
     }
     if (lowerText.includes('time') || lowerText.includes('long') || lowerText.includes('implement')) {
       return t('chatbot.response_implementation');
     }
+    if (lowerText.includes('train') || lowerText.includes('learn') || lowerText.includes('manual')) {
+      return t('chatbot.response_training');
+    }
+    if (lowerText.includes('migrat') || lowerText.includes('transfer') || lowerText.includes('old system') || lowerText.includes('odoo')) {
+      return t('chatbot.response_migration');
+    }
+    if (lowerText.includes('language') || lowerText.includes('arabic') || lowerText.includes('english')) {
+      return t('chatbot.response_languages');
+    }
+    if (lowerText.includes('mobile') || lowerText.includes('app ') || lowerText.includes('ios') || lowerText.includes('android')) {
+      return t('chatbot.response_mobile');
+    }
+    if (lowerText.includes('host') || lowerText.includes('cloud') || lowerText.includes('server') || lowerText.includes('premise')) {
+      return t('chatbot.response_hosting');
+    }
+    if (lowerText.includes('integrat') || lowerText.includes('shopify') || lowerText.includes('woocommerce') || lowerText.includes('api')) {
+      return t('chatbot.response_integration');
+    }
+
+    // General
     if (lowerText.includes('demo') || lowerText.includes('book') || lowerText.includes('schedule')) {
       return t('chatbot.response_demo');
     }
-    if (lowerText.includes('contact') || lowerText.includes('call') || lowerText.includes('support')) {
-      return t('chatbot.response_contact');
+    if (lowerText.includes('contact') || lowerText.includes('call') || lowerText.includes('support') || lowerText.includes('sla')) {
+      return lowerText.includes('support') ? t('chatbot.response_support') : t('chatbot.response_contact');
     }
     if (lowerText.includes('service') || lowerText.includes('erp') || lowerText.includes('offer')) {
       return t('chatbot.response_services');
