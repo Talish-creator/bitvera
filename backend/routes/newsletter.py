@@ -36,6 +36,17 @@ async def subscribe_newsletter(subscription: NewsletterSubscription):
         subscriber = NewsletterSubscriber(**subscription.dict())
         await db.newsletter_subscribers.insert_one(subscriber.dict())
         
+        # Sync with ERPNext (non-blocking)
+        from utils.erpnext import erpnext_client
+        try:
+            await erpnext_client.create_lead(
+                first_name="Newsletter",
+                email_id=subscriber.email,
+                custom_notes="Source: Newsletter Subscription"
+            )
+        except Exception as erp_err:
+            logger.error(f"Failed to sync newsletter subscriber to ERPNext: {str(erp_err)}")
+        
         return {
             "success": True,
             "message": "Thank you for subscribing to our newsletter!"

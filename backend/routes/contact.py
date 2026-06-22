@@ -15,6 +15,18 @@ async def create_contact(contact_request: ContactRequest):
         contact = Contact(**contact_request.dict())
         await db.contacts.insert_one(contact.dict())
         
+        # Sync with ERPNext (non-blocking)
+        from utils.erpnext import erpnext_client
+        try:
+            await erpnext_client.create_lead(
+                first_name=contact.name,
+                email_id=contact.email,
+                company_name=contact.company,
+                custom_notes=f"Demo Date: {contact.demo_date}\nAdditional Info: {contact.additional_info}"
+            )
+        except Exception as erp_err:
+            logger.error(f"Failed to sync lead to ERPNext: {str(erp_err)}")
+        
         return {
             "success": True,
             "message": "Thank you for your interest! We will contact you soon.",

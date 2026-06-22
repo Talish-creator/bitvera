@@ -37,6 +37,7 @@ api_router = APIRouter(prefix="/api")
 
 # Import route modules
 from routes import contact, testimonials, newsletter, payment, ai_chat
+from utils.erpnext import erpnext_client
 
 # Define Models
 class StatusCheck(BaseModel):
@@ -103,6 +104,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+@app.on_event("startup")
+async def startup_event():
+    erpnext_client.start()
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+    await erpnext_client.close()
